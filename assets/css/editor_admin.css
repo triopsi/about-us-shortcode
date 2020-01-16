@@ -1,0 +1,174 @@
+.uebns_clearfix{
+    clear: both;
+}
+.team_view_toolbar{
+    padding: 1em;
+    background-color: rgb(235, 235, 235);
+    color:#fff;
+    display: block;
+    text-align: left;
+    border: 1px solid#ddd;
+}
+
+.collapse_all,
+.expand_all{
+    float: left;
+    padding:5px;
+}
+.expand_all,
+.move_row_down,
+.member_add_title,
+.button-trash-images-btn {
+    margin-left:5px !important;
+}
+
+.collapse_all .dashicons,
+.expand_all .dashicons,
+.add_member_button .dashicons,
+.tool .dashicons,
+.trash .dashicons,
+.button-trash-images-btn .dashicons {
+    position: relative;
+    top: 4px;
+}
+
+/* Meta_Area */
+.team_area_content {
+    background: whitesmoke;
+    border: 1px solid#ddd;
+}
+
+.row_content{
+    padding: 70px 10px;
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 36px;
+    font-weight: 400;
+}
+
+/* Add Member Button */
+.team_area_footer{
+    margin-top:15px;
+}
+
+/* Member Toolbar */
+.member_toolbar{
+    text-align: left;
+    padding:0.5em;
+    background-color: rgb(214, 214, 214);
+    border-top: 1px dotted #555;
+}
+.member_toolbar .tool,
+.member_add_title{
+    float: left;
+}
+.member_toolbar .trash{
+    float: right;
+}
+.member_add_title{
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 4px;
+    color:#23282d;
+    font-weight: 400;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+.member_add_content_row{
+    padding: 0 10px 50px;
+}
+.member_head_title{
+    font-size: 20px;
+    color: #7a7a78;
+    padding-bottom: 5px;
+    margin: 15px 0 0;
+    border-bottom: 1px dashed #ddd;
+    text-align: left;
+}
+
+.member_field_title{
+    font-size: 1em;
+    padding:5px 0;
+    color: #555;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-weight: 600;
+
+}
+
+select.ubns-select{
+    min-height: 30px;
+    max-width: 25rem;
+    width:25em;
+}
+
+.row-second{
+    margin-top:10px;
+}
+
+/* Grid System */
+.member-grid{
+    float: left;
+    padding-left: 6px;
+    box-sizing: border-box;
+    padding-right: 6px;
+}
+.member-grid-33 {
+    width: 33%;
+}
+.member-grid-100 {
+    width: 100%;
+}
+.member-grid-2 {
+    width: 50%;
+}
+
+.member-image {
+    max-width: 100%;
+    max-height: 160px;
+    margin-top: 10px;
+    display: block;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.uebns_data {
+    display: none;
+    /* width:100%;
+    background-color: rgb(255, 208, 222);
+    border: 2px red; */
+}
+.member_add_image_thumbnail{
+    width:35px;
+    height:35px;
+    float: left;
+    margin-left: 10px;
+}
+.member_add_image_thumbnail img{
+    width:100%;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.textarea-member-bio{
+    font-size: 14px;
+    width:100%;
+    border: 1px red;
+    line-height: 2;
+    border-radius: 4px;
+    border: 1px solid #7e8993;
+    background-color:#fff;
+    color:#32373c;
+}
+/* Metabox */
+
+.uebns-setting-checkbox{
+    text-align: center;
+    display: inline-block;
+    width: 80px;
+}
+.uebns-setting-checkbox input[type="radio"] {
+    display: block;
+    margin: 0 auto 5px auto;
+}

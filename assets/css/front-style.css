@@ -1,0 +1,15 @@
+/**
+* Front Editor CSS
+**/
+
+.uebns-team{
+    padding: 25px 0 0;
+}
+
+.uebns-row{
+    position: relative;
+    width: 80%;
+    max-width: 1080px;
+    margin: auto;
+}
+
