@@ -17,20 +17,21 @@ function add_admin_uebns_style() {
   if( 'uebns' == $post_type ) {
 
     /* CSS for metaboxes. */
-    wp_enqueue_style( 'uebns_admin_styles', plugins_url('../assets/css/editor_admin.css', __FILE__));
+    wp_enqueue_style( 'uebns_admin_styles', plugins_url('../assets/css/editor-admin.css', __FILE__));
 
     /* CSS for preview.s */
     // wp_enqueue_style( 'tmm_styles', plugins_url('assets/css/tmm_style.min.css', __FILE__));
 
     /* Others. */
-    // wp_enqueue_style( 'wp-color-picker' );
+    wp_enqueue_style( 'wp-color-picker' );
     
 
-    /* JS for metaboxes. */
+    /* JS for metaboxes */
     wp_enqueue_script( 'logic-form', plugins_url('../assets/js/logic-form.js', __FILE__));
 
-    /* JS for metaboxes. */
+    /* JS for metaboxes */
     wp_enqueue_script( 'images-picker', plugins_url('../assets/js/images-picker.js', __FILE__));
+    wp_enqueue_script( 'color-picker', plugins_url('../assets/js/color-picker.js', __FILE__), array( 'jquery', 'wp-color-picker' ) );
 
     /* Localizes string for JS file. */
     wp_localize_script( 'uebns', 'objectL10n', array(
@@ -38,6 +39,8 @@ function add_admin_uebns_style() {
     ));
 
     wp_enqueue_media();
+
+    wp_enqueue_style( 'thickbox' );
     
   }
 

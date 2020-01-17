@@ -21,16 +21,14 @@ function uebns_plan_meta_box_save($post_id) {
 	/* Inits new team. */
 	$new_team = array();
 
-	// echo var_dump($_POST['uebns_data']);
-
 	/* Settings. */
-	// $old_team_settings = array();
+	$old_team_settings = array();
 
-	// $old_team_settings['_uebns_columns'] = get_post_meta( $post_id, '_uebns_columns', true );
-	// $old_team_settings['_uebns_color'] = get_post_meta( $post_id, '_uebns_color', true );
-	// $old_team_settings['_uebns_bio_alignment'] = get_post_meta( $post_id, '_uebns_bio_alignment', true );
-	// $old_team_settings['_uebns_piclink_beh'] = get_post_meta( $post_id, '_uebns_piclink_beh', true );
-	// $old_team_settings['_uebns_original_font'] = get_post_meta( $post_id, '_uebns_original_font', true );
+	//Load old Setting
+	$old_team_settings['_uebns_layout'] = get_post_meta( $post_id, '_uebns_layout', true );
+	$old_team_settings['_uebns_photo_setting'] = get_post_meta( $post_id, '_uebns_photo_setting', true );
+	$old_team_settings['_uebns_color_shema'] = get_post_meta( $post_id, '_uebns_color_shema', true );
+	$old_team_settings['_uebns_line_member'] = get_post_meta( $post_id, '_uebns_line_member', true );
 
 	$count = count($_POST['uebns_data']) - 1;
 
@@ -88,32 +86,30 @@ function uebns_plan_meta_box_save($post_id) {
 
 	}
 
-  /* Settings. */
-	// (isset($_POST['team_color']) && $_POST['team_color']) ? $new_team_settings['_uebns_color'] = stripslashes( strip_tags( sanitize_text_field( $_POST['team_color'] ) ) ) : $new_team_settings['_uebns_color'] = '';
-	// (isset($_POST['team_columns']) && $_POST['team_columns']) ? $new_team_settings['_uebns_columns'] = stripslashes( strip_tags( sanitize_text_field( $_POST['team_columns'] ) ) ) : $new_team_settings['_uebns_columns'] = '';
-	// (isset($_POST['team_bio_align']) && $_POST['team_bio_align']) ? $new_team_settings['_uebns_bio_alignment'] = stripslashes( strip_tags( sanitize_text_field( $_POST['team_bio_align'] ) ) ) : $new_team_settings['_uebns_bio_alignment'] = '';
-	// (isset($_POST['team_force_font']) && $_POST['team_force_font']) ? $new_team_settings['_uebns_original_font'] = stripslashes( strip_tags( sanitize_text_field( $_POST['team_force_font'] ) ) ) : $new_team_settings['_uebns_original_font'] = '';
-	// (isset($_POST['team_piclink_beh']) && $_POST['team_piclink_beh']) ? $new_team_settings['_uebns_piclink_beh'] = stripslashes( strip_tags( sanitize_text_field( $_POST['team_piclink_beh'] ) ) ) : $new_team_settings['_uebns_piclink_beh'] = '';
-
+  	/* Save settings */
+	(isset($_POST['uebns_layout']) && $_POST['uebns_layout']) ? $new_team_settings['_uebns_layout'] = stripslashes( strip_tags( sanitize_text_field( $_POST['uebns_layout'] ) ) ) : $new_team_settings['_uebns_layout'] = '';
+	(isset($_POST['uebns_photo_setting']) && $_POST['uebns_photo_setting']) ? $new_team_settings['_uebns_photo_setting'] = stripslashes( strip_tags( sanitize_text_field( $_POST['uebns_photo_setting'] ) ) ) : $new_team_settings['_uebns_photo_setting'] = '';
+	(isset($_POST['uebns-color-shema']) && $_POST['uebns-color-shema']) ? $new_team_settings['_uebns_color_shema'] = stripslashes( strip_tags( sanitize_text_field( $_POST['uebns-color-shema'] ) ) ) : $new_team_settings['_uebns_color_shema'] = '';
+	(isset($_POST['line_member']) && $_POST['line_member']) ? $new_team_settings['_uebns_line_member'] = stripslashes( strip_tags( sanitize_text_field( $_POST['line_member'] ) ) ) : $new_team_settings['_uebns_line_member'] = '';
+	
 	/* Updates plans. */
-	if ( !empty( $new_team ) && $new_team != $old_team )
+	if ( !empty( $new_team ) && $new_team != $old_team ) {
 		update_post_meta( $post_id, '_uebns_members', $new_team );
-	elseif ( empty($new_team) && $old_team )
+	} elseif ( empty($new_team) && $old_team ){
 		delete_post_meta( $post_id, '_uebns_members', $old_team );
+	}
 
-	// if ( !empty( $new_team_settings['_uebns_color'] ) && $new_team_settings['_uebns_color'] != $old_team_settings['_uebns_color'] )
-	// 	update_post_meta( $post_id, '_uebns_color', $new_team_settings['_uebns_color'] );
-
-	// if ( !empty( $new_team_settings['_uebns_columns'] ) && $new_team_settings['_uebns_columns'] != $old_team_settings['_uebns_columns'] )
-	// 	update_post_meta( $post_id, '_uebns_columns', $new_team_settings['_uebns_columns'] );
-
-	// if ( !empty( $new_team_settings['_uebns_bio_alignment'] ) && $new_team_settings['_uebns_bio_alignment'] != $old_team_settings['_uebns_bio_alignment'] )
-	// 	update_post_meta( $post_id, '_uebns_bio_alignment', $new_team_settings['_uebns_bio_alignment'] );
-
-	// if ( !empty( $new_team_settings['_uebns_original_font'] ) && $new_team_settings['_uebns_original_font'] != $old_team_settings['_uebns_original_font'] )
-	// 	update_post_meta( $post_id, '_uebns_original_font', $new_team_settings['_uebns_original_font'] );
-
-	// if ( !empty( $new_team_settings['_uebns_piclink_beh'] ) && $new_team_settings['_uebns_piclink_beh'] != $old_team_settings['_uebns_piclink_beh'] )
-	// 	update_post_meta( $post_id, '_uebns_piclink_beh', $new_team_settings['_uebns_piclink_beh'] );
-
+	/* Update Settings */
+	if ( !empty( $new_team_settings['_uebns_layout'] ) && $new_team_settings['_uebns_layout'] != $old_team_settings['_uebns_layout'] ) {
+		update_post_meta( $post_id, '_uebns_layout', $new_team_settings['_uebns_layout'] );
+	}
+	if ( !empty( $new_team_settings['_uebns_photo_setting'] ) && $new_team_settings['_uebns_photo_setting'] != $old_team_settings['_uebns_photo_setting'] ) {
+		update_post_meta( $post_id, '_uebns_photo_setting', $new_team_settings['_uebns_photo_setting'] );
+	}
+	if ( !empty( $new_team_settings['_uebns_color_shema'] ) && $new_team_settings['_uebns_color_shema'] != $old_team_settings['_uebns_color_shema'] ) {
+		update_post_meta( $post_id, '_uebns_color_shema', $new_team_settings['_uebns_color_shema'] );
+	}
+	if ( !empty( $new_team_settings['_uebns_line_member'] ) && $new_team_settings['_uebns_line_member'] != $old_team_settings['_uebns_line_member'] ) {
+		update_post_meta( $post_id, '_uebns_line_member', $new_team_settings['_uebns_line_member'] );
+	}
 }

@@ -30,7 +30,8 @@ require_once('inc/uebns-shortcode.php');
 require_once('inc/uebns-shortcode.php');
 
 /* Side Metaboxes */
-require_once('inc/uebns-metaboxes-settings.php');
+require_once('inc/uebns-metaboxes-sidebar-settings.php');
+require_once('inc/uebns-metaboxes-sidebar-shortcode.php');
 
 /* Save the Team */
 require_once('inc/uebns-save-metaboxes.php');
