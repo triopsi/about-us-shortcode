@@ -36,8 +36,26 @@ function uebns_settings_display() {
 		__('4 per line', 'plg-ueber-uns') => '4',
 		__('5 per line', 'plg-ueber-uns') => '5'    
 	);
+
 	$settings['_uebns_line_member'] = get_post_meta( $post->ID, '_uebns_line_member', true );
 	if (!$settings['_uebns_line_member']) { $settings['_uebns_line_member'] = '1'; }
+
+	$options_image_filter = array ( 
+		__('none', 'plg-ueber-uns') => 'none',
+		__('grayscale', 'plg-ueber-uns') => 'grayscale',
+		__('sepia', 'plg-ueber-uns') => 'sepia' 
+	);
+	$settings['_uebns_filter_image'] = get_post_meta( $post->ID, '_uebns_filter_image', true );
+	if (!$settings['_uebns_filter_image']) { $settings['_uebns_filter_image'] = 'none'; }
+
+	$options_images_clickable = array ( 
+		__('no', 'plg-ueber-uns') => 'no',
+		__('yes', 'plg-ueber-uns') => 'yes'
+	);
+
+	$settings['_uebns_images_clickable'] = get_post_meta( $post->ID, '_uebns_images_clickable', true );
+	if (!$settings['_uebns_images_clickable']) { $settings['_uebns_images_clickable'] = 'no'; }
+
 
 	?>
 	<div class="uebns_settings_box uebns_sidebar">
@@ -89,6 +107,32 @@ function uebns_settings_display() {
 			</div>
 			<div class="layout_out">
 				<input type="text" name="uebns-color-shema" class="uebns-color-picker" value="<?php echo ( ( isset($settings['_uebns_color_shema']) ) ? $settings['_uebns_color_shema'] : ' ' ); ?>" />
+			</div>
+		</div><!-- /.layout_settings -->
+		<!-- Layout Settings -->
+		<div class="layout_settings">
+			<div class="member_field_title">
+					<?php _e('Image Filter', 'plg-ueber-uns' ) ?>
+			</div>
+			<div class="layout_out">
+				<select class="" name="image_filter">	
+					<?php foreach ( $options_image_filter as $label => $value ) { ?>
+						<option value="<?php echo $value; ?>"<?php selected( (isset($settings['_uebns_filter_image'])) ? $settings['_uebns_filter_image'] : 'none', $value ); ?>><?php echo $label; ?></option>
+					<?php } ?>
+				</select>
+			</div>
+		</div><!-- /.layout_settings -->
+		<!-- Layout Settings -->
+		<div class="layout_settings">
+			<div class="member_field_title">
+					<?php _e('Images clickable?', 'plg-ueber-uns' ) ?>
+			</div>
+			<div class="layout_out">
+				<select class="" name="images_clickable">	
+					<?php foreach ( $options_images_clickable as $label => $value ) { ?>
+						<option value="<?php echo $value; ?>"<?php selected( (isset($settings['_uebns_images_clickable'])) ? $settings['_uebns_images_clickable'] : 'no', $value ); ?>><?php echo $label; ?></option>
+					<?php } ?>
+				</select>
 			</div>
 		</div><!-- /.layout_settings -->
 	</div>

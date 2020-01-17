@@ -19,6 +19,9 @@
                     /* Imagespicker Result Path */
                     var thumbnail_member = custom_uploader.state().get('selection').first().toJSON(); // Images Object
 
+                    console.log(thumbnail_member);
+                    
+
                     /* Remove Trashicon, Images an Button */
                     button.siblings('img, .button-trash-images-btn, .dashicons-trash').remove();
 
@@ -28,6 +31,9 @@
                     /* Add image */
                     $("<a class=\"button button-trash-images-btn button-large\" href=\"#\"><span class=\"dashicons dashicons-trash\"></span></a><img src=\""+thumbnail_member.url+"\" class=\"member-image\"/>").insertAfter(button);
                     
+                    /* Add URL*/
+                    button.closest('.team_member_add_content').find('.member-image-link-field').val(thumbnail_member.url);
+
                     /* Add thumbnail image to the titelbar*/
                     button.closest('.team_member_add_content').find( $('.member_add_image_thumbnail')).append("<img class=\"thumbnail-titelbar\" src=\""+thumbnail_member.url+"\"/>");
                     

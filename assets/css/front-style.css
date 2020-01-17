@@ -111,7 +111,7 @@ img.uebns-photo-member:hover{
 }
 /* Social Menu */
 .uebns-social-link{
-    text-align: center;
+    text-align: left;
     margin-top:10px;
 }
 .uebns-social-menu{
@@ -166,4 +166,18 @@ img.uebns-photo-member:hover{
 .uebns-center{
     text-align: center;
     margin: 0 auto;
+}
+.uebns-hr-full{
+    width: 100%;
+}
+
+/* Unter Tabletsgröße */
+@media (max-width: 991.98px) {
+    .uebns-row50,
+    .uebns-row25,
+    .uebns-row20,
+    .uebns-row33 {
+        width: 100%;
+    }
+
 }

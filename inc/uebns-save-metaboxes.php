@@ -29,6 +29,8 @@ function uebns_plan_meta_box_save($post_id) {
 	$old_team_settings['_uebns_photo_setting'] = get_post_meta( $post_id, '_uebns_photo_setting', true );
 	$old_team_settings['_uebns_color_shema'] = get_post_meta( $post_id, '_uebns_color_shema', true );
 	$old_team_settings['_uebns_line_member'] = get_post_meta( $post_id, '_uebns_line_member', true );
+	$old_team_settings['_uebns_filter_image'] = get_post_meta( $post_id, '_uebns_filter_image', true );
+	$old_team_settings['_uebns_images_clickable'] = get_post_meta( $post_id, '_uebns_images_clickable', true );
 
 	$count = count($_POST['uebns_data']) - 1;
 
@@ -59,9 +61,8 @@ function uebns_plan_meta_box_save($post_id) {
 			$member_photo = $member_data[13];
 			$member_photo_url = $member_data[14];
 
-      /* Saves the member if at least one of these fields are not empty. */
+      /* Saves the member if at least one of these fields are not empty */
 			if ( $member_firstname != ''|| $member_lastname != '' || $member_job != ''|| $member_bio != ''|| $member_photo != '' ) {
-				/* Members. */
 				(isset($member_firstname) && $member_firstname) ? $new_team[$i]['_uebns_firstname'] = stripslashes( wp_kses_post( $member_firstname ) ) : $new_team[$i]['_uebns_firstname'] = __('Untitled', TMM_TXTDM );
 				(isset($member_lastname) && $member_lastname) ? $new_team[$i]['_uebns_lastname'] = stripslashes( wp_kses_post( $member_lastname ) ) : $new_team[$i]['_uebns_lastname'] = '';
 				(isset($member_job) && $member_job) ? $new_team[$i]['_uebns_job'] = stripslashes( wp_kses_post( $member_job ) ) : $new_team[$i]['_uebns_job'] = '';
@@ -91,6 +92,8 @@ function uebns_plan_meta_box_save($post_id) {
 	(isset($_POST['uebns_photo_setting']) && $_POST['uebns_photo_setting']) ? $new_team_settings['_uebns_photo_setting'] = stripslashes( strip_tags( sanitize_text_field( $_POST['uebns_photo_setting'] ) ) ) : $new_team_settings['_uebns_photo_setting'] = '';
 	(isset($_POST['uebns-color-shema']) && $_POST['uebns-color-shema']) ? $new_team_settings['_uebns_color_shema'] = stripslashes( strip_tags( sanitize_text_field( $_POST['uebns-color-shema'] ) ) ) : $new_team_settings['_uebns_color_shema'] = '';
 	(isset($_POST['line_member']) && $_POST['line_member']) ? $new_team_settings['_uebns_line_member'] = stripslashes( strip_tags( sanitize_text_field( $_POST['line_member'] ) ) ) : $new_team_settings['_uebns_line_member'] = '';
+	(isset($_POST['image_filter']) && $_POST['image_filter']) ? $new_team_settings['_uebns_filter_image'] = stripslashes( strip_tags( sanitize_text_field( $_POST['image_filter'] ) ) ) : $new_team_settings['_uebns_filter_image'] = '';
+	(isset($_POST['images_clickable']) && $_POST['images_clickable']) ? $new_team_settings['_uebns_images_clickable'] = stripslashes( strip_tags( sanitize_text_field( $_POST['images_clickable'] ) ) ) : $new_team_settings['_uebns_images_clickable'] = '';
 	
 	/* Updates plans. */
 	if ( !empty( $new_team ) && $new_team != $old_team ) {
@@ -111,5 +114,11 @@ function uebns_plan_meta_box_save($post_id) {
 	}
 	if ( !empty( $new_team_settings['_uebns_line_member'] ) && $new_team_settings['_uebns_line_member'] != $old_team_settings['_uebns_line_member'] ) {
 		update_post_meta( $post_id, '_uebns_line_member', $new_team_settings['_uebns_line_member'] );
+	}
+	if ( !empty( $new_team_settings['_uebns_filter_image'] ) && $new_team_settings['_uebns_filter_image'] != $old_team_settings['_uebns_filter_image'] ) {
+		update_post_meta( $post_id, '_uebns_filter_image', $new_team_settings['_uebns_filter_image'] );
+	}
+	if ( !empty( $new_team_settings['_uebns_images_clickable'] ) && $new_team_settings['_uebns_images_clickable'] != $old_team_settings['_uebns_images_clickable'] ) {
+		update_post_meta( $post_id, '_uebns_images_clickable', $new_team_settings['_uebns_images_clickable'] );
 	}
 }
