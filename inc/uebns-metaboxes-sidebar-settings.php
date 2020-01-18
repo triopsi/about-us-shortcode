@@ -1,6 +1,24 @@
-<?php 
-
-/* Hooks the metabox. */
+<?php
+/**
+* Author: Daniel Rodriguez Baumann
+* Author URI: http://wiki.profoxi.de
+* License: GPL3
+* License URI: https://www.gnu.org/licenses/gpl-3.0
+*
+* uebns is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* any later version.
+*  
+* uebns is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*  
+* You should have received a copy of the GNU General Public License
+* along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
+**/
+/* Add a metabox */
 add_action('admin_init', 'uebns_add_settings', 1);
 function uebns_add_settings() {
 	add_meta_box( 
@@ -12,7 +30,6 @@ function uebns_add_settings() {
 		'low'
 	);
 }
-
 
 /* Displays the metabox */
 function uebns_settings_display() { 
@@ -136,4 +153,5 @@ function uebns_settings_display() {
 			</div>
 		</div><!-- /.layout_settings -->
 	</div>
-<?php } ?>
+<?php 
+}

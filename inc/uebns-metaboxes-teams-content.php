@@ -1,27 +1,23 @@
 <?php
-
-/* Defines highlight select options. */
-function social_links_options() {
-	$options = array ( 
-					__('-', 'plg-ueber-uns' ) => 'nada', 
-					__('Twitter', 'plg-ueber-uns' ) => 'twitter',
-					__('LinkedIn', 'plg-ueber-uns' ) => 'linkedin',
-					__('YouTube', 'plg-ueber-uns' ) => 'youtube',
-					__('Google+', 'plg-ueber-uns' ) => 'googleplus',
-					__('Facebook', 'plg-ueber-uns' ) => 'facebook',
-					__('Pinterest', 'plg-ueber-uns' ) => 'pinterest',
-					__('VK', 'plg-ueber-uns' ) => 'vk',
-					__('Instagram', 'plg-ueber-uns' ) => 'instagram',
-					__('Tumblr', 'plg-ueber-uns' ) => 'tumblr',
-					__('Research Gate', 'plg-ueber-uns' ) => 'researchgate',
-					__('Email', 'plg-ueber-uns' ) => 'email',
-					__('Website', 'plg-ueber-uns' ) => 'website',
-					__('Phone', 'plg-ueber-uns' ) => 'phone',
-					__('Other links', 'plg-ueber-uns' ) => 'customlink'
-  	);
-	return $options;
-}
-
+/**
+* Author: Daniel Rodriguez Baumann
+* Author URI: http://wiki.profoxi.de
+* License: GPL3
+* License URI: https://www.gnu.org/licenses/gpl-3.0
+*
+* uebns is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* any later version.
+*  
+* uebns is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*  
+* You should have received a copy of the GNU General Public License
+* along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
+**/
 
 /* Hooks the metabox. */
 add_action('admin_init', 'uebns_add_team', 1);
@@ -36,12 +32,20 @@ function uebns_add_team() {
 	);
 }
 
+/**
+ * Show the add/edit postpage in admin
+ *
+ * @return void
+ */
 function uebns_team_display(){
+
+	//Global Post
     global $post;
 	
-	/* Gets team data. */
+	//get post meta data
 	$teammembers = get_post_meta( $post->ID, '_uebns_members', true );
 	
+	//Array of Shortcode Fields of the member
 	$fields_to_process = array(
 		'_uebns_firstname',
 		'_uebns_lastname',
@@ -131,16 +135,6 @@ function uebns_team_display(){
 							<?php echo __('Biography','plg-ueber-uns'); ?>
 							</div>
 							<div class="ubns-field uebns_description_of_member">
-							<?php 
-								// $id=$member['_uebns_firstname'];
-								// echo '<input type="hidden" name="editor_id" value="'.$id.'">';
-								//  ob_start();
-								// wp_editor( '', 'uebns-editor-des-'.$id, array(
-								// 	// 'editor_height' => '300px',
-								// 	'textarea_rows' => 3,
-								// 	'media_buttons' => false,
-								// 	'teeny'=> true, 
-								// ));?>
 							</div>
 							<textarea id="uebns-description-member" class="textarea-member-bio"><?php echo $member['_uebns_desc']; ?></textarea>
 						</div><!-- ./member_field_jobrole -->
@@ -264,14 +258,6 @@ function uebns_team_display(){
 						<?php echo __('Biography','plg-ueber-uns'); ?>
 						</div>
 						<div class="ubns-field uebns_description_of_member">
-							<?php 
-							//  ob_start();
-							// wp_editor( '', 'uebns-editor-des-'.rand(), array(
-							// 	// 'editor_height' => '300px',
-							// 	'textarea_rows' => 3,
-							// 	'media_buttons' => false,
-							// 	'teeny'=> true, 
-							// ));?>
 						</div>
 						<textarea id="uebns-description-member" class="textarea-member-bio"></textarea>
 					</div><!-- ./member_field_jobrole -->

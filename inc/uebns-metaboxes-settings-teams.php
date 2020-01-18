@@ -1,4 +1,23 @@
 <?php
+/**
+* Author: Daniel Rodriguez Baumann
+* Author URI: http://wiki.profoxi.de
+* License: GPL3
+* License URI: https://www.gnu.org/licenses/gpl-3.0
+*
+* uebns is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* any later version.
+*  
+* uebns is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*  
+* You should have received a copy of the GNU General Public License
+* along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
+**/
 
 /* Registers the teams post type. */
 add_action( 'init', 'register_uebns_type' );
@@ -10,8 +29,8 @@ add_action( 'init', 'register_uebns_type' );
  */
 function register_uebns_type() {
 	
-  /* Defines labels. */
-  $labels = array(
+  	/* Defines labels */
+  	$labels = array(
 		'name'               => __( 'Teams', 'plg-ueber-uns' ),
 		'singular_name'      => __( 'Team', 'plg-ueber-uns' ),
 		'menu_name'          => __( 'Teams', 'plg-ueber-uns' ),
@@ -27,7 +46,7 @@ function register_uebns_type() {
 		'not_found_in_trash' => __( 'No Teams found in Trash.', 'plg-ueber-uns' )
 	);
 
-  /* Defines permissions. */
+  	/* Defines permissions. */
 	$args = array(
 		'labels'             => $labels,
 		'public'             => false,
@@ -41,20 +60,25 @@ function register_uebns_type() {
 		'menu_icon'          => 'dashicons-buddicons-buddypress-logo',
 	);
 
-  /* Registers post type. */
+  	/* Registers post type. */
 	register_post_type( 'uebns', $args );  
 
 }
 
 
-/* Customizes teams update messages. */
+/* Add update messages */
 add_filter( 'post_updated_messages', 'uebns_updated_messages' );
+
+/**
+ * Update post message functions
+ *
+ * @param [type] $messages
+ * @return void
+ */
 function uebns_updated_messages( $messages ) {
 	$post             = get_post();
 	$post_type        = get_post_type( $post );
     $post_type_object = get_post_type_object( $post_type );
-    
-  /* Defines update messages. */
 	$messages['uebns'] = array(
 		1  => __( 'Team updated.', 'plg-ueber-uns' ),
 		4  => __( 'Team updated.', 'plg-ueber-uns' ),

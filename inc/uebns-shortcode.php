@@ -1,21 +1,40 @@
-<?php 
+<?php
+/**
+* Author: Daniel Rodriguez Baumann
+* Author URI: http://wiki.profoxi.de
+* License: GPL3
+* License URI: https://www.gnu.org/licenses/gpl-3.0
+*
+* uebns is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* any later version.
+*  
+* uebns is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*  
+* You should have received a copy of the GNU General Public License
+* along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
+**/
 
 /* Shortcode on the Page */
 add_shortcode("uebns", "uebns_sh");
 
-//Function for the Shortcode
+//Show the Shortcode in the post/site/content
 function uebns_sh($atts) {
 
-  //Global Variable for the Post. Data of the current Post
+  //Data of the current Post
   global $post;
 
-  /* Gets table slug (post name). */
+  // Gets table slug (post name)
   $all_attr = shortcode_atts( array( "name" => '' ), $atts );
 
   //Name of the Team
   $name = $all_attr['name'];
 
-  /* Gets the team. */
+  //Gets the team
   $args = array('post_type' => 'uebns', 'name' => $name);
 
   // Get Posts
@@ -24,87 +43,22 @@ function uebns_sh($atts) {
   //Empty team Sring
   $team_view = '';
 
-  //Social
-  $social_links_icons = array(
-		'behance.net'     => 'fab fa-behance',
-		'codepen.io'      => 'fab fa-codepen',
-		'deviantart.com'  => 'fab fa-deviantart',
-		'digg.com'        => 'fab fa-digg',
-		'docker.com'      => 'fab fa-dockerhub',
-		'dribbble.com'    => 'fab fa-dribbble',
-		'dropbox.com'     => 'fab fa-dropbox',
-		'facebook.com'    => 'fab fa-facebook',
-		'flickr.com'      => 'fab fa-flickr',
-		'foursquare.com'  => 'fab fa-foursquare',
-		'plus.google.com' => 'fab fa-google-plus',
-		'github.com'      => 'fab fa-github',
-		'instagram.com'   => 'fab fa-instagram',
-		'linkedin.com'    => 'fab fa-linkedin',
-		'mailto:'         => 'fas fa-envelope',
-		'medium.com'      => 'fab fa-medium',
-		'pinterest.com'   => 'fab fa-pinterest-p',
-		'pscp.tv'         => 'fab fa-periscope',
-		'getpocket.com'   => 'fab fa-get-pocket',
-		'reddit.com'      => 'fab fa-reddit-alien',
-		'skype.com'       => 'fab fa-skype',
-		'skype:'          => 'fab fa-skype',
-		'slideshare.net'  => 'fab fa-slideshare',
-		'snapchat.com'    => 'fab fa-snapchat-ghost',
-		'soundcloud.com'  => 'fab fa-soundcloud',
-		'spotify.com'     => 'fab fa-spotify',
-		'stumbleupon.com' => 'fab fa-stumbleupon',
-		'tumblr.com'      => 'fab fa-tumblr',
-		'twitch.tv'       => 'fab fa-twitch',
-		'twitter.com'     => 'fab fa-twitter',
-		'vimeo.com'       => 'fab fa-vimeo',
-		'vine.co'         => 'fab fa-vine',
-		'vk.com'          => 'fab fa-vk',
-		'wordpress.org'   => 'fab fa-wordpress',
-		'wordpress.com'   => 'fab fa-wordpress',
-		'yelp.com'        => 'fab fa-yelp',
-		'youtube.com'     => 'fab fa-youtube',
-  );
+  //SocialIcons
+  $social_links_icons = getIconStyle();
 
   foreach($custom_posts as $post) : setup_postdata($post);
+      //Load Members
       $members = get_post_meta( get_the_id(), '_uebns_members', true );
+
+      //Load Settings
       $settings_layout = get_post_meta( get_the_id(), '_uebns_layout', true );
       $settings_photo_setting = get_post_meta( get_the_id(), '_uebns_photo_setting', true );
       $settings_color_shema = get_post_meta( get_the_id(), '_uebns_color_shema', true );
       $settings_line_member = get_post_meta( get_the_id(), '_uebns_line_member', true );
       $setting_image_filter = get_post_meta( get_the_id(), '_uebns_filter_image', true );
       $setting_images_clickable = get_post_meta( get_the_id(), '_uebns_images_clickable', true );
-
-      
-      switch ($settings_line_member) {
-        case 1:
-            $style_class_line_members='1';
-            break;
-        case 2:
-            $style_class_line_members='50';
-            break;
-        case 3:
-            $style_class_line_members='33';
-            break;
-        case 4:
-            $style_class_line_members='25';
-            break;
-        case 5:
-            $style_class_line_members='20';
-            break;
-        default:
-            $style_class_line_members='1';
-      }
-
-      switch ($setting_image_filter) {
-          case 'grayscale':
-              $style_image_filter='-webkit-filter: grayscale(1);filter: grayscale(1);';
-              break;
-          case 'sepia':
-              $style_image_filter='-webkit-filter: sepia(1);filter: sepia(1);';
-              break;
-          default:
-          $style_image_filter='';
-      }
+      $style_class_line_members=getRowStyleCount($settings_line_member);
+      $style_image_filter=getImageFilterStyle($setting_image_filter);
 
       if ( is_array($members) || is_object($members) || !empty($settings_layout) ) {
         $team_view.='<div class="uebns-team">';
@@ -205,29 +159,7 @@ function uebns_sh($atts) {
         $team_view.='</div><!-- /.uebns-team -->';
       }
   endforeach; wp_reset_postdata();
-//https://hootproof.de/ueber-uns/
+
   return $team_view;
+
 }
-
-function uebns_get_icon_social( $social_icons, $url ){
-  $icon_class = "fas fa-link";
-  foreach ( $social_icons as $attr => $value ) {
-    if ( false !== strpos( $url, $attr ) ) {
-      $icon_class = $value;//str_replace( $args->link_after, '</span>' . bademanteltour_get_icon( array( 'icon' => esc_attr( $value ) ) ), $item_output );
-    }
-  }
-
-  return $icon_class;
-}
-
-function uebns_get_image_html( $member, $setting_images_clickable, $style_image_filter, $settings_photo_setting ){
-
-  if( !isset($member['_uebns_photo']) || empty($member['_uebns_photo']) ){
-    $htmlout='';
-  }else{
-    $htmlout='<div class="uebns-profile-images">' . ( $setting_images_clickable === "yes" &&  !empty($member['_uebns_photo_url'] ) ? '<a href="'.$member['_uebns_photo_url'].'">':'') . '<img style="' . $style_image_filter . '" class="uebns-photo-member ' . ( $settings_photo_setting === 'round' ? 'uebns-round' : '' ) . '" src="'.$member['_uebns_photo'].'" alt="">' . ($setting_images_clickable === "yes" ? '</a>':'') . '</div>';
-  }
-  return $htmlout;
-}
-
-?>

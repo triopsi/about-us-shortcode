@@ -19,9 +19,6 @@
                     /* Imagespicker Result Path */
                     var thumbnail_member = custom_uploader.state().get('selection').first().toJSON(); // Images Object
 
-                    console.log(thumbnail_member);
-                    
-
                     /* Remove Trashicon, Images an Button */
                     button.siblings('img, .button-trash-images-btn, .dashicons-trash').remove();
 
@@ -61,7 +58,7 @@
 
         });
 
-        /* Init Load Images. */
+        /* Init */
         $('.uebns_img_data_url').each(function(i, obj) {
 
             /* var */
