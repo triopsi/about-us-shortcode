@@ -19,10 +19,15 @@
 * along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
 **/
 
+/**
+ * Init setting setup
+ *
+ * @return void
+ */
 function uebns_settings_init()
 {
     // register a new setting
-    register_setting('uebns', 'uebns_settings_social');
+    register_setting( 'uebns', 'uebns_settings_social' );
  
     // register a new section in the "Uebns" page
     add_settings_section(
@@ -32,8 +37,8 @@ function uebns_settings_init()
         'uebns'
     );
  
-    //Fields
-    $getIconArrayList=getIconArrayList();
+    //Fields in the section setting
+    $getIconArrayList = getIconArrayList();
     foreach ( $getIconArrayList as $link_url => $value ) {
         $callback = 'uebns_settings_field_cb';
         $name_field = 'uebns_settings_social_'.$link_url;
@@ -63,7 +68,7 @@ add_action('admin_init', 'uebns_settings_init');
 function uebns_settings_section_cb()
 {
     printf(
-        __('Team Settings Section. Here you can edit the Social Media Icons styles for the front/content. By default the plugin used and need the font awesome icon libary(%s)','plg-ueber-uns'),
+        __('Team Settings Section. Here you can edit the Social Media Icons styles for the front/content. By default the plugin used and needed the font awesome icon libary(%s)','plg-ueber-uns'),
         '<a target="_blank" href="https://fontawesome.com/">more infos</a>'
     );
 }
@@ -77,9 +82,7 @@ function uebns_settings_section_cb()
 function uebns_settings_field_cb( array $args ){
     $label_for   = $args['label_for'];
     $type     = $args['type'];
-    // get the value of the setting we've registered with register_setting()
-    $old_setting_value = get_option('uebns_settings_social');
-    // output the field
+    $old_setting_value = get_option( 'uebns_settings_social' );
     ?>
     <input type="text" name="uebns_settings_social[<?php echo $label_for; ?>]" value="<?php echo isset( $old_setting_value ) && !empty($old_setting_value) && is_array($old_setting_value) ? esc_attr( $old_setting_value[$label_for] ) : $type; ?>">
     <?php

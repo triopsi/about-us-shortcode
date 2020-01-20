@@ -4,6 +4,7 @@
 
 .uebns-team{
     padding: 25px 0 0;
+    display: block;
 }
 
 .uebns-row{
@@ -74,8 +75,11 @@ img.uebns-photo-member:hover{
 .uebns-round{
     border-radius: 50%;
 }
+
+/* Clearfixes */
 .uebns-team::after,
-.uebns-row::after{
+.uebns-row::after,
+.uebns-content:after{
     content: ' ';
     clear: both;
     display: table;

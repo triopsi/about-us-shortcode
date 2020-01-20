@@ -45,21 +45,20 @@ function uebns_team_display(){
 	//get post meta data
 	$teammembers = get_post_meta( $post->ID, '_uebns_members', true );
 	
-	//Array of Shortcode Fields of the member
+	//Array of fielnames in the DB
 	$fields_to_process = array(
-		'_uebns_firstname',
-		'_uebns_lastname',
-		'_uebns_job',
-		'_uebns_desc',
-		'_uebns_sc_type1', '_uebns_sc_title1', '_uebns_sc_url1',
-		'_uebns_sc_type2', '_uebns_sc_title2', '_uebns_sc_url2',
-		'_uebns_sc_type3', '_uebns_sc_title3', '_uebns_sc_url3',
-		'_uebns_photo',
-		'_uebns_photo_url'
+			'_uebns_firstname',
+			'_uebns_lastname',
+			'_uebns_job',
+			'_uebns_desc',
+			'_uebns_sc',
+			'_uebns_photo',
+			'_uebns_photo_url',
+			'_uebns_member_en'
 	);
 
     /* Retrieves select options. */
-	$social_links_options = social_links_options();
+	$social_links_options = getIconArrayList();
 
 	//Hidden field.
 	wp_nonce_field( 'uebns_meta_box_nonce', 'uebns_meta_box_nonce' ); 
@@ -81,21 +80,11 @@ function uebns_team_display(){
 		<div class="team_area_content">
 			<?php 
 			if ( $teammembers ) {
-				// echo 'Teams gefunden!';
-				/* Loops through rows. */
 				foreach ( $teammembers as $team_member ) {
-
-					/* Retrieves each field for current member. */
 					$member = array();
 					foreach ( $fields_to_process as $field) {
-						switch ($field) {
-							default:
-								$member[$field] = ( isset($team_member[$field]) ) ? esc_attr($team_member[$field]) : '';
-								break;
-						}
-					} 
-					// echo var_dump($team_member);
-					
+						$member[$field] = ( isset($team_member[$field]) ) ? esc_attr($team_member[$field]) : ''; // Default empty
+					}
 					?>
 				<!-- Load Members -->
 					<div class="team_member_add_content"> <!-- #Start with full member -->
@@ -142,56 +131,59 @@ function uebns_team_display(){
 						<div class="member_head_title">
 							<?php echo __('Social media links','plg-ueber-uns'); ?>
 						</div><!-- ./member_head_title -->
-						<div class="member_field_social_link member-grid member-grid-33"> <!-- Round 1 -->
-							<div class="member_field_title">
-							<?php echo __('Social media kanal','plg-ueber-uns'); ?>
-							</div>
-							<select class="ubns-select member_social_media_kanal1">
-								<?php foreach ( $social_links_options as $label => $value ) { ?>
-									<option value="<?php echo $value; ?>" <?php selected( $member['_uebns_sc_type1'], $value ); ?>><?php echo $label; ?></option>
-								<?php } ?>
-							</select>
-						</div><!-- ./member_field_social_link -->
-						<div class="member_field_social_link_name member-grid member-grid-33">
-							<div class="member_field_title">
-							<?php echo __('Link titel','plg-ueber-uns'); ?>
-							</div>
-							<input class="ubns-field regular-text member-social-link-titel1-field" type="text" value="<?php echo $member['_uebns_sc_title1']; ?>" placeholder="<?php echo __('e.g. Twitter','plg-ueber-uns'); ?>">
+						<?php
+							if ( isset($member['_uebns_sc']) && !empty($member['_uebns_sc']) ){
+								?><?php
+								$member_sc_data = explode('||', $member['_uebns_sc']);
+								$i=0;
+								foreach ($member_sc_data as $member_sc_line){
+									if(empty($member_sc_line)){break;}
+									$member_sc_line_data = explode('###', $member_sc_line);
+									$member_social_media_kanal = $member_sc_line_data[0];
+									$member_social_link_titel = $member_sc_line_data[1];
+									$uebns_field_link_url = $member_sc_line_data[2];
+								?>
+								<div class="social-boxes">
+									<div class="member_field_social_link member-grid member-grid-33"> <!-- Social Media Line -->
+										<div class="member_field_title">
+											<?php echo __('Social media kanal','plg-ueber-uns'); ?>
+										</div>
+									</div><!-- ./member_field_social_link -->
+									<div class="member_field_social_link_name member-grid member-grid-33">
+										<div class="member_field_title">
+											<?php echo __('Link titel','plg-ueber-uns'); ?>
+										</div>
+									</div><!-- ./member_field_social_link_name -->
+									<div class="member_field_social_link_url member-grid member-grid-33">
+										<div class="member_field_title">
+											<?php echo __('Link URL','plg-ueber-uns'); ?>
+										</div>
+									</div><!-- ./member_field_social_link_url -->
+									<div class="uebns_clearfix"></div><!-- Clearfix -->
+										<div class="member_field_social_link row-second member-grid member-grid-33"> <!-- Social Media Line -->
+											<select class="ubns-select member_social_media_kanal<?php echo $i; ?>">
+												<?php foreach ( $social_links_options as $label => $css_class ) { ?>
+												<option value="<?php echo $label; ?>" <?php selected( $member_social_media_kanal, $label ); ?>><?php echo $label; ?></option>
+												<?php } ?>
+											</select>
+										</div><!-- ./member_field_social_link -->
+										<div class="member_field_social_link_name row-second member-grid member-grid-33">
+											<input class="ubns-field uebns-field-link-titel regular-text member-social-link-titel<?php echo $i; ?>-field" type="text" value="<?php echo $member_social_link_titel; ?>" placeholder="<?php echo __('e.g. Mail','plg-ueber-uns'); ?>">
+										</div><!-- ./member_field_social_link_name -->
+										<div class="member_field_social_link_url row-second member-grid member-grid-33">
+											<input class="ubns-field uebns-field-link-url regular-text member-social-link-url<?php echo $i; ?>-field" type="text" value="<?php echo $uebns_field_link_url; ?>" placeholder="<?php echo __('e.g. mailto:info@example.com','plg-ueber-uns'); ?>">
+											<a class="button button-trash-social-line-btn button-large" href="#"><span class="dashicons dashicons-trash"></span></a>		
+										</div><!-- ./member_field_social_link_url -->
+										<div class="uebns_clearfix"></div><!-- Clearfix -->
+									</div>
+								<?php
+								$i++;
+								}								
+							}
+						?>						
+						<div class="member_field_social_link uebns-social-add member-grid member-grid-33"> 
+							<a class="button button-primary button-large button-social-add" href="#"><span class="dashicons dashicons-share"></span> <?php echo __('Add','plg-ueber-uns') ?></a>
 						</div><!-- ./member_field_social_link_name -->
-						<div class="member_field_social_link_url member-grid member-grid-33">
-							<div class="member_field_title">
-							<?php echo __('Link URL','plg-ueber-uns'); ?>
-							</div>
-							<input class="ubns-field regular-text member-social-link-url1-field" type="text" value="<?php echo $member['_uebns_sc_url1']; ?>" placeholder="<?php echo __('e.g. http://twitter.com/user-profile','plg-ueber-uns'); ?>">
-						</div><!-- ./member_field_social_link_url -->
-						<div class="uebns_clearfix"></div><!-- Clearfix -->
-						<div class="member_field_social_link row-second member-grid member-grid-33"> <!-- Round 2 -->
-							<select class="ubns-select member_social_media_kanal2">
-								<?php foreach ( $social_links_options as $label => $value ) { ?>
-									<option value="<?php echo $value; ?>" <?php selected( $member['_uebns_sc_type2'], $value ); ?>><?php echo $label; ?></option>
-								<?php } ?>
-							</select>
-						</div><!-- ./member_field_social_link -->
-						<div class="member_field_social_link_name row-second member-grid member-grid-33">
-							<input class="ubns-field regular-text member-social-link-titel2-field" type="text" value="<?php echo $member['_uebns_sc_title2']; ?>" placeholder="<?php echo __('e.g. Facebook','plg-ueber-uns'); ?>">
-						</div><!-- ./member_field_social_link_name -->
-						<div class="member_field_social_link_url row-second member-grid member-grid-33">
-							<input class="ubns-field regular-text member-social-link-url2-field" type="text" value="<?php echo $member['_uebns_sc_url2']; ?>" placeholder="<?php echo __('e.g. http://facebook.com/user-profile','plg-ueber-uns'); ?>">
-						</div><!-- ./member_field_social_link_url -->
-						<div class="uebns_clearfix"></div><!-- Clearfix -->
-						<div class="member_field_social_link row-second member-grid member-grid-33"> <!-- Round 3 -->
-							<select class="ubns-select member_social_media_kanal3">
-								<?php foreach ( $social_links_options as $label => $value ) { ?>
-									<option value="<?php echo $value; ?>" <?php selected( $member['_uebns_sc_type3'], $value ); ?>><?php echo $label; ?></option>
-								<?php } ?>
-							</select>
-						</div><!-- ./member_field_social_link -->
-						<div class="member_field_social_link_name row-second member-grid member-grid-33">
-							<input class="ubns-field regular-text member-social-link-titel3-field" type="text" value="<?php echo $member['_uebns_sc_title3']; ?>" placeholder="<?php echo __('e.g. Mail','plg-ueber-uns'); ?>">
-						</div><!-- ./member_field_social_link_name -->
-						<div class="member_field_social_link_url row-second member-grid member-grid-33">
-							<input class="ubns-field regular-text member-social-link-url3-field" type="text" value="<?php echo $member['_uebns_sc_url3']; ?>" placeholder="<?php echo __('e.g. mailto:info@example.com','plg-ueber-uns'); ?>">
-						</div><!-- ./member_field_social_link_url -->
 						<div class="uebns_clearfix"></div><!-- Clearfix -->
 						<div class="member_head_title">
 							<?php echo __('Photo','plg-ueber-uns'); ?>
@@ -211,6 +203,17 @@ function uebns_team_display(){
 							</div>
 							<input class="ubns-field regular-text member-image-link-field" type="text" value="<?php echo $member['_uebns_photo_url']; ?>" placeholder="<?php echo __('e.g. http://example.com/member','plg-ueber-uns'); ?>">
 						</div><!-- ./member_field_profile_image -->
+						<div class="uebns_clearfix"></div><!-- Clearfix -->
+						<div class="member_head_title">
+							<?php echo __('Member Setting','plg-ueber-uns'); ?>
+						</div><!-- ./member_head_title -->
+						<div class="member_field_dis_en_member uebns-social-add member-grid member-grid-33">
+							<div class="member_field_title">
+								<?php echo __('Member enabled','plg-ueber-uns'); ?>
+							</div>
+							<input class="uebns-checkbox-field uebns-user-enabled" id="member_en_dis" type="checkbox" name="member_en_dis" value="y" <?php echo ($member['_uebns_member_en'] === 'y' ? 'checked' : '' ); ?>>
+							<!-- <label for="member_en_dis"><?php echo __('Member enabled?','plg-ueber-uns'); ?></label> -->
+						</div><!-- ./member_field_social_link_name -->
 						<div class="uebns_clearfix"></div><!-- Clearfix -->
 						</div><!-- ./member_add_content_row -->
 					</div><!-- /.team_member_add_content -->
@@ -265,56 +268,9 @@ function uebns_team_display(){
 					<div class="member_head_title">
 						<?php echo __('Social media links','plg-ueber-uns'); ?>
 					</div><!-- ./member_head_title -->
-					<div class="member_field_social_link member-grid member-grid-33"> <!-- Round 1 -->
-						<div class="member_field_title">
-						<?php echo __('Social media kanal','plg-ueber-uns'); ?>
-						</div>
-						<select class="ubns-select member_social_media_kanal1">
-							<?php foreach ( $social_links_options as $label => $value ) { ?>
-								<option value="<?php echo $value; ?>"><?php echo $label; ?></option>
-							<?php } ?>
-						</select>
-					</div><!-- ./member_field_social_link -->
-					<div class="member_field_social_link_name member-grid member-grid-33">
-						<div class="member_field_title">
-						<?php echo __('Link titel','plg-ueber-uns'); ?>
-						</div>
-						<input class="ubns-field regular-text member-social-link-titel1-field" type="text" value="" placeholder="<?php echo __('e.g. Twitter','plg-ueber-uns'); ?>">
+					<div class="member_field_social_link uebns-social-add member-grid member-grid-33"> 
+							<a class="button button-primary button-large button-social-add" href="#"><span class="dashicons dashicons-share"></span> <?php echo __('Add','plg-ueber-uns') ?></a>
 					</div><!-- ./member_field_social_link_name -->
-					<div class="member_field_social_link_url member-grid member-grid-33">
-						<div class="member_field_title">
-						<?php echo __('Link URL','plg-ueber-uns'); ?>
-						</div>
-						<input class="ubns-field regular-text member-social-link-url1-field" type="text" value="" placeholder="<?php echo __('e.g. http://twitter.com/user-profile','plg-ueber-uns'); ?>">
-					</div><!-- ./member_field_social_link_url -->
-					<div class="uebns_clearfix"></div><!-- Clearfix -->
-					<div class="member_field_social_link row-second member-grid member-grid-33"> <!-- Round 2 -->
-						<select class="ubns-select member_social_media_kanal2">
-							<?php foreach ( $social_links_options as $label => $value ) { ?>
-								<option value="<?php echo $value; ?>"><?php echo $label; ?></option>
-							<?php } ?>
-						</select>
-					</div><!-- ./member_field_social_link -->
-					<div class="member_field_social_link_name row-second member-grid member-grid-33">
-						<input class="ubns-field regular-text member-social-link-titel2-field" type="text" value="" placeholder="<?php echo __('e.g. Facebook','plg-ueber-uns'); ?>">
-					</div><!-- ./member_field_social_link_name -->
-					<div class="member_field_social_link_url row-second member-grid member-grid-33">
-						<input class="ubns-field regular-text member-social-link-url2-field" type="text" value="" placeholder="<?php echo __('e.g. http://facebook.com/user-profile','plg-ueber-uns'); ?>">
-					</div><!-- ./member_field_social_link_url -->
-					<div class="uebns_clearfix"></div><!-- Clearfix -->
-					<div class="member_field_social_link row-second member-grid member-grid-33"> <!-- Round 3 -->
-						<select class="ubns-select member_social_media_kanal3">
-							<?php foreach ( $social_links_options as $label => $value ) { ?>
-								<option value="<?php echo $value; ?>"><?php echo $label; ?></option>
-							<?php } ?>
-						</select>
-					</div><!-- ./member_field_social_link -->
-					<div class="member_field_social_link_name row-second member-grid member-grid-33">
-						<input class="ubns-field regular-text member-social-link-titel3-field" type="text" value="" placeholder="<?php echo __('e.g. Mail','plg-ueber-uns'); ?>">
-					</div><!-- ./member_field_social_link_name -->
-					<div class="member_field_social_link_url row-second member-grid member-grid-33">
-						<input class="ubns-field regular-text member-social-link-url3-field" type="text" value="" placeholder="<?php echo __('e.g. mailto:info@example.com','plg-ueber-uns'); ?>">
-					</div><!-- ./member_field_social_link_url -->
 					<div class="uebns_clearfix"></div><!-- Clearfix -->
 					<div class="member_head_title">
 						<?php echo __('Photo','plg-ueber-uns'); ?>
@@ -335,6 +291,17 @@ function uebns_team_display(){
 						<input class="ubns-field regular-text member-image-link-field" type="text" value="" placeholder="<?php echo __('e.g. http://example.com/member','plg-ueber-uns'); ?>">
 					</div><!-- ./member_field_profile_image -->
 					<div class="uebns_clearfix"></div><!-- Clearfix -->
+					<div class="member_head_title">
+						<?php echo __('Member Setting','plg-ueber-uns'); ?>
+					</div><!-- ./member_head_title -->
+					<div class="member_field_dis_en_member uebns-social-add member-grid member-grid-33">
+						<div class="member_field_title">
+							<?php echo __('Member enabled','plg-ueber-uns'); ?>
+						</div>
+						<input class="uebns-checkbox-field uebns-user-enabled" id="member_en_dis" type="checkbox" name="member_en_dis" value="y">
+						<!-- <label for="member_en_dis"><?php echo __('Member enabled?','plg-ueber-uns'); ?></label> -->
+					</div><!-- ./member_field_social_link_name -->
+					<div class="uebns_clearfix"></div><!-- Clearfix -->
 				</div><!-- ./member_add_content_row -->
 			</div><!-- /.team_member_add_content -->
 			<div class="row_clear row_content"> <!-- Empty Row -->
@@ -348,7 +315,40 @@ function uebns_team_display(){
 			</a>
 		</div><!-- /.team_area_footer -->
 	</div>
-    
+	<!-- Empty Social Box -->
+	<div class="social-box" style="display:none;">
+		<div class="member_field_social_link member-grid member-grid-33"> <!-- Social Media Line -->
+			<div class="member_field_title">
+				<?php echo __('Social media kanal','plg-ueber-uns'); ?>
+			</div>
+		</div><!-- ./member_field_social_link -->
+		<div class="member_field_social_link_name member-grid member-grid-33">
+			<div class="member_field_title">
+				<?php echo __('Link titel','plg-ueber-uns'); ?>
+			</div>
+		</div><!-- ./member_field_social_link_name -->
+		<div class="member_field_social_link_url member-grid member-grid-33">
+			<div class="member_field_title">
+				<?php echo __('Link URL','plg-ueber-uns'); ?>
+			</div>
+		</div><!-- ./member_field_social_link_url -->
+		<div class="uebns_clearfix"></div><!-- Clearfix -->
+		<div class="member_field_social_link row-second member-grid member-grid-33"> 
+			<select class="ubns-select">
+				<?php foreach ( $social_links_options as $label => $css_class ) { ?>
+				<option value="<?php echo $label; ?>"><?php echo $label; ?></option>
+				<?php } ?>
+			</select>
+		</div><!-- ./member_field_social_link -->
+		<div class="member_field_social_link_name row-second member-grid member-grid-33">
+			<input class="ubns-field uebns-field-link-titel regular-text" type="text" value="" placeholder="<?php echo __('e.g. Mail','plg-ueber-uns'); ?>">
+		</div><!-- ./member_field_social_link_name -->
+		<div class="member_field_social_link_url row-second member-grid member-grid-33">
+			<input class="ubns-field uebns-field-link-url regular-text" type="text" value="" placeholder="<?php echo __('e.g. mailto:info@example.com','plg-ueber-uns'); ?>">
+			<a class="button button-trash-social-line-btn button-large" href="#"><span class="dashicons dashicons-trash"></span></a>				
+		</div><!-- ./member_field_social_link_url -->
+		<div class="uebns_clearfix"></div><!-- Clearfix -->
+	</div>
+	<!-- End Empty Social Box -->
 <?php
-
 }

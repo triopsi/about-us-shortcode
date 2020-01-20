@@ -27,7 +27,9 @@
 .add_member_button .dashicons,
 .tool .dashicons,
 .trash .dashicons,
-.button-trash-images-btn .dashicons {
+.button-trash-images-btn .dashicons,
+.button-social-add .dashicons,
+.button-trash-social-line-btn .dashicons {
     position: relative;
     top: 4px;
 }
@@ -160,6 +162,10 @@ select.ubns-select{
     border: 1px solid #7e8993;
     background-color:#fff;
     color:#32373c;
+}
+
+.uebns-social-add{
+    margin-top:15px;
 }
 /* Metabox */
 

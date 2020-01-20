@@ -64,6 +64,9 @@ function uebns_sh($atts) {
         $team_view.='<div class="uebns-team">';
         if($settings_layout === "default"){
           foreach ($members as $key => $member) {
+            //if member disabeld, then next
+            if($member['_uebns_member_en'] === 'n'){break;}
+
             $team_view.='<!-- default -->
               <div class="uebns-main uebns-row uebns-row'.$style_class_line_members.'">
                 <div class="uebns-content">
@@ -75,18 +78,9 @@ function uebns_sh($atts) {
                       <div class="uebns-header"><h2 class="">'.$member['_uebns_firstname'].' '.$member['_uebns_lastname'].'</h2></div><!-- /.uebns-header -->
                       ' . ( !empty( $member['_uebns_job'] ) ? '<div class="uebns-sub-header">' . $member['_uebns_job'].  '</div><!-- /.uebns-sub-header -->' : '' ) . '
                       <hr class="uebns-hr" style="background:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';">
-                      <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->
-                        <div class="uebns-social-link">
-                          <ul id="uebns-social-link-menu" class="uebns-social-menu">';
-                            /* Displays social links. */
-                            for ($i = 1; $i <= 3; $i++) {
-                              if ($member['_uebns_sc_type'.$i] != 'nada') {
-                                $team_view.='<li class="uebns-link"><a style="background-color:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';" class="' . ($settings_photo_setting === 'round' ? 'uebns-round-link' : '' ) . '" title="'.(!empty($member['_uebns_sc_title'.$i])?$member['_uebns_sc_title'.$i]:'').'" href="'.(!empty($member['_uebns_sc_url'.$i])?$member['_uebns_sc_url'.$i]:'').'"><span class="screen-reader-text">'.(!empty($member['_uebns_sc_title'.$i])?$member['_uebns_sc_title'.$i]:'').'</span><i class="'.uebns_get_icon_social($social_links_icons,$member['_uebns_sc_url'.$i]).'"></i></a></li>';
-                              }
-                            }
+                      <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->';
+                          $team_view.=getSocialMedia($member,$settings_color_shema,$settings_photo_setting);
                           $team_view.='
-                        </ul>
-                      </div><!-- /.uebns-social-link -->
                     </div><!-- /.uebns-des-text -->
                   </div><!-- /.uebns-col -->
                 </div><!-- /.uebns-content -->
@@ -96,6 +90,8 @@ function uebns_sh($atts) {
 
         }elseif ($settings_layout === "layout1"){
           foreach ($members as $key => $member) {
+            //if member disabeld, then next
+            if($member['_uebns_member_en'] === 'n'){break;}
             $team_view.='<!-- layout1 -->
               <div class="uebns-main uebns-row uebns-row'.$style_class_line_members.'">
                 <div class="uebns-content">
@@ -107,18 +103,9 @@ function uebns_sh($atts) {
                       <div class="uebns-header"><h2 class="">'.$member['_uebns_firstname'].' '.$member['_uebns_lastname'].'</h2></div><!-- /.uebns-header -->
                       ' . ( !empty( $member['_uebns_job'] ) ? '<div class="uebns-sub-header">' . $member['_uebns_job'].  '</div><!-- /.uebns-sub-header -->' : '' ) . '
                       <hr class="uebns-hr uebns-hr-full" style="background:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';">
-                      <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->
-                        <div class="uebns-social-link uebns-center">
-                          <ul id="uebns-social-link-menu" class="uebns-social-menu">';
-                            /* Displays social links. */
-                            for ($i = 1; $i <= 3; $i++) {
-                              if ($member['_uebns_sc_type'.$i] != 'nada') {
-                                $team_view.='<li class="uebns-link"><a style="background-color:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';" class="' . ($settings_photo_setting === 'round' ? 'uebns-round-link' : '' ) . '" title="'.(!empty($member['_uebns_sc_title'.$i])?$member['_uebns_sc_title'.$i]:'').'" href="'.(!empty($member['_uebns_sc_url'.$i])?$member['_uebns_sc_url'.$i]:'').'"><span class="screen-reader-text">'.(!empty($member['_uebns_sc_title'.$i])?$member['_uebns_sc_title'.$i]:'').'</span><i class="'.uebns_get_icon_social($social_links_icons,$member['_uebns_sc_url'.$i]).'"></i></a></li>';
-                              }
-                            }
+                      <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->';
+                          $team_view.=getSocialMedia($member,$settings_color_shema,$settings_photo_setting);
                           $team_view.='
-                        </ul>
-                      </div><!-- /.uebns-social-link -->
                     </div><!-- /.uebns-des-text -->
                   </div><!-- /.uebns-txt -->
                 </div><!-- /.uebns-content -->
@@ -127,6 +114,8 @@ function uebns_sh($atts) {
 
         }elseif ($settings_layout === "layout2"){
           foreach ($members as $key => $member) {
+            //if member disabeld, then next
+            if($member['_uebns_member_en'] === 'n'){break;}
             $team_view.='<!-- default -->
               <div class="uebns-main uebns-row uebns-row'.$style_class_line_members.'">
                 <div class="uebns-content">
@@ -135,18 +124,9 @@ function uebns_sh($atts) {
                       <div class="uebns-header"><h2 class="">'.$member['_uebns_firstname'].' '.$member['_uebns_lastname'].'</h2></div><!-- /.uebns-header -->
                       ' . ( !empty( $member['_uebns_job'] ) ? '<div class="uebns-sub-header">' . $member['_uebns_job'].  '</div><!-- /.uebns-sub-header -->' : '' ) . '
                       <hr class="uebns-hr" style="background:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';">
-                      <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->
-                        <div class="uebns-social-link">
-                          <ul id="uebns-social-link-menu" class="uebns-social-menu">';
-                            /* Displays social links. */
-                            for ($i = 1; $i <= 3; $i++) {
-                              if ($member['_uebns_sc_type'.$i] != 'nada') {
-                                $team_view.='<li class="uebns-link"><a style="background-color:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';" class="' . ($settings_photo_setting === 'round' ? 'uebns-round-link' : '' ) . '" title="'.(!empty($member['_uebns_sc_title'.$i])?$member['_uebns_sc_title'.$i]:'').'" href="'.(!empty($member['_uebns_sc_url'.$i])?$member['_uebns_sc_url'.$i]:'').'"><span class="screen-reader-text">'.(!empty($member['_uebns_sc_title'.$i])?$member['_uebns_sc_title'.$i]:'').'</span><i class="'.uebns_get_icon_social($social_links_icons,$member['_uebns_sc_url'.$i]).'"></i></a></li>';
-                              }
-                            }
+                      <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->';
+                          $team_view.=getSocialMedia($member,$settings_color_shema,$settings_photo_setting);
                           $team_view.='
-                        </ul>
-                      </div><!-- /.uebns-social-link -->
                     </div><!-- /.uebns-des-text -->
                   </div><!-- /.uebns-col -->
                   <div class="uebns-col uebns-profile-image">

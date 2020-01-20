@@ -1,9 +1,9 @@
 <?php
 /**
-* Plugin Name: Über Uns
+* Plugin Name: About us Shortcode
 * Plugin URI: https://www.wiki.profoxi.de
-* Description: Zeigt eine "Über Uns" Team Ansicht in einem Beitrag an.
-* Version: 1.0
+* Description: A very simple "About Us" Site Plugin. Create Teams and copy-paste the shortcode everywhere in your post or site.
+* Version: 0.0.1
 * Author: Daniel Rodriguez Baumann
 * Author URI: http://wiki.profoxi.de
 * Text Domain: plg-ueber-uns
@@ -30,7 +30,7 @@ define( 'PLG_PATH', plugin_dir_path( __FILE__ ) );
 
 //Plugin Version
 if (!defined('UEBNS_VERSION'))
-    define('UEBNS_VERSION', '1.0');
+    define('UEBNS_VERSION', '0.0.1');
 
 
 /* General */
@@ -46,7 +46,7 @@ require_once('inc/uebns-metaboxes-teams-content.php'); //Team meta
 /* Front Scripts and Styles */
 require_once('inc/uebns-user.php');
 
-/* columns */
+/* Columns */
 require_once('inc/uebns-shortcode-column.php');
 require_once('inc/uebns-shortcode.php');
 

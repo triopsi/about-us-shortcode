@@ -18,6 +18,7 @@
 * You should have received a copy of the GNU General Public License
 * along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
 **/
+
 /* Add a metabox */
 add_action('admin_init', 'uebns_add_settings', 1);
 function uebns_add_settings() {

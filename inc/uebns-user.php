@@ -174,3 +174,35 @@ function uebns_get_image_html( $member, $setting_images_clickable, $style_image_
     return $htmlout;
 }
   
+/**
+ * Show the Icon bar
+ *
+ * @param [type] $member
+ * @param [type] $settings_color_shema
+ * @param [type] $settings_photo_setting
+ * @return void
+ */
+function getSocialMedia($member,$settings_color_shema,$settings_photo_setting){
+    if(empty($member['_uebns_sc'])){return '';}
+    $member_sc_data = explode('||', $member['_uebns_sc']);
+    $i=0;
+    $team_view = '<div class="uebns-social-link">'; 
+    $team_view.= '<ul id="uebns-social-link-menu" class="uebns-social-menu">';  
+    foreach ($member_sc_data as $member_sc_line){
+        if(empty($member_sc_line)){break;}
+        $member_sc_line_data = explode('###', $member_sc_line);
+        $member_social_media_kanal = $member_sc_line_data[0];
+        $member_social_link_titel = $member_sc_line_data[1];
+        $uebns_field_link_url = $member_sc_line_data[2];
+        // var_dump($uebns_field_link_url);
+        $team_view.='<li class="uebns-link">
+        <a style="background-color:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';" class="' . ($settings_photo_setting === 'round' ? 'uebns-round-link' : '' ) . '" title="'.(!empty($member_social_link_titel)?$member_social_link_titel:'').'" href="'.(!empty($uebns_field_link_url)?$uebns_field_link_url:'').'">
+        <span class="screen-reader-text">'.(!empty($member_social_link_titel)?$member_social_link_titel:'').'</span>
+        <i class="'.uebns_get_icon_social(getIconArrayList(),$uebns_field_link_url).'"></i>
+        </a>
+        </li>';
+    }  
+    $team_view.= '</ul>';   
+    $team_view.= '</div><!-- /.uebns-social-link -->';     
+    return $team_view;
+}

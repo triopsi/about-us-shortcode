@@ -11,7 +11,7 @@
         }
         showRowInfo();
 
-        /* Adds a member to the team. */
+        /* Adds a member to the team */
         $( '.add_member_button' ).on('click', function() {
             var row = $( '.member_empty' ).clone(true);
             row.removeClass( 'member_empty' ).addClass('team_member_add_content').addClass('member_content_main').show();
@@ -21,7 +21,7 @@
             return false;
         });
 
-        /* Removes a row. */
+        /* Removes a meber row */
         $('.remove_row').click(function(e) {
             $(this).closest('.team_member_add_content').remove();
             showRowInfo();
@@ -123,6 +123,12 @@
         
         }
 
+        /* Add the link url in field */
+        function pasteurltofield($fieldobj){
+            var sc_kanal_val = $fieldobj.val();
+            $($fieldobj).closest('.social-boxes').find('.uebns-field-link-url').val('https://www.' + sc_kanal_val + '/name');
+        }
+
         /* Firstname/Lastname handles. */
         $('body').on('keyup', '.member-firstname-field', function(e) { 
 
@@ -149,38 +155,32 @@
             job = member.find('.member-jobrole-field').val() || '';
             description = $.trim(member.find('#uebns-description-member').val()) || '';
 
-            var sclType1 = member.find('.member_social_media_kanal1').val() || '',
-            sclTitle1 = member.find('.member-social-link-titel1-field').val() || '',
-            sclUrl1 = member.find('.member-social-link-url1-field').val() || '',
+            var sociallinksize = member.find('.social-boxes').size()
+            // console.log(sociallinksize);
 
-            sclType2 = member.find('.member_social_media_kanal2').val() || '',
-            sclTitle2 = member.find('.member-social-link-titel2-field').val() || '',
-            sclUrl2 = member.find('.member-social-link-url2-field').val() || '',
-
-            sclType3 = member.find('.member_social_media_kanal3').val() || '',
-            sclTitle3 = member.find('.member-social-link-titel3-field').val() || '',
-            sclUrl3 = member.find('.member-social-link-url3-field').val() || '',
-
-            memberPhoto = member.find('.uebns_img_data_url').attr('data-img') || '',
-            memberPhotoUrl = member.find('.member-image-link-field').val() || '',
-            datafieldhidden = member.find('.uebns_data');
-
+            var scstring = '';
+            var sctrenner = '###'
+            for (var i = 0; i < sociallinksize; i++) {
+                scstring = scstring + member.find( '.member_social_media_kanal' + i ).val() || '';
+                scstring = scstring + sctrenner + member.find( '.member-social-link-titel' + i + '-field' ).val() || '';
+                scstring = scstring + sctrenner + member.find( '.member-social-link-url' + i + '-field' ).val() || '';
+                scstring = scstring + '||';
+            }
+            // console.log(scstring);
+            var memberPhoto = member.find('.uebns_img_data_url').attr('data-img') || '',
+                memberPhotoUrl = member.find('.member-image-link-field').val() || '',
+                memberEnabled = member.find(".uebns-user-enabled:checked").val() || 'n',
+                datafieldhidden = member.find('.uebns_data');
+            console.log(memberEnabled);
             datafieldhidden.val(
                 firstname + trenner + 
                 lastname + trenner + 
                 job + trenner +
                 description + trenner +
-                sclType1 + trenner +
-                sclTitle1 + trenner +
-                sclUrl1 + trenner +
-                sclType2 + trenner +
-                sclTitle2 + trenner +
-                sclUrl2 + trenner +
-                sclType3 + trenner +
-                sclTitle3 + trenner +
-                sclUrl3 + trenner +
+                scstring + trenner +
                 memberPhoto + trenner +
-                memberPhotoUrl
+                memberPhotoUrl + trenner +
+                memberEnabled
             );
         }
 
@@ -191,9 +191,14 @@
         
         $('body').on('change', '.ubns-select', function(e) { 
             updatedatabox($(this)); 
+            pasteurltofield($(this));
         });
         
         $('body').on('change', '.uebns_img_data_url', function(e) { 
+            updatedatabox($(this)); 
+        });
+
+        $('body').on('change', '.uebns-checkbox-field', function(e) { 
             updatedatabox($(this)); 
         });
 
@@ -211,6 +216,35 @@
             collapseController($(this));
 
         });
+
+         /* Click event trash thumbnail */
+         $('body').on('click', '.button-social-add', function(e) {
+            
+            var lengh_social_row = $(this).closest('.team_member_add_content').find('.social-boxes').size();
+            // console.log(lengh_social_row)
+            if( lengh_social_row <= 5 ){
+                var social_row = $( '.social-box' ).clone(true);
+                social_row.removeClass( 'social-box' ).addClass('social-boxes').show();
+                social_row.insertBefore( $(this).parent('.uebns-social-add') );
+                social_row.find('.ubns-select').addClass('member_social_media_kanal'+lengh_social_row);
+                social_row.find('.uebns-field-link-titel').addClass('member-social-link-titel' + lengh_social_row + '-field');
+                social_row.find('.uebns-field-link-url').addClass('member-social-link-url' + lengh_social_row + '-field');
+                social_row.find('.member_social_media_kanal'+lengh_social_row).focus();
+            }else{
+                $(this).remove();
+            }
+            
+            return false;
+        });
+
+        /* Click event trash social row */
+        $('body').on('click', '.button-trash-social-line-btn', function(e) {
+            var parent = $(this).closest('.team_member_add_content');
+            $(this).closest('.social-boxes').remove();
+            updatedatabox(parent);
+            return false;
+        });
+
     });
 
 })(jQuery);
