@@ -57,18 +57,23 @@ function uebns_sh($atts) {
       $settings_line_member = get_post_meta( get_the_id(), '_uebns_line_member', true );
       $setting_image_filter = get_post_meta( get_the_id(), '_uebns_filter_image', true );
       $setting_images_clickable = get_post_meta( get_the_id(), '_uebns_images_clickable', true );
-      $style_class_line_members=getRowStyleCount($settings_line_member);
-      $style_image_filter=getImageFilterStyle($setting_image_filter);
+      $style_class_line_members = getRowStyleCount($settings_line_member);
+      $style_image_filter = getImageFilterStyle($setting_image_filter);
 
       if ( is_array($members) || is_object($members) || !empty($settings_layout) ) {
+        $i=0;
+        $memberscount=count($members);
         $team_view.='<div class="uebns-team">';
         if($settings_layout === "default"){
           foreach ($members as $key => $member) {
             //if member disabeld, then next
             if($member['_uebns_member_en'] === 'n'){break;}
-
+            if ( $memberscount != $i && $i != 0 && ( $i % $style_class_line_members['mt'] ) == 0){ 
+              $team_view.= '</div><!-- ./uebns-team -->
+              <div class="uebns-team">' ;
+            }
             $team_view.='<!-- default -->
-              <div class="uebns-main uebns-row uebns-row'.$style_class_line_members.'">
+              <div class="uebns-main uebns-row uebns-row'.$style_class_line_members['style'].'">
                 <div class="uebns-content">
                   <div class="uebns-col uebns-profile-image">
                   ' . uebns_get_image_html( $member, $setting_images_clickable, $style_image_filter, $settings_photo_setting ) . '
@@ -85,6 +90,7 @@ function uebns_sh($atts) {
                   </div><!-- /.uebns-col -->
                 </div><!-- /.uebns-content -->
               </div><!-- /.uebns-main uebns-row -->';
+              $i++;
           }
 
 
@@ -92,8 +98,12 @@ function uebns_sh($atts) {
           foreach ($members as $key => $member) {
             //if member disabeld, then next
             if($member['_uebns_member_en'] === 'n'){break;}
+            if ( $memberscount != $i && $i != 0 && ( $i % $style_class_line_members['mt'] ) == 0){ 
+              $team_view.= '</div><!-- ./uebns-team -->
+              <div class="uebns-team">' ;
+            }
             $team_view.='<!-- layout1 -->
-              <div class="uebns-main uebns-row uebns-row'.$style_class_line_members.'">
+              <div class="uebns-main uebns-row uebns-row'.$style_class_line_members['style'].'">
                 <div class="uebns-content">
                   <div class="uebns-profile-image uebns-center">
                   ' . uebns_get_image_html( $member, $setting_images_clickable, $style_image_filter, $settings_photo_setting ) . '
@@ -110,14 +120,19 @@ function uebns_sh($atts) {
                   </div><!-- /.uebns-txt -->
                 </div><!-- /.uebns-content -->
               </div><!-- /.uebns-main uebns-row -->';
+              $i++;
           }
 
         }elseif ($settings_layout === "layout2"){
           foreach ($members as $key => $member) {
             //if member disabeld, then next
             if($member['_uebns_member_en'] === 'n'){break;}
+            if ( $memberscount != $i && $i != 0 && ( $i % $style_class_line_members['mt'] ) == 0){ 
+              $team_view.= '</div><!-- ./uebns-team -->
+              <div class="uebns-team">' ;
+            }
             $team_view.='<!-- default -->
-              <div class="uebns-main uebns-row uebns-row'.$style_class_line_members.'">
+              <div class="uebns-main uebns-row uebns-row'.$style_class_line_members['style'].'">
                 <div class="uebns-content">
                   <div class="uebns-col uebns-txt">
                     <div class="uebns-des-text">
@@ -134,6 +149,7 @@ function uebns_sh($atts) {
                   </div>
                 </div><!-- /.uebns-content -->
               </div><!-- /.uebns-main uebns-row -->';
+              $i++;
           }
         }
         $team_view.='</div><!-- /.uebns-team -->';

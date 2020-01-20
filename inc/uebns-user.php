@@ -90,32 +90,39 @@ function getIconStyle(){
 }
 
 /**
- * RowStyle function
+ * RowStyle and math variable function
  *
  * @param [type] $style_class_line_members
  * @return void
  */
 function getRowStyleCount($settings_line_member){
+    $retunrData = array();
     switch ($settings_line_member) {
         case 1:
-            $style_class_line_members='1';
+            $retunrData['style']='1';
+            $retunrData['mt']='1';
             break;
         case 2:
-            $style_class_line_members='50';
+            $retunrData['style']='50';
+            $retunrData['mt']='2';
             break;
         case 3:
-            $style_class_line_members='33';
+            $retunrData['style']='33';
+            $retunrData['mt']='3';
             break;
         case 4:
-            $style_class_line_members='25';
+            $retunrData['style']='25';
+            $retunrData['mt']='4';
             break;
         case 5:
-            $style_class_line_members='20';
+            $retunrData['style']='20';
+            $retunrData['mt']='5';
             break;
         default:
-            $style_class_line_members='1';
+            $retunrData['style']='1';
+            $retunrData['mt']='1';
       }
-    return $style_class_line_members;
+    return $retunrData;
 }
 
 /**

@@ -34,6 +34,16 @@ function uebns_plan_meta_box_save($post_id) {
 	if (!current_user_can('edit_post', $post_id))
 		return;
 
+	// To keep the errors in
+	$errors = false;
+
+	// Add an error here
+	$errors .= 'whoops...there was an error.';
+
+	update_option('my_admin_errors', $errors);
+
+	return;
+
 	/* Gets the actuel posts/members */
 	$old_data_member = get_post_meta($post_id, '_uebns_members', true);
 
@@ -51,12 +61,8 @@ function uebns_plan_meta_box_save($post_id) {
 	$old_data_settings['_uebns_filter_image'] = get_post_meta( $post_id, '_uebns_filter_image', true );
 	$old_data_settings['_uebns_images_clickable'] = get_post_meta( $post_id, '_uebns_images_clickable', true );
 
-	/* Count the member with -1 (start by 0) */
-	$count = count($_POST['uebns_data']) - 1;
-
 	/* All POST rounds */
 	foreach( $_POST['uebns_data'] as $key => $value ){
-
 		$member_data = explode(';;', $_POST['uebns_data'][$key]);
 		$member_firstname = $member_data[0];
 		$member_lastname = $member_data[1];
@@ -66,8 +72,6 @@ function uebns_plan_meta_box_save($post_id) {
 		$member_photo = $member_data[5];
 		$member_photo_url = $member_data[6];
 		$member_enabled = $member_data[7];
-
-		  /* Saves the member if at least one of these fields are not empty */
 		if ( $member_firstname != ''|| $member_lastname != '' || $member_job != ''|| $member_bio != ''|| $member_photo != '' || $member_enabled != '' ) {
 			(isset($member_firstname) && $member_firstname) ? $new_data_member[$key]['_uebns_firstname'] = stripslashes( wp_kses_post( $member_firstname ) ) : $new_data_member[$key]['_uebns_firstname'] = __('Untitled', 'plg-ueber-uns' );
 			(isset($member_lastname) && $member_lastname) ? $new_data_member[$key]['_uebns_lastname'] = stripslashes( wp_kses_post( $member_lastname ) ) : $new_data_member[$key]['_uebns_lastname'] = '';
@@ -78,35 +82,7 @@ function uebns_plan_meta_box_save($post_id) {
 			(isset($member_sc) && $member_sc) ? $new_data_member[$key]['_uebns_sc'] = stripslashes( strip_tags( sanitize_text_field( $member_sc ) ) ) : $new_data_member[$key]['_uebns_sc'] = '';
 			(isset($member_enabled) && $member_enabled) ? $new_data_member[$key]['_uebns_member_en'] = stripslashes( strip_tags( sanitize_text_field( $member_enabled ) ) ) : $new_data_member[$key]['_uebns_member_en'] = '';
 		}
-
 	}
-	// for ( $i = 0; $i < $count; $i++ ) {
-	// 	if($_POST['uebns_data'][$i]){
-
-
-	// 		$member_data = explode(';;', $_POST['uebns_data'][$i]);
-	// 		$member_firstname = $member_data[0];
-	// 		$member_lastname = $member_data[1];
-	// 		$member_job = $member_data[2];
-	// 		$member_bio = $member_data[3];
-	// 		$member_sc = $member_data[4];
-	// 		$member_photo = $member_data[5];
-	// 		$member_photo_url = $member_data[6];
-	// 		$member_enabled = $member_data[7];
-
-    //   		/* Saves the member if at least one of these fields are not empty */
-	// 		if ( $member_firstname != ''|| $member_lastname != '' || $member_job != ''|| $member_bio != ''|| $member_photo != '' ) {
-	// 			(isset($member_firstname) && $member_firstname) ? $new_data_member[$i]['_uebns_firstname'] = stripslashes( wp_kses_post( $member_firstname ) ) : $new_data_member[$i]['_uebns_firstname'] = __('Untitled', 'plg-ueber-uns' );
-	// 			(isset($member_lastname) && $member_lastname) ? $new_data_member[$i]['_uebns_lastname'] = stripslashes( wp_kses_post( $member_lastname ) ) : $new_data_member[$i]['_uebns_lastname'] = '';
-	// 			(isset($member_job) && $member_job) ? $new_data_member[$i]['_uebns_job'] = stripslashes( wp_kses_post( $member_job ) ) : $new_data_member[$i]['_uebns_job'] = '';
-	// 			(isset($member_bio) && $member_bio) ? $new_data_member[$i]['_uebns_desc'] = balanceTags( $member_bio ) : $new_data_member[$i]['_uebns_desc'] = '';
-	// 			(isset($member_photo) && $member_photo) ? $new_data_member[$i]['_uebns_photo'] = stripslashes( strip_tags( sanitize_text_field( $member_photo ) ) ) : $new_data_member[$i]['_uebns_photo'] = '';
-	// 			(isset($member_photo_url) && $member_photo_url) ? $new_data_member[$i]['_uebns_photo_url'] = stripslashes( strip_tags( sanitize_text_field( $member_photo_url ) ) ) : $new_data_member[$i]['_uebns_photo_url'] = '';
-	// 			(isset($member_sc) && $member_sc) ? $new_data_member[$i]['_uebns_sc'] = stripslashes( strip_tags( sanitize_text_field( $member_sc ) ) ) : $new_data_member[$i]['_uebns_sc'] = '';
-	// 			(isset($member_enabled) && $member_enabled) ? $new_data_member[$i]['_uebns_member_en'] = stripslashes( strip_tags( sanitize_text_field( $member_enabled ) ) ) : $new_data_member[$i]['_uebns_member_en'] = '';
-	// 		}
-	// 	}
-	// }
 
   	/* Save settings */
 	(isset($_POST['uebns_layout']) && $_POST['uebns_layout']) ? $new_team_settings['_uebns_layout'] = stripslashes( strip_tags( sanitize_text_field( $_POST['uebns_layout'] ) ) ) : $new_team_settings['_uebns_layout'] = '';

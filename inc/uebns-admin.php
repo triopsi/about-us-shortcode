@@ -101,3 +101,25 @@ function social_links_options() {
   	);
 	return $options;
 }
+
+// Display any errors
+function uebns_admin_notice_handler() {
+
+  $errors = get_option('my_admin_errors');
+
+  if($errors) {
+
+      echo '<div class="error"><p>' . $errors . '</p></div>';
+
+  }   
+
+}
+add_action( 'admin_notices', 'uebns_admin_notice_handler' );
+
+// Clear any errors
+function uebns_clear_errors() {
+
+  update_option('my_admin_errors', false);
+
+}
+add_action( 'admin_footer', 'uebns_clear_errors' );
