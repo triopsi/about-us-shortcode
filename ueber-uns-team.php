@@ -2,7 +2,7 @@
 /**
 * Plugin Name: About us Shortcode
 * Plugin URI: https://www.wiki.profoxi.de
-* Description: A very simple "About Us" Site Plugin. Create Teams and copy-paste the shortcode everywhere in your post or site.
+* Description: A very simple "About Us" site Plugin. Create Teams and copy-paste the shortcode everywhere in your post or site.
 * Version: 0.0.1
 * Author: Daniel Rodriguez Baumann
 * Author URI: http://wiki.profoxi.de
@@ -24,6 +24,8 @@
 * You should have received a copy of the GNU General Public License
 * along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
 **/
+
+$x = plugin_basename( __FILE__ );
 
 /* Defines plugin's root folder. */
 define( 'PLG_PATH', plugin_dir_path( __FILE__ ) );
@@ -60,6 +62,7 @@ require_once('inc/uebns-metaboxes-sidebar-shortcode.php');
 /* Save the Team */
 require_once('inc/uebns-save-metaboxes.php');
 
+var_dump($x);
 /**
  * Init Script. Load languages
  *

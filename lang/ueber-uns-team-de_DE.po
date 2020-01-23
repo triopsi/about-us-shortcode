@@ -1,0 +1,396 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Uebns\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-23 18:24+0100\n"
+"PO-Revision-Date: 2020-01-23 18:40+0100\n"
+"Language-Team: info@triopsi.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: \n"
+"Language: de_DE\n"
+
+#: inc/uebns-admin.php:66 inc/uebns-metaboxes-teams-content.php:233
+#: inc/uebns-save-metaboxes.php:70
+msgid "Untitled"
+msgstr "Unbekannt"
+
+#: inc/uebns-admin.php:86
+msgid "-"
+msgstr ""
+
+#: inc/uebns-admin.php:87
+msgid "Github"
+msgstr ""
+
+#: inc/uebns-admin.php:88
+msgid "Twitter"
+msgstr ""
+
+#: inc/uebns-admin.php:89
+msgid "LinkedIn"
+msgstr ""
+
+#: inc/uebns-admin.php:90
+msgid "YouTube"
+msgstr ""
+
+#: inc/uebns-admin.php:91
+msgid "Google+"
+msgstr ""
+
+#: inc/uebns-admin.php:92
+msgid "Facebook"
+msgstr ""
+
+#: inc/uebns-admin.php:93
+msgid "Pinterest"
+msgstr ""
+
+#: inc/uebns-admin.php:94
+msgid "Instagram"
+msgstr ""
+
+#: inc/uebns-admin.php:95
+msgid "Tumblr"
+msgstr ""
+
+#: inc/uebns-admin.php:96
+msgid "Research Gate"
+msgstr ""
+
+#: inc/uebns-admin.php:97
+msgid "Email"
+msgstr ""
+
+#: inc/uebns-admin.php:98
+msgid "Website"
+msgstr "Webseite"
+
+#: inc/uebns-admin.php:99
+msgid "Phone"
+msgstr "Telefonnummer"
+
+#: inc/uebns-admin.php:100
+msgid "Other links"
+msgstr "anderer Link"
+
+#: inc/uebns-metaboxes-settings-teams.php:34
+#: inc/uebns-metaboxes-settings-teams.php:36
+msgid "Teams"
+msgstr "Teams"
+
+#: inc/uebns-metaboxes-settings-teams.php:35
+#: inc/uebns-metaboxes-settings-teams.php:37
+msgid "Team"
+msgstr "Team"
+
+#: inc/uebns-metaboxes-settings-teams.php:38
+#: inc/uebns-metaboxes-settings-teams.php:39
+msgid "Add New Team"
+msgstr "Team hinzufügen"
+
+#: inc/uebns-metaboxes-settings-teams.php:40
+msgid "New Team"
+msgstr "Neues Team"
+
+#: inc/uebns-metaboxes-settings-teams.php:41
+msgid "Edit Team"
+msgstr "Team bearbeiten"
+
+#: inc/uebns-metaboxes-settings-teams.php:42
+msgid "View Team"
+msgstr "Team anzeigen"
+
+#: inc/uebns-metaboxes-settings-teams.php:43
+msgid "All Teams"
+msgstr "Alle Teams"
+
+#: inc/uebns-metaboxes-settings-teams.php:44
+msgid "Search Teams"
+msgstr "Suche Teams"
+
+#: inc/uebns-metaboxes-settings-teams.php:45
+msgid "No Teams found."
+msgstr "Kein Team gefunden."
+
+#: inc/uebns-metaboxes-settings-teams.php:46
+msgid "No Teams found in Trash."
+msgstr "Keine Teams im Papierkorb gefunden."
+
+#: inc/uebns-metaboxes-settings-teams.php:83
+#: inc/uebns-metaboxes-settings-teams.php:84
+msgid "Team updated."
+msgstr "Team aktualisiert."
+
+#: inc/uebns-metaboxes-settings-teams.php:85
+msgid "Team published."
+msgstr "Team veröffentlicht."
+
+#: inc/uebns-metaboxes-settings-teams.php:86
+msgid "Team saved."
+msgstr "Team gespeichert."
+
+#: inc/uebns-metaboxes-settings-teams.php:87
+msgid "Team draft updated."
+msgstr ""
+
+#: inc/uebns-metaboxes-sidebar-settings.php:27
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:51
+msgid "1 per line"
+msgstr "1 pro Spalte"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:52
+msgid "2 per line"
+msgstr "2 pro Spalte"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:53
+msgid "3 per line"
+msgstr "3 pro Spalte"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:54
+msgid "4 per line"
+msgstr "4 pro Spalte"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:55
+msgid "5 per line"
+msgstr "5 pro Spalte"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:62
+msgid "none"
+msgstr "keine"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:63
+msgid "grayscale"
+msgstr ""
+
+#: inc/uebns-metaboxes-sidebar-settings.php:64
+msgid "sepia"
+msgstr ""
+
+#: inc/uebns-metaboxes-sidebar-settings.php:70
+msgid "no"
+msgstr "nein"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:71
+msgid "yes"
+msgstr "ja"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:81
+msgid "General"
+msgstr "Allgemein"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:86
+msgid "Member per line"
+msgstr "Personen pro Spalte"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:99
+msgid "Layout"
+msgstr ""
+
+#: inc/uebns-metaboxes-sidebar-settings.php:112
+msgid "Profile Photo Style"
+msgstr ""
+
+#: inc/uebns-metaboxes-sidebar-settings.php:124
+msgid "Color Shema"
+msgstr "Farbschema"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:133
+msgid "Image Filter"
+msgstr "Bildfilter"
+
+#: inc/uebns-metaboxes-sidebar-settings.php:146
+msgid "Images clickable?"
+msgstr "Bild anklickbar?"
+
+#: inc/uebns-metaboxes-sidebar-shortcode.php:27
+#: inc/uebns-metaboxes-sidebar-shortcode.php:40
+#: inc/uebns-metaboxes-sidebar-shortcode.php:45
+msgid "Shortcode"
+msgstr ""
+
+#: inc/uebns-metaboxes-sidebar-shortcode.php:53
+msgid ""
+"<strong>Publish</strong> your team before you can see you shortcode here!"
+msgstr ""
+"<strong>Veröffentliche</strong> dein Team, bevor du hier dein Shortcode "
+"sehen kannst!"
+
+#: inc/uebns-metaboxes-sidebar-shortcode.php:57
+msgid ""
+"To display your team members on your site, copy-paste the <strong>[uebns-"
+"shortcode]</strong> above in your post/page."
+msgstr ""
+"Um dein Team auf der Seite/Beitrag sehen zu können, kopiere und füge dein "
+"<strong>[uebns-shortcode]</strong> in deine Seite ein."
+
+#: inc/uebns-metaboxes-teams-content.php:27
+msgid "Teamlist"
+msgstr "Teamliste"
+
+#: inc/uebns-metaboxes-teams-content.php:72
+msgid "Collapse all"
+msgstr "Alles einklappen"
+
+#: inc/uebns-metaboxes-teams-content.php:76
+msgid "Expand all"
+msgstr "Alles ausklappen"
+
+#: inc/uebns-metaboxes-teams-content.php:102
+#: inc/uebns-metaboxes-teams-content.php:239
+msgid "Member details"
+msgstr "Personendetails"
+
+#: inc/uebns-metaboxes-teams-content.php:106
+#: inc/uebns-metaboxes-teams-content.php:243
+msgid "First name"
+msgstr "Vornamen"
+
+#: inc/uebns-metaboxes-teams-content.php:108
+#: inc/uebns-metaboxes-teams-content.php:245
+msgid "e.g. Max"
+msgstr "z.B. Max"
+
+#: inc/uebns-metaboxes-teams-content.php:112
+#: inc/uebns-metaboxes-teams-content.php:249
+msgid "Lastname"
+msgstr "Nachnahmen"
+
+#: inc/uebns-metaboxes-teams-content.php:114
+#: inc/uebns-metaboxes-teams-content.php:251
+msgid "e.g. Mustermann"
+msgstr "z.B. Mustermann"
+
+#: inc/uebns-metaboxes-teams-content.php:118
+#: inc/uebns-metaboxes-teams-content.php:255
+msgid "Job titel"
+msgstr "Job Titel"
+
+#: inc/uebns-metaboxes-teams-content.php:120
+#: inc/uebns-metaboxes-teams-content.php:257
+msgid "e.g. Lead"
+msgstr "z.B. Lead"
+
+#: inc/uebns-metaboxes-teams-content.php:124
+#: inc/uebns-metaboxes-teams-content.php:261
+msgid "Biography"
+msgstr "Biografie"
+
+#: inc/uebns-metaboxes-teams-content.php:132
+#: inc/uebns-metaboxes-teams-content.php:269
+msgid "Social media links"
+msgstr ""
+
+#: inc/uebns-metaboxes-teams-content.php:149
+#: inc/uebns-metaboxes-teams-content.php:322
+msgid "Social media kanal"
+msgstr ""
+
+#: inc/uebns-metaboxes-teams-content.php:154
+#: inc/uebns-metaboxes-teams-content.php:327
+msgid "Link titel"
+msgstr ""
+
+#: inc/uebns-metaboxes-teams-content.php:159
+#: inc/uebns-metaboxes-teams-content.php:332
+msgid "Link URL"
+msgstr ""
+
+#: inc/uebns-metaboxes-teams-content.php:171
+#: inc/uebns-metaboxes-teams-content.php:344
+msgid "e.g. Mail"
+msgstr "z.B. Mail"
+
+#: inc/uebns-metaboxes-teams-content.php:174
+#: inc/uebns-metaboxes-teams-content.php:347
+msgid "e.g. mailto:info@example.com"
+msgstr "z.B. mailto:info@example.com"
+
+#: inc/uebns-metaboxes-teams-content.php:185
+#: inc/uebns-metaboxes-teams-content.php:272
+msgid "Add"
+msgstr "hinzufügen"
+
+#: inc/uebns-metaboxes-teams-content.php:189
+#: inc/uebns-metaboxes-teams-content.php:276
+msgid "Photo"
+msgstr "Foto"
+
+#: inc/uebns-metaboxes-teams-content.php:193
+#: inc/uebns-metaboxes-teams-content.php:280
+msgid "Image profile"
+msgstr "Profilbild"
+
+#: inc/uebns-metaboxes-teams-content.php:197
+#: inc/uebns-metaboxes-teams-content.php:284
+msgid "Upload photo"
+msgstr "Bild hochladen"
+
+#: inc/uebns-metaboxes-teams-content.php:202
+#: inc/uebns-metaboxes-teams-content.php:289
+msgid "Image Link"
+msgstr "Bild link"
+
+#: inc/uebns-metaboxes-teams-content.php:204
+#: inc/uebns-metaboxes-teams-content.php:291
+msgid "e.g. http://example.com/member"
+msgstr "z.B. http://example.com/member"
+
+#: inc/uebns-metaboxes-teams-content.php:208
+#: inc/uebns-metaboxes-teams-content.php:295
+msgid "Member Setting"
+msgstr "Einstellungen"
+
+#: inc/uebns-metaboxes-teams-content.php:212
+#: inc/uebns-metaboxes-teams-content.php:299
+msgid "Member enabled"
+msgstr "Person aktivieren"
+
+#: inc/uebns-metaboxes-teams-content.php:215
+#: inc/uebns-metaboxes-teams-content.php:302
+msgid "Member enabled?"
+msgstr "Person aktivieren?"
+
+#: inc/uebns-metaboxes-teams-content.php:308
+msgid ""
+"Click the <strong>Add member</strong> button to add a team member to the "
+"list."
+msgstr ""
+"Klicke auf <strong>Person hinzufügen</strong>, um Teammitglieder "
+"hinzuzufügen."
+
+#: inc/uebns-metaboxes-teams-content.php:314
+msgid "Add member"
+msgstr "Person hinzufügen"
+
+#: inc/uebns-settings.php:35
+msgid "Social Media Style"
+msgstr ""
+
+#: inc/uebns-settings.php:71
+#, php-format
+msgid ""
+"Team Settings Section. Here you can edit the Social Media Icons styles for "
+"the front/content. By default the plugin used and needed the font awesome "
+"icon libary(%s)"
+msgstr ""
+
+#: inc/uebns-settings.php:125
+msgid "Settings Saved"
+msgstr "Einstellungen gespeichert"
+
+#: inc/uebns-shortcode-column.php:55
+msgid "Team name"
+msgstr "Team namen"
