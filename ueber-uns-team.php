@@ -4,9 +4,9 @@
 * Plugin URI: https://www.wiki.profoxi.de
 * Description: A very simple "About Us" site Plugin. Create Teams and copy-paste the shortcode everywhere in your post or site.
 * Version: 0.0.1
-* Author: Daniel Rodriguez Baumann
+* Author: triopsi
 * Author URI: http://wiki.profoxi.de
-* Text Domain: plg-ueber-uns
+* Text Domain: ueber-uns
 * Domain Path: /lang/
 * License: GPL3
 * License URI: https://www.gnu.org/licenses/gpl-3.0
@@ -25,19 +25,14 @@
 * along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
 **/
 
-$x = plugin_basename( __FILE__ );
-
-/* Defines plugin's root folder. */
-define( 'PLG_PATH', plugin_dir_path( __FILE__ ) );
-
-//Plugin Version
+//Definie plugin version
 if (!defined('UEBNS_VERSION'))
     define('UEBNS_VERSION', '0.0.1');
 
 
 /* General */
 /* Loads plugin's text domain. */
-add_action( 'plugins_loaded', 'uebns_load_plugin_textdomain' );
+add_action( 'init', 'uebns_load_plugin_textdomain' );
 
 /* Admin */
 require_once('inc/uebns-admin.php');
@@ -62,12 +57,11 @@ require_once('inc/uebns-metaboxes-sidebar-shortcode.php');
 /* Save the Team */
 require_once('inc/uebns-save-metaboxes.php');
 
-var_dump($x);
 /**
  * Init Script. Load languages
  *
  * @return void
  */
 function uebns_load_plugin_textdomain() {
-  load_plugin_textdomain( 'plg-ueber-uns', FALSE, PLG_PATH . 'lang/' );
+  load_plugin_textdomain( 'ueber-uns', FALSE, 'ueber-uns-team/lang/' );
 }

@@ -1,6 +1,6 @@
 <?php
 /**
-* Author: Daniel Rodriguez Baumann
+* Author: triopsi
 * Author URI: http://wiki.profoxi.de
 * License: GPL3
 * License URI: https://www.gnu.org/licenses/gpl-3.0
@@ -33,14 +33,14 @@ function uebns_check_version() {
 add_action('plugins_loaded', 'uebns_check_version');
 
 /* Add Admin panel */
-add_action( 'admin_enqueue_scripts', 'add_admin_uebns_style' );
+add_action( 'admin_enqueue_scripts', 'add_admin_uebns_style_js' );
 
 /**
  * Undocumented function
  *
  * @return void
  */
-function add_admin_uebns_style() {
+function add_admin_uebns_style_js() {
 
   /* Gets the post type. */
   global $post_type;
@@ -63,7 +63,7 @@ function add_admin_uebns_style() {
 
     /* Localizes string for JS file. */
     wp_localize_script( 'uebns', 'uebnsobjjs', array(
-      'untitled' => __( 'Untitled', 'plg-ueber-uns' ),
+      'untitled' => __( 'Untitled', 'ueber-uns' ),
     ));
     
   }
@@ -79,28 +79,6 @@ function uebns_activation(){
   update_option('uebns_plugin_version', UEBNS_VERSION);
 }
 
-
-/* Defines highlight select options */
-function social_links_options() {
-	$options = array ( 
-					__('-', 'plg-ueber-uns' ) => 'nada', 
-					__('Github', 'plg-ueber-uns' ) => 'github',
-					__('Twitter', 'plg-ueber-uns' ) => 'twitter',
-					__('LinkedIn', 'plg-ueber-uns' ) => 'linkedin',
-					__('YouTube', 'plg-ueber-uns' ) => 'youtube',
-					__('Google+', 'plg-ueber-uns' ) => 'googleplus',
-					__('Facebook', 'plg-ueber-uns' ) => 'facebook',
-					__('Pinterest', 'plg-ueber-uns' ) => 'pinterest',
-					__('Instagram', 'plg-ueber-uns' ) => 'instagram',
-					__('Tumblr', 'plg-ueber-uns' ) => 'tumblr',
-					__('Research Gate', 'plg-ueber-uns' ) => 'researchgate',
-					__('Email', 'plg-ueber-uns' ) => 'email',
-					__('Website', 'plg-ueber-uns' ) => 'website',
-					__('Phone', 'plg-ueber-uns' ) => 'phone',
-					__('Other links', 'plg-ueber-uns' ) => 'customlink'
-  	);
-	return $options;
-}
 
 // Display any errors
 function uebns_admin_notice_handler() {

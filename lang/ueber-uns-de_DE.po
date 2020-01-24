@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Uebns\n"
+"Project-Id-Version: Uber-Uns-Team\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-23 18:24+0100\n"
-"PO-Revision-Date: 2020-01-23 18:40+0100\n"
+"PO-Revision-Date: 2020-01-24 12:31+0100\n"
 "Language-Team: info@triopsi.com\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,6 +17,9 @@ msgstr ""
 "X-Generator: Poedit 2.2.4\n"
 "Last-Translator: \n"
 "Language: de_DE\n"
+
+msgid "A very simple \"About Us\" site Plugin. Create Teams and copy-paste the shortcode everywhere in your post or site."
+msgstr "Ein einfacher Über Uns Plugin. Erstelle Teams und füge den Shortcode in Beiträgen oder Seiten ein."
 
 #: inc/uebns-admin.php:66 inc/uebns-metaboxes-teams-content.php:233
 #: inc/uebns-save-metaboxes.php:70
@@ -81,7 +84,7 @@ msgstr "Telefonnummer"
 
 #: inc/uebns-admin.php:100
 msgid "Other links"
-msgstr "anderer Link"
+msgstr "Anderer Link"
 
 #: inc/uebns-metaboxes-settings-teams.php:34
 #: inc/uebns-metaboxes-settings-teams.php:36
@@ -193,7 +196,7 @@ msgstr "Allgemein"
 
 #: inc/uebns-metaboxes-sidebar-settings.php:86
 msgid "Member per line"
-msgstr "Personen pro Spalte"
+msgstr "Anzahl an Personen pro Spalte"
 
 #: inc/uebns-metaboxes-sidebar-settings.php:99
 msgid "Layout"
@@ -201,7 +204,7 @@ msgstr ""
 
 #: inc/uebns-metaboxes-sidebar-settings.php:112
 msgid "Profile Photo Style"
-msgstr ""
+msgstr "Profilfoto stil"
 
 #: inc/uebns-metaboxes-sidebar-settings.php:124
 msgid "Color Shema"
@@ -222,19 +225,12 @@ msgid "Shortcode"
 msgstr ""
 
 #: inc/uebns-metaboxes-sidebar-shortcode.php:53
-msgid ""
-"<strong>Publish</strong> your team before you can see you shortcode here!"
-msgstr ""
-"<strong>Veröffentliche</strong> dein Team, bevor du hier dein Shortcode "
-"sehen kannst!"
+msgid "<strong>Publish</strong> your team before you can see you shortcode here!"
+msgstr "<strong>Veröffentliche</strong> dein Team, bevor du hier dein Shortcode sehen kannst!"
 
 #: inc/uebns-metaboxes-sidebar-shortcode.php:57
-msgid ""
-"To display your team members on your site, copy-paste the <strong>[uebns-"
-"shortcode]</strong> above in your post/page."
-msgstr ""
-"Um dein Team auf der Seite/Beitrag sehen zu können, kopiere und füge dein "
-"<strong>[uebns-shortcode]</strong> in deine Seite ein."
+msgid "To display your team members on your site, copy-paste the <strong>[uebns-shortcode]</strong> above in your post/page."
+msgstr "Um dein Team auf der Seite/Beitrag sehen zu können, kopiere und füge dein <strong>[uebns-shortcode]</strong> in deine Seite oder Beitrag ein."
 
 #: inc/uebns-metaboxes-teams-content.php:27
 msgid "Teamlist"
@@ -291,22 +287,22 @@ msgstr "Biografie"
 #: inc/uebns-metaboxes-teams-content.php:132
 #: inc/uebns-metaboxes-teams-content.php:269
 msgid "Social media links"
-msgstr ""
+msgstr "Social Media"
 
 #: inc/uebns-metaboxes-teams-content.php:149
 #: inc/uebns-metaboxes-teams-content.php:322
 msgid "Social media kanal"
-msgstr ""
+msgstr "Social Media Kanal"
 
 #: inc/uebns-metaboxes-teams-content.php:154
 #: inc/uebns-metaboxes-teams-content.php:327
 msgid "Link titel"
-msgstr ""
+msgstr "Link Titel"
 
 #: inc/uebns-metaboxes-teams-content.php:159
 #: inc/uebns-metaboxes-teams-content.php:332
 msgid "Link URL"
-msgstr ""
+msgstr "Linkziel (URL)"
 
 #: inc/uebns-metaboxes-teams-content.php:171
 #: inc/uebns-metaboxes-teams-content.php:344
@@ -321,7 +317,7 @@ msgstr "z.B. mailto:info@example.com"
 #: inc/uebns-metaboxes-teams-content.php:185
 #: inc/uebns-metaboxes-teams-content.php:272
 msgid "Add"
-msgstr "hinzufügen"
+msgstr "Hinzufügen"
 
 #: inc/uebns-metaboxes-teams-content.php:189
 #: inc/uebns-metaboxes-teams-content.php:276
@@ -364,12 +360,8 @@ msgid "Member enabled?"
 msgstr "Person aktivieren?"
 
 #: inc/uebns-metaboxes-teams-content.php:308
-msgid ""
-"Click the <strong>Add member</strong> button to add a team member to the "
-"list."
-msgstr ""
-"Klicke auf <strong>Person hinzufügen</strong>, um Teammitglieder "
-"hinzuzufügen."
+msgid "Click the <strong>Add member</strong> button to add a team member to the list."
+msgstr "Klicke auf <strong>Person hinzufügen</strong>, um Teammitglieder hinzuzufügen."
 
 #: inc/uebns-metaboxes-teams-content.php:314
 msgid "Add member"
@@ -381,11 +373,8 @@ msgstr ""
 
 #: inc/uebns-settings.php:71
 #, php-format
-msgid ""
-"Team Settings Section. Here you can edit the Social Media Icons styles for "
-"the front/content. By default the plugin used and needed the font awesome "
-"icon libary(%s)"
-msgstr ""
+msgid "Team Settings Section. Here you can edit the Social Media Icons styles for the front/content. By default the plugin used and needed the font awesome icon libary(%s)."
+msgstr "Standardmäßig wird die Font Eigenschaften von Font Awesome benutzt. Hier können Sie die Social Incons Styles verändern -> (%s)."
 
 #: inc/uebns-settings.php:125
 msgid "Settings Saved"
@@ -394,3 +383,18 @@ msgstr "Einstellungen gespeichert"
 #: inc/uebns-shortcode-column.php:55
 msgid "Team name"
 msgstr "Team namen"
+
+#: inc/uebns-settings.php:71
+#, php-format
+msgid "Want to use the CDN for Font Awesome Icons?"
+msgstr "Möchten Sie die Font Awesome Bibliothek verwenden?"
+
+#: inc/uebns-settings.php:71
+#, php-format
+msgid "Use Font Awesome CDN?"
+msgstr "Font Awesome Bibliothek verwenden?"
+
+#: inc/uebns-settings.php:71
+#, php-format
+msgid "Team options"
+msgstr "Team einstellungen"

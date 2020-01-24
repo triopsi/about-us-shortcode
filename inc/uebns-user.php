@@ -1,6 +1,6 @@
 <?php
 /**
-* Author: Daniel Rodriguez Baumann
+* Author: triopsi
 * Author URI: http://wiki.profoxi.de
 * License: GPL3
 * License URI: https://www.gnu.org/licenses/gpl-3.0
@@ -25,6 +25,19 @@ function add_uebns_front_css() {
   wp_enqueue_style( 'uebns', plugins_url('../assets/css/front-style.css', __FILE__));
 }
 
+/* Get option - Style Font Awesome */
+$option_cdn = ( empty( get_option( 'uebns_settings_cdn_awesome') ) ? 'yes' : get_option('uebns_settings_cdn_awesome') );
+if( 'yes' === $option_cdn ){
+    add_action( 'wp_enqueue_scripts', 'add_cdn_font_awesome', 99 );
+}
+
+/**
+ * CDN Function FOnt Awesome include
+ */
+function add_cdn_font_awesome() {
+    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css', __FILE__);
+}
+
 /**
  * default IconArray
  *
@@ -36,13 +49,13 @@ function getIconArrayList(){
             'codepen.io'      => 'fab fa-codepen',
             'deviantart.com'  => 'fab fa-deviantart',
             'digg.com'        => 'fab fa-digg',
-            'docker.com'      => 'fab fa-dockerhub',
+            'docker.com'      => 'fab fa-docker',
             'dribbble.com'    => 'fab fa-dribbble',
             'dropbox.com'     => 'fab fa-dropbox',
             'facebook.com'    => 'fab fa-facebook',
             'flickr.com'      => 'fab fa-flickr',
             'foursquare.com'  => 'fab fa-foursquare',
-            'plus.google.com' => 'fab fa-google-plus',
+            'plus.google.com' => 'fab fa-google-plus-square',
             'github.com'      => 'fab fa-github',
             'instagram.com'   => 'fab fa-instagram',
             'linkedin.com'    => 'fab fa-linkedin',
@@ -56,7 +69,7 @@ function getIconArrayList(){
             'skype:'          => 'fab fa-skype',
             'slideshare.net'  => 'fab fa-slideshare',
             'snapchat.com'    => 'fab fa-snapchat-ghost',
-            'soundcloud.com'  => 'fab fa-soundcloud',
+            'soundcloud.com'  => 'fab fa-c',
             'spotify.com'     => 'fab fa-spotify',
             'stumbleupon.com' => 'fab fa-stumbleupon',
             'tumblr.com'      => 'fab fa-tumblr',

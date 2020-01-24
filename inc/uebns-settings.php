@@ -1,6 +1,6 @@
 <?php
 /**
-* Author: Daniel Rodriguez Baumann
+* Author: triopsi
 * Author URI: http://wiki.profoxi.de
 * License: GPL3
 * License URI: https://www.gnu.org/licenses/gpl-3.0
@@ -26,18 +26,36 @@
  */
 function uebns_settings_init()
 {
-    // register a new setting
+    // register new settings
     register_setting( 'uebns', 'uebns_settings_social' );
+    register_setting( 'uebns', 'uebns_settings_cdn_awesome' );
  
-    // register a new section in the "Uebns" page
+    // Social Media CND
+    add_settings_section(
+        'uebns_settings_section_font_cdn',
+        __('Font Awesome CDN','ueber-uns'),
+        'uebns_settings_cdn_section_cb',
+        'uebns'
+    );
+
+    // Social Media Icons
     add_settings_section(
         'uebns_settings_section',
-        __('Social Media Style','plg-ueber-uns'),
+        __('Social Media Style','ueber-uns'),
         'uebns_settings_section_cb',
         'uebns'
     );
+
+    //Social Media Style CDN Field
+    add_settings_field(
+        'uebns_settings_cdn_awesome',
+        __('Use Font Awesome CDN?','ueber-uns'),
+        'uebns_settings_field_cdn_cb',
+        'uebns',
+        'uebns_settings_section_font_cdn'
+    );
  
-    //Fields in the section setting
+    //Social Media Icons Fields
     $getIconArrayList = getIconArrayList();
     foreach ( $getIconArrayList as $link_url => $value ) {
         $callback = 'uebns_settings_field_cb';
@@ -55,26 +73,55 @@ function uebns_settings_init()
             $args
         );
     }
+
+
 }
- 
+
 /**
  * register uebns_settings_init to the admin_init action hook
  */
 add_action('admin_init', 'uebns_settings_init');
- 
+
 /**
- * section content cb functions
+ * section CDN Description
+ */
+function uebns_settings_cdn_section_cb()
+{
+    echo __('Want to use the CDN for Font Awesome Icons?','ueber-uns');
+}
+
+/**
+ * section Style Description
  */
 function uebns_settings_section_cb()
 {
     printf(
-        __('Team Settings Section. Here you can edit the Social Media Icons styles for the front/content. By default the plugin used and needed the font awesome icon libary(%s)','plg-ueber-uns'),
+        __('Team Settings Section. Here you can edit the Social Media Icons styles for the front/content. By default the plugin used and needed the font awesome icon libary(%s).','ueber-uns'),
         '<a target="_blank" href="https://fontawesome.com/">more infos</a>'
     );
 }
  
 /**
- * field content cb
+ * SOcial Media CDN
+ *
+ * @param array $args
+ * @return void
+ */
+function uebns_settings_field_cdn_cb( array $args ){
+    $old_setting_value = ( !empty( get_option( 'uebns_settings_cdn_awesome' ) ) ? get_option( 'uebns_settings_cdn_awesome' ) : 'yes');
+    ?>
+    <fieldset>
+        <input type="radio" id="field_cdn_yes" class="uebns-field-setting-cdn" name="uebns_settings_cdn_awesome" value="yes" <?php echo ($old_setting_value === 'yes' ? 'checked' : '' ); ?>>
+        <label for="field_cdn_yes"> <?php echo __('yes','ueber-uns'); ?></label> 
+        <input type="radio" id="field_cdn_no" class="uebns-field-setting-cdn" name="uebns_settings_cdn_awesome" value="no" <?php echo ($old_setting_value === 'no' ? 'checked' : '' ); ?>>
+        <label for="field_cdn_no"> <?php echo __('no','ueber-uns'); ?></label> 
+    </fielset>
+    
+    <?php
+}
+
+/**
+ * Social Media
  *
  * @param array $args
  * @return void
@@ -84,7 +131,7 @@ function uebns_settings_field_cb( array $args ){
     $type     = $args['type'];
     $old_setting_value = get_option( 'uebns_settings_social' );
     ?>
-    <input type="text" name="uebns_settings_social[<?php echo $label_for; ?>]" value="<?php echo isset( $old_setting_value ) && !empty($old_setting_value) && is_array($old_setting_value) ? esc_attr( $old_setting_value[$label_for] ) : $type; ?>">
+    <input type="text" class="ubens-field-setting-style" name="uebns_settings_social[<?php echo $label_for; ?>]" value="<?php echo isset( $old_setting_value ) && !empty($old_setting_value) && is_array($old_setting_value) ? esc_attr( $old_setting_value[$label_for] ) : $type; ?>">
     <?php
 }
 
@@ -96,7 +143,7 @@ function uebns_options_page() {
     // add top level menu page
     add_menu_page(
     'Team Settings',
-    'Team Options',
+    __('Team options','ueber-uns'),
     'manage_options',
     'uebns',
     'uebns_options_page_html'

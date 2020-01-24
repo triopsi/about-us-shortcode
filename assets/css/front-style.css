@@ -140,6 +140,7 @@ img.uebns-photo-member:hover{
     -webkit-border-radius: 40px;
     border-radius: 40px;
 }
+.uebns-link a:link,
 .uebns-link a{
     background-color: #eb5466;
     color:#fff;
@@ -150,10 +151,12 @@ img.uebns-photo-member:hover{
     transition: color 110ms ease-in;
     -webkit-transition: background 0.2s;
     transition: background 0.2s;
+    box-shadow: none;
 }
 
 .uebns-link a:hover {
     background-color: #212952;
+    box-shadow: none;
     /* color:#eb5466; */
 }
 .uebns-link i {

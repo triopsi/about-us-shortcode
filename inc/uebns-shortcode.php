@@ -1,6 +1,6 @@
 <?php
 /**
-* Author: Daniel Rodriguez Baumann
+* Author: triopsi
 * Author URI: http://wiki.profoxi.de
 * License: GPL3
 * License URI: https://www.gnu.org/licenses/gpl-3.0

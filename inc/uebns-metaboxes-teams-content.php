@@ -1,6 +1,6 @@
 <?php
 /**
-* Author: Daniel Rodriguez Baumann
+* Author: triopsi
 * Author URI: http://wiki.profoxi.de
 * License: GPL3
 * License URI: https://www.gnu.org/licenses/gpl-3.0
@@ -24,7 +24,7 @@ add_action('admin_init', 'uebns_add_team', 1);
 function uebns_add_team() {
 	add_meta_box( 
 		'uebns', 
-		__('Teamlist', 'plg-ueber-uns' ), 
+		__('Teamlist', 'ueber-uns' ), 
 		'uebns_team_display', // Below
 		'uebns', 
 		'normal', 
@@ -69,11 +69,11 @@ function uebns_team_display(){
 		<div class="team_view_toolbar">
 			<a class="collapse_all button" href="#">
 				<span class="dashicons dashicons-editor-contract"></span>
-				<?php _e('Collapse all', 'plg-ueber-uns' ) ?>
+				<?php _e('Collapse all', 'ueber-uns' ) ?>
 			</a>
 			<a class="expand_all button" href="#">
 				<span class="dashicons dashicons-editor-expand"></span>
-				<?php _e('Expand all', 'plg-ueber-uns' ) ?>
+				<?php _e('Expand all', 'ueber-uns' ) ?>
 			</a>
 			<div class="uebns_clearfix"></div>
 		</div><!-- /.team_view_toolbar -->
@@ -99,29 +99,29 @@ function uebns_team_display(){
 					</div><!-- /.member_toolbar -->
 					<div class="member_add_content_row">
 						<div class="member_head_title">
-							<?php echo __('Member details','plg-ueber-uns'); ?>
+							<?php echo __('Member details','ueber-uns'); ?>
 						</div><!-- ./member_head_title -->
 						<div class="member_field_firstname member-grid member-grid-33">
 							<div class="member_field_title">
-								<?php echo __('First name','plg-ueber-uns'); ?>
+								<?php echo __('First name','ueber-uns'); ?>
 							</div>
-							<input class="ubns-field regular-text member-firstname-field" type="text" value="<?php echo $member['_uebns_firstname']; ?>" placeholder="<?php echo __('e.g. Max','plg-ueber-uns'); ?>">
+							<input class="ubns-field regular-text member-firstname-field" type="text" value="<?php echo $member['_uebns_firstname']; ?>" placeholder="<?php echo __('e.g. Max','ueber-uns'); ?>">
 						</div><!-- ./member_field_firstname -->
 						<div class="member_field_lastname member-grid member-grid-33">
 							<div class="member_field_title">
-							<?php echo __('Lastname','plg-ueber-uns'); ?>
+							<?php echo __('Lastname','ueber-uns'); ?>
 							</div>
-							<input class="ubns-field regular-text member-lastname-field" type="text" value="<?php echo $member['_uebns_lastname']; ?>" placeholder="<?php echo __('e.g. Mustermann','plg-ueber-uns'); ?>">
+							<input class="ubns-field regular-text member-lastname-field" type="text" value="<?php echo $member['_uebns_lastname']; ?>" placeholder="<?php echo __('e.g. Mustermann','ueber-uns'); ?>">
 						</div><!-- ./member_field_lastname -->
 						<div class="member_field_jobrole member-grid member-grid-33">
 							<div class="member_field_title">
-							<?php echo __('Job titel','plg-ueber-uns'); ?>
+							<?php echo __('Job titel','ueber-uns'); ?>
 							</div>
-							<input class="ubns-field regular-text member-jobrole-field" type="text" value="<?php echo $member['_uebns_job']; ?>" placeholder="<?php echo __('e.g. Lead','plg-ueber-uns'); ?>">
+							<input class="ubns-field regular-text member-jobrole-field" type="text" value="<?php echo $member['_uebns_job']; ?>" placeholder="<?php echo __('e.g. Lead','ueber-uns'); ?>">
 						</div><!-- ./member_field_jobrole -->
 						<div class="member_field_jobrole member-grid member-grid-100">
 							<div class="member_field_title">
-							<?php echo __('Biography','plg-ueber-uns'); ?>
+							<?php echo __('Biography','ueber-uns'); ?>
 							</div>
 							<div class="ubns-field uebns_description_of_member">
 							</div>
@@ -129,7 +129,7 @@ function uebns_team_display(){
 						</div><!-- ./member_field_jobrole -->
 						<div class="uebns_clearfix"></div><!-- Clearfix -->
 						<div class="member_head_title">
-							<?php echo __('Social media links','plg-ueber-uns'); ?>
+							<?php echo __('Social media links','ueber-uns'); ?>
 						</div><!-- ./member_head_title -->
 						<?php
 							if ( isset($member['_uebns_sc']) && !empty($member['_uebns_sc']) ){
@@ -146,17 +146,17 @@ function uebns_team_display(){
 								<div class="social-boxes">
 									<div class="member_field_social_link member-grid member-grid-33"> <!-- Social Media Line -->
 										<div class="member_field_title">
-											<?php echo __('Social media kanal','plg-ueber-uns'); ?>
+											<?php echo __('Social media kanal','ueber-uns'); ?>
 										</div>
 									</div><!-- ./member_field_social_link -->
 									<div class="member_field_social_link_name member-grid member-grid-33">
 										<div class="member_field_title">
-											<?php echo __('Link titel','plg-ueber-uns'); ?>
+											<?php echo __('Link titel','ueber-uns'); ?>
 										</div>
 									</div><!-- ./member_field_social_link_name -->
 									<div class="member_field_social_link_url member-grid member-grid-33">
 										<div class="member_field_title">
-											<?php echo __('Link URL','plg-ueber-uns'); ?>
+											<?php echo __('Link URL','ueber-uns'); ?>
 										</div>
 									</div><!-- ./member_field_social_link_url -->
 									<div class="uebns_clearfix"></div><!-- Clearfix -->
@@ -168,10 +168,10 @@ function uebns_team_display(){
 											</select>
 										</div><!-- ./member_field_social_link -->
 										<div class="member_field_social_link_name row-second member-grid member-grid-33">
-											<input class="ubns-field uebns-field-link-titel regular-text member-social-link-titel<?php echo $i; ?>-field" type="text" value="<?php echo $member_social_link_titel; ?>" placeholder="<?php echo __('e.g. Mail','plg-ueber-uns'); ?>">
+											<input class="ubns-field uebns-field-link-titel regular-text member-social-link-titel<?php echo $i; ?>-field" type="text" value="<?php echo $member_social_link_titel; ?>" placeholder="<?php echo __('e.g. Mail','ueber-uns'); ?>">
 										</div><!-- ./member_field_social_link_name -->
 										<div class="member_field_social_link_url row-second member-grid member-grid-33">
-											<input class="ubns-field uebns-field-link-url regular-text member-social-link-url<?php echo $i; ?>-field" type="text" value="<?php echo $uebns_field_link_url; ?>" placeholder="<?php echo __('e.g. mailto:info@example.com','plg-ueber-uns'); ?>">
+											<input class="ubns-field uebns-field-link-url regular-text member-social-link-url<?php echo $i; ?>-field" type="text" value="<?php echo $uebns_field_link_url; ?>" placeholder="<?php echo __('e.g. mailto:info@example.com','ueber-uns'); ?>">
 											<a class="button button-trash-social-line-btn button-large" href="#"><span class="dashicons dashicons-trash"></span></a>		
 										</div><!-- ./member_field_social_link_url -->
 										<div class="uebns_clearfix"></div><!-- Clearfix -->
@@ -182,37 +182,37 @@ function uebns_team_display(){
 							}
 						?>						
 						<div class="member_field_social_link uebns-social-add member-grid member-grid-33"> 
-							<a class="button button-primary button-large button-social-add" href="#"><span class="dashicons dashicons-share"></span> <?php echo __('Add','plg-ueber-uns') ?></a>
+							<a class="button button-primary button-large button-social-add" href="#"><span class="dashicons dashicons-share"></span> <?php echo __('Add','ueber-uns') ?></a>
 						</div><!-- ./member_field_social_link_name -->
 						<div class="uebns_clearfix"></div><!-- Clearfix -->
 						<div class="member_head_title">
-							<?php echo __('Photo','plg-ueber-uns'); ?>
+							<?php echo __('Photo','ueber-uns'); ?>
 						</div><!-- ./member_head_title -->
 						<div class="member_field_photo member-grid member-grid-33">
 							<div class="member_field_title">
-							<?php echo __('Image profile','plg-ueber-uns'); ?>
+							<?php echo __('Image profile','ueber-uns'); ?>
 							</div>
 							<div class="uebns_field_title uebns_img_data_url" data-img="<?php echo $member['_uebns_photo']; ?>"></div>
 							<div class="uebns_upload_img_btn button button-primary button-large">
-								<?php echo __('Upload photo', 'plg-ueber-uns' ) ?>
+								<?php echo __('Upload photo', 'ueber-uns' ) ?>
 							</div>
 						</div><!-- ./member_field_photo -->
 						<div class="member_field_profile_image row-second member-grid member-grid-33">
 							<div class="member_field_title">
-								<?php echo __('Image Link','plg-ueber-uns'); ?>
+								<?php echo __('Image Link','ueber-uns'); ?>
 							</div>
-							<input class="ubns-field regular-text member-image-link-field" type="text" value="<?php echo $member['_uebns_photo_url']; ?>" placeholder="<?php echo __('e.g. http://example.com/member','plg-ueber-uns'); ?>">
+							<input class="ubns-field regular-text member-image-link-field" type="text" value="<?php echo $member['_uebns_photo_url']; ?>" placeholder="<?php echo __('e.g. http://example.com/member','ueber-uns'); ?>">
 						</div><!-- ./member_field_profile_image -->
 						<div class="uebns_clearfix"></div><!-- Clearfix -->
 						<div class="member_head_title">
-							<?php echo __('Member Setting','plg-ueber-uns'); ?>
+							<?php echo __('Member Setting','ueber-uns'); ?>
 						</div><!-- ./member_head_title -->
 						<div class="member_field_dis_en_member uebns-social-add member-grid member-grid-33">
 							<div class="member_field_title">
-								<?php echo __('Member enabled','plg-ueber-uns'); ?>
+								<?php echo __('Member enabled','ueber-uns'); ?>
 							</div>
 							<input class="uebns-checkbox-field uebns-user-enabled" id="member_en_dis" type="checkbox" name="member_en_dis" value="y" <?php echo ($member['_uebns_member_en'] === 'y' ? 'checked' : '' ); ?>>
-							<!-- <label for="member_en_dis"><?php echo __('Member enabled?','plg-ueber-uns'); ?></label> -->
+							<!-- <label for="member_en_dis"><?php echo __('Member enabled?','ueber-uns'); ?></label> -->
 						</div><!-- ./member_field_social_link_name -->
 						<div class="uebns_clearfix"></div><!-- Clearfix -->
 						</div><!-- ./member_add_content_row -->
@@ -230,35 +230,35 @@ function uebns_team_display(){
 					<a class="move_row_up button tool" href="#" title="Move up"><span class="dashicons dashicons-arrow-up-alt2"></span></a>
 					<a class="move_row_down button tool" href="#" title="Move down"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
 					<div class="member_add_image_thumbnail"></div>
-					<div class="member_add_title"><?php echo __('Untitled','plg-ueber-uns'); ?></div>
+					<div class="member_add_title"><?php echo __('Untitled','ueber-uns'); ?></div>
 					<a class="button trash remove_row" href="#" title="Remove"><span class="dashicons dashicons-trash"></span></a>
 					<div class="uebns_clearfix"></div>
 				</div><!-- /.member_toolbar -->
 				<div class="member_add_content_row">
 					<div class="member_head_title">
-						<?php echo __('Member details','plg-ueber-uns'); ?>
+						<?php echo __('Member details','ueber-uns'); ?>
 					</div><!-- ./member_head_title -->
 					<div class="member_field_firstname member-grid member-grid-33">
 						<div class="member_field_title">
-							<?php echo __('First name','plg-ueber-uns'); ?>
+							<?php echo __('First name','ueber-uns'); ?>
 						</div>
-						<input class="ubns-field regular-text member-firstname-field" type="text" value="" placeholder="<?php echo __('e.g. Max','plg-ueber-uns'); ?>">
+						<input class="ubns-field regular-text member-firstname-field" type="text" value="" placeholder="<?php echo __('e.g. Max','ueber-uns'); ?>">
 					</div><!-- ./member_field_firstname -->
 					<div class="member_field_lastname member-grid member-grid-33">
 						<div class="member_field_title">
-						<?php echo __('Lastname','plg-ueber-uns'); ?>
+						<?php echo __('Lastname','ueber-uns'); ?>
 						</div>
-						<input class="ubns-field regular-text member-lastname-field" type="text" value="" placeholder="<?php echo __('e.g. Mustermann','plg-ueber-uns'); ?>">
+						<input class="ubns-field regular-text member-lastname-field" type="text" value="" placeholder="<?php echo __('e.g. Mustermann','ueber-uns'); ?>">
 					</div><!-- ./member_field_lastname -->
 					<div class="member_field_jobrole member-grid member-grid-33">
 						<div class="member_field_title">
-						<?php echo __('Job titel','plg-ueber-uns'); ?>
+						<?php echo __('Job titel','ueber-uns'); ?>
 						</div>
-						<input class="ubns-field regular-text member-jobrole-field" type="text" value="" placeholder="<?php echo __('e.g. Lead','plg-ueber-uns'); ?>">
+						<input class="ubns-field regular-text member-jobrole-field" type="text" value="" placeholder="<?php echo __('e.g. Lead','ueber-uns'); ?>">
 					</div><!-- ./member_field_jobrole -->
 					<div class="member_field_jobrole member-grid member-grid-100">
 						<div class="member_field_title">
-						<?php echo __('Biography','plg-ueber-uns'); ?>
+						<?php echo __('Biography','ueber-uns'); ?>
 						</div>
 						<div class="ubns-field uebns_description_of_member">
 						</div>
@@ -266,52 +266,52 @@ function uebns_team_display(){
 					</div><!-- ./member_field_jobrole -->
 					<div class="uebns_clearfix"></div><!-- Clearfix -->
 					<div class="member_head_title">
-						<?php echo __('Social media links','plg-ueber-uns'); ?>
+						<?php echo __('Social media links','ueber-uns'); ?>
 					</div><!-- ./member_head_title -->
 					<div class="member_field_social_link uebns-social-add member-grid member-grid-33"> 
-							<a class="button button-primary button-large button-social-add" href="#"><span class="dashicons dashicons-share"></span> <?php echo __('Add','plg-ueber-uns') ?></a>
+							<a class="button button-primary button-large button-social-add" href="#"><span class="dashicons dashicons-share"></span> <?php echo __('Add','ueber-uns') ?></a>
 					</div><!-- ./member_field_social_link_name -->
 					<div class="uebns_clearfix"></div><!-- Clearfix -->
 					<div class="member_head_title">
-						<?php echo __('Photo','plg-ueber-uns'); ?>
+						<?php echo __('Photo','ueber-uns'); ?>
 					</div><!-- ./member_head_title -->
 					<div class="member_field_photo member-grid member-grid-33">
 						<div class="member_field_title">
-						<?php echo __('Image profile','plg-ueber-uns'); ?>
+						<?php echo __('Image profile','ueber-uns'); ?>
 						</div>
 						<div class="uebns_field_title uebns_img_data_url" data-img=""></div>
 						<div class="uebns_upload_img_btn button button-primary button-large">
-							<?php echo __('Upload photo', 'plg-ueber-uns' ) ?>
+							<?php echo __('Upload photo', 'ueber-uns' ) ?>
 						</div>
 					</div><!-- ./member_field_photo -->
 					<div class="member_field_profile_image row-second member-grid member-grid-33">
 						<div class="member_field_title">
-							<?php echo __('Image Link','plg-ueber-uns'); ?>
+							<?php echo __('Image Link','ueber-uns'); ?>
 						</div>
-						<input class="ubns-field regular-text member-image-link-field" type="text" value="" placeholder="<?php echo __('e.g. http://example.com/member','plg-ueber-uns'); ?>">
+						<input class="ubns-field regular-text member-image-link-field" type="text" value="" placeholder="<?php echo __('e.g. http://example.com/member','ueber-uns'); ?>">
 					</div><!-- ./member_field_profile_image -->
 					<div class="uebns_clearfix"></div><!-- Clearfix -->
 					<div class="member_head_title">
-						<?php echo __('Member Setting','plg-ueber-uns'); ?>
+						<?php echo __('Member Setting','ueber-uns'); ?>
 					</div><!-- ./member_head_title -->
 					<div class="member_field_dis_en_member uebns-social-add member-grid member-grid-33">
 						<div class="member_field_title">
-							<?php echo __('Member enabled','plg-ueber-uns'); ?>
+							<?php echo __('Member enabled','ueber-uns'); ?>
 						</div>
 						<input class="uebns-checkbox-field uebns-user-enabled" id="member_en_dis" type="checkbox" name="member_en_dis" value="y">
-						<!-- <label for="member_en_dis"><?php echo __('Member enabled?','plg-ueber-uns'); ?></label> -->
+						<!-- <label for="member_en_dis"><?php echo __('Member enabled?','ueber-uns'); ?></label> -->
 					</div><!-- ./member_field_social_link_name -->
 					<div class="uebns_clearfix"></div><!-- Clearfix -->
 				</div><!-- ./member_add_content_row -->
 			</div><!-- /.team_member_add_content -->
 			<div class="row_clear row_content"> <!-- Empty Row -->
-				<?php echo __('Click the <strong>Add member</strong> button to add a team member to the list.','plg-ueber-uns'); ?>
+				<?php echo __('Click the <strong>Add member</strong> button to add a team member to the list.','ueber-uns'); ?>
 			</div><!-- /.row_clear -->
 		</div><!-- /.team_area_content -->
 		<div class="team_area_footer">
 			<a class="add_member_button button button-primary button-large" href="#">
 				<span class="dashicons dashicons-id"></span>
-				<?php _e('Add member', 'plg-ueber-uns' ) ?>
+				<?php _e('Add member', 'ueber-uns' ) ?>
 			</a>
 		</div><!-- /.team_area_footer -->
 	</div>
@@ -319,17 +319,17 @@ function uebns_team_display(){
 	<div class="social-box" style="display:none;">
 		<div class="member_field_social_link member-grid member-grid-33"> <!-- Social Media Line -->
 			<div class="member_field_title">
-				<?php echo __('Social media kanal','plg-ueber-uns'); ?>
+				<?php echo __('Social media kanal','ueber-uns'); ?>
 			</div>
 		</div><!-- ./member_field_social_link -->
 		<div class="member_field_social_link_name member-grid member-grid-33">
 			<div class="member_field_title">
-				<?php echo __('Link titel','plg-ueber-uns'); ?>
+				<?php echo __('Link titel','ueber-uns'); ?>
 			</div>
 		</div><!-- ./member_field_social_link_name -->
 		<div class="member_field_social_link_url member-grid member-grid-33">
 			<div class="member_field_title">
-				<?php echo __('Link URL','plg-ueber-uns'); ?>
+				<?php echo __('Link URL','ueber-uns'); ?>
 			</div>
 		</div><!-- ./member_field_social_link_url -->
 		<div class="uebns_clearfix"></div><!-- Clearfix -->
@@ -341,10 +341,10 @@ function uebns_team_display(){
 			</select>
 		</div><!-- ./member_field_social_link -->
 		<div class="member_field_social_link_name row-second member-grid member-grid-33">
-			<input class="ubns-field uebns-field-link-titel regular-text" type="text" value="" placeholder="<?php echo __('e.g. Mail','plg-ueber-uns'); ?>">
+			<input class="ubns-field uebns-field-link-titel regular-text" type="text" value="" placeholder="<?php echo __('e.g. Mail','ueber-uns'); ?>">
 		</div><!-- ./member_field_social_link_name -->
 		<div class="member_field_social_link_url row-second member-grid member-grid-33">
-			<input class="ubns-field uebns-field-link-url regular-text" type="text" value="" placeholder="<?php echo __('e.g. mailto:info@example.com','plg-ueber-uns'); ?>">
+			<input class="ubns-field uebns-field-link-url regular-text" type="text" value="" placeholder="<?php echo __('e.g. mailto:info@example.com','ueber-uns'); ?>">
 			<a class="button button-trash-social-line-btn button-large" href="#"><span class="dashicons dashicons-trash"></span></a>				
 		</div><!-- ./member_field_social_link_url -->
 		<div class="uebns_clearfix"></div><!-- Clearfix -->

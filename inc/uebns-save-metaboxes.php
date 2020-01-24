@@ -1,6 +1,6 @@
 <?php
 /**
-* Author: Daniel Rodriguez Baumann
+* Author: triopsi
 * Author URI: http://wiki.profoxi.de
 * License: GPL3
 * License URI: https://www.gnu.org/licenses/gpl-3.0
@@ -67,14 +67,17 @@ function uebns_plan_meta_box_save($post_id) {
 		$member_enabled = $member_data[7];
 		
 		//Check Post and set default value
-		(isset($member_firstname) && $member_firstname) ? $new_data_member[$key]['_uebns_firstname'] = stripslashes( wp_kses_post( $member_firstname ) ) : $new_data_member[$key]['_uebns_firstname'] = __('Untitled', 'plg-ueber-uns' );
-		(isset($member_lastname) && $member_lastname) ? $new_data_member[$key]['_uebns_lastname'] = stripslashes( wp_kses_post( $member_lastname ) ) : $new_data_member[$key]['_uebns_lastname'] = '';
-		(isset($member_job) && $member_job) ? $new_data_member[$key]['_uebns_job'] = stripslashes( wp_kses_post( $member_job ) ) : $new_data_member[$key]['_uebns_job'] = '';
-		(isset($member_bio) && $member_bio) ? $new_data_member[$key]['_uebns_desc'] = balanceTags( $member_bio ) : $new_data_member[$key]['_uebns_desc'] = '';
-		(isset($member_photo) && $member_photo) ? $new_data_member[$key]['_uebns_photo'] = stripslashes( strip_tags( sanitize_text_field( $member_photo ) ) ) : $new_data_member[$key]['_uebns_photo'] = '';
-		(isset($member_photo_url) && $member_photo_url) ? $new_data_member[$key]['_uebns_photo_url'] = stripslashes( strip_tags( sanitize_text_field( $member_photo_url ) ) ) : $new_data_member[$key]['_uebns_photo_url'] = '';
-		(isset($member_sc) && $member_sc) ? $new_data_member[$key]['_uebns_sc'] = stripslashes( strip_tags( sanitize_text_field( $member_sc ) ) ) : $new_data_member[$key]['_uebns_sc'] = '';
-		(isset($member_enabled) && $member_enabled) ? $new_data_member[$key]['_uebns_member_en'] = stripslashes( strip_tags( sanitize_text_field( $member_enabled ) ) ) : $new_data_member[$key]['_uebns_member_en'] = '';
+		if( $member_firstname != "" && $member_lastname != "" && $member_job != "" && $member_bio != "" && $member_enabled != "" ){
+			(isset($member_firstname) && $member_firstname) ? $new_data_member[$key]['_uebns_firstname'] = stripslashes( wp_kses_post( $member_firstname ) ) : $new_data_member[$key]['_uebns_firstname'] = __('Untitled', 'ueber-uns' );
+			(isset($member_lastname) && $member_lastname) ? $new_data_member[$key]['_uebns_lastname'] = stripslashes( wp_kses_post( $member_lastname ) ) : $new_data_member[$key]['_uebns_lastname'] = '';
+			(isset($member_job) && $member_job) ? $new_data_member[$key]['_uebns_job'] = stripslashes( wp_kses_post( $member_job ) ) : $new_data_member[$key]['_uebns_job'] = '';
+			(isset($member_bio) && $member_bio) ? $new_data_member[$key]['_uebns_desc'] = balanceTags( $member_bio ) : $new_data_member[$key]['_uebns_desc'] = '';
+			(isset($member_photo) && $member_photo) ? $new_data_member[$key]['_uebns_photo'] = stripslashes( strip_tags( sanitize_text_field( $member_photo ) ) ) : $new_data_member[$key]['_uebns_photo'] = '';
+			(isset($member_photo_url) && $member_photo_url) ? $new_data_member[$key]['_uebns_photo_url'] = stripslashes( strip_tags( sanitize_text_field( $member_photo_url ) ) ) : $new_data_member[$key]['_uebns_photo_url'] = '';
+			(isset($member_sc) && $member_sc) ? $new_data_member[$key]['_uebns_sc'] = stripslashes( strip_tags( sanitize_text_field( $member_sc ) ) ) : $new_data_member[$key]['_uebns_sc'] = '';
+			(isset($member_enabled) && $member_enabled) ? $new_data_member[$key]['_uebns_member_en'] = stripslashes( strip_tags( sanitize_text_field( $member_enabled ) ) ) : $new_data_member[$key]['_uebns_member_en'] = '';
+		}
+		
 		
 	}
 

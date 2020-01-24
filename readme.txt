@@ -3,7 +3,7 @@ Contributors: triopsi
 Donate link: https://www.paypal.me/triopsi
 Tags: about, abaoutus, team, member, site, post, teams. shortcode
 Requires at least: 5.3
-Tested up to: 5.3
+Tested up to: 5.3.2
 Requires PHP: 5.6
 Stable tag: 0.0.1
 License: GPLv3
@@ -13,14 +13,15 @@ A very simple "About Us" Site Plugin. Create Teams and copy-paste the shortcode 
  
 == Description ==
 
-The "about us" Plugin is a very simple way, to show your team member in a showroom on your site or blog post. Its have a responsive Design
-and is very easys to use it. Add Photos, Bios or the Jobtitel in the Teambox and manage the team.
+The "about us" Plugin is a very simple way, to show your team member in a showroom on your site or blog post. It's have a responsive Design
+and is very easys to use it. Add Photos, Bios or the jobtitel in the Teambox and manage the team.
 
 Create Functions:
  
 *   Create and manage teams
-*   Create teammeber and fill it  
+*   Create teammember and fill it with information 
 *   Add Shortcodes in your post or sites 
+*   responsives designs (choose one of 3 default layouts)
  
 == Installation ==
  
@@ -33,9 +34,9 @@ Nothing yet.
  
 == Screenshots ==
  
-1. Team Showroom on Site Default Layout
-2. Team Showroom on Site Layout 1
-3. Team Showroom on Site Layout 2
+1. Team Showroom on site default layout
+2. Team Showroom on site layout 1
+3. Team Showroom on site layout 2
 4. Team Settings
  
 == Changelog ==

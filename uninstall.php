@@ -1,6 +1,6 @@
 <?php
 /**
-* Author: Daniel Rodriguez Baumann
+* Author: triopsi
 * Author URI: http://wiki.profoxi.de
 * License: GPL3
 * License URI: https://www.gnu.org/licenses/gpl-3.0
@@ -27,10 +27,16 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 /* Delete plugin options */
 $option_version = 'uebns_plugin_version';
 $option_settings = 'uebns_settings_social';
+$option_settings_cdn = 'uebns_settings_cdn_awesome';
+
 delete_option($option_version);
 delete_site_option($option_version);
+
 delete_option($option_settings);
 delete_site_option($option_settings);
+
+delete_option($option_settings_cdn);
+delete_site_option($option_settings_cdn);
 
 // Delete metadata and posts
 $post_type_arg = array('post_type' => 'uebns', 'posts_per_page' => -1);
