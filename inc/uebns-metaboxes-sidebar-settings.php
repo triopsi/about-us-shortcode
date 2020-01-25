@@ -24,7 +24,7 @@ add_action('admin_init', 'uebns_add_settings', 1);
 function uebns_add_settings() {
 	add_meta_box( 
 		'uebns_settings', 
-		'<span class="dashicons dashicons-admin-generic"></span> '.__('Settings', 'ueber-uns'), 
+		'<span class="dashicons dashicons-admin-generic"></span> '.__('Settings', 'aus'), 
 		'uebns_settings_display', 
 		'uebns', 
 		'side', 
@@ -48,27 +48,27 @@ function uebns_settings_display() {
 	if (!$settings['_uebns_color_shema']) { $settings['_uebns_color_shema'] = '#eb5466'; }
 
 	$options_members_line = array ( 
-		__('1 per line', 'ueber-uns') => '1',
-		__('2 per line', 'ueber-uns') => '2',
-		__('3 per line', 'ueber-uns') => '3',
-		__('4 per line', 'ueber-uns') => '4',
-		__('5 per line', 'ueber-uns') => '5'    
+		__('1 per line', 'aus') => '1',
+		__('2 per line', 'aus') => '2',
+		__('3 per line', 'aus') => '3',
+		__('4 per line', 'aus') => '4',
+		__('5 per line', 'aus') => '5'    
 	);
 
 	$settings['_uebns_line_member'] = get_post_meta( $post->ID, '_uebns_line_member', true );
 	if (!$settings['_uebns_line_member']) { $settings['_uebns_line_member'] = '1'; }
 
 	$options_image_filter = array ( 
-		__('none', 'ueber-uns') => 'none',
-		__('grayscale', 'ueber-uns') => 'grayscale',
-		__('sepia', 'ueber-uns') => 'sepia' 
+		__('none', 'aus') => 'none',
+		__('grayscale', 'aus') => 'grayscale',
+		__('sepia', 'aus') => 'sepia' 
 	);
 	$settings['_uebns_filter_image'] = get_post_meta( $post->ID, '_uebns_filter_image', true );
 	if (!$settings['_uebns_filter_image']) { $settings['_uebns_filter_image'] = 'none'; }
 
 	$options_images_clickable = array ( 
-		__('no', 'ueber-uns') => 'no',
-		__('yes', 'ueber-uns') => 'yes'
+		__('no', 'aus') => 'no',
+		__('yes', 'aus') => 'yes'
 	);
 
 	$settings['_uebns_images_clickable'] = get_post_meta( $post->ID, '_uebns_images_clickable', true );
@@ -78,12 +78,12 @@ function uebns_settings_display() {
 	?>
 	<div class="uebns_settings_box uebns_sidebar">
 		<div class="member_head_title">
-			<?php /* translators: General settings */ _e('General', 'ueber-uns') ?>
+			<?php /* translators: General settings */ _e('General', 'aus') ?>
 		</div>
 		<!-- Layout Settings -->
 		<div class="layout_settings">
 			<div class="member_field_title">
-					<?php _e('Member per line', 'ueber-uns' ) ?>
+					<?php _e('Member per line', 'aus' ) ?>
 			</div>
 			<div class="layout_out">
 				<select class="" name="line_member">	
@@ -96,7 +96,7 @@ function uebns_settings_display() {
 		<!-- Layout Settings -->
 		<div class="layout_settings">
 			<div class="member_field_title">
-					<?php _e('Layout', 'ueber-uns' ) ?>
+					<?php _e('Layout', 'aus' ) ?>
 			</div>
 			<div class="layout_out">
 				<fielset>
@@ -109,7 +109,7 @@ function uebns_settings_display() {
 		<!-- Photo Layout Setting -->
 		<div class="layout_settings">
 			<div class="member_field_title">
-					<?php _e('Profile Photo Style', 'ueber-uns' ) ?>
+					<?php _e('Profile Photo Style', 'aus' ) ?>
 			</div>
 			<div class="layout_out">
 				<fielset>
@@ -121,7 +121,7 @@ function uebns_settings_display() {
 		<!-- Color Chema Setting -->
 		<div class="layout_settings">
 			<div class="member_field_title">
-					<?php _e('Color Shema', 'ueber-uns' ) ?>
+					<?php _e('Color Shema', 'aus' ) ?>
 			</div>
 			<div class="layout_out">
 				<input type="text" name="uebns-color-shema" class="uebns-color-picker" value="<?php echo ( ( isset($settings['_uebns_color_shema']) ) ? $settings['_uebns_color_shema'] : ' ' ); ?>" />
@@ -130,7 +130,7 @@ function uebns_settings_display() {
 		<!-- Layout Settings -->
 		<div class="layout_settings">
 			<div class="member_field_title">
-					<?php _e('Image Filter', 'ueber-uns' ) ?>
+					<?php _e('Image Filter', 'aus' ) ?>
 			</div>
 			<div class="layout_out">
 				<select class="" name="image_filter">	
@@ -143,7 +143,7 @@ function uebns_settings_display() {
 		<!-- Layout Settings -->
 		<div class="layout_settings">
 			<div class="member_field_title">
-					<?php _e('Images clickable?', 'ueber-uns' ) ?>
+					<?php _e('Images clickable?', 'aus' ) ?>
 			</div>
 			<div class="layout_out">
 				<select class="" name="images_clickable">	

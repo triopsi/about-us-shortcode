@@ -28,7 +28,7 @@
             return false;
         });
           
-        /* Expands/collapses handle. */
+        /* Expands/collapses handle */
         $('.member_toolbar').click(function(e) {
             $(this).siblings('.member_add_content_row').slideToggle(50);
             ($(this).hasClass('closed')) 
@@ -50,20 +50,18 @@
             });
         }
 
-        /* Collapses all rows. */
+        /* Collapses all rows */
         $('.collapse_all').click(function(e) {
             collapseController(e);
             return false;
         });
 
-        /* Expands all rows. */
+        /* Expands all rows */
         $('.expand_all').click(function(e) {
             $('.member_toolbar').each(function(i, obj){
             if($(this).hasClass('closed')){
-                
                 $(this).siblings('.member_add_content_row').slideToggle(50);
                 $(this).removeClass('closed');
-
             }
             });
 

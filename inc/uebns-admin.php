@@ -63,7 +63,7 @@ function add_admin_uebns_style_js() {
 
     /* Localizes string for JS file. */
     wp_localize_script( 'uebns', 'uebnsobjjs', array(
-      'untitled' => __( 'Untitled', 'ueber-uns' ),
+      'untitled' => __( 'Untitled', 'aus' ),
     ));
     
   }

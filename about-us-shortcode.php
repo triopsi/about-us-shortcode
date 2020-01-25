@@ -6,7 +6,7 @@
 * Version: 0.0.1
 * Author: triopsi
 * Author URI: http://wiki.profoxi.de
-* Text Domain: ueber-uns
+* Text Domain: aus
 * Domain Path: /lang/
 * License: GPL3
 * License URI: https://www.gnu.org/licenses/gpl-3.0
@@ -63,5 +63,5 @@ require_once('inc/uebns-save-metaboxes.php');
  * @return void
  */
 function uebns_load_plugin_textdomain() {
-  load_plugin_textdomain( 'ueber-uns', FALSE, 'ueber-uns-team/lang/' );
+  load_plugin_textdomain( 'aus', FALSE, 'about-us-shortcode/lang/' );
 }

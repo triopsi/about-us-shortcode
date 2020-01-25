@@ -52,7 +52,7 @@ add_filter( 'manage_uebns_posts_columns' , 'add_uebns_columns' );
  * @return void
  */
 function add_uebns_columns( $columns ) {
-  $columns['title'] = __('Team name','ueber-uns');
+  $columns['title'] = __('Team name','aus');
   unset( $columns['author'] );
   unset( $columns['date'] );
   return array_merge( $columns, array('uebn_shortcode' => 'Shortcode') );

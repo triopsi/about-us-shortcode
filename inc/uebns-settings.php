@@ -33,7 +33,7 @@ function uebns_settings_init()
     // Social Media CND
     add_settings_section(
         'uebns_settings_section_font_cdn',
-        __('Font Awesome CDN','ueber-uns'),
+        __('Font Awesome CDN','aus'),
         'uebns_settings_cdn_section_cb',
         'uebns'
     );
@@ -41,7 +41,7 @@ function uebns_settings_init()
     // Social Media Icons
     add_settings_section(
         'uebns_settings_section',
-        __('Social Media Style','ueber-uns'),
+        __('Social Media Style','aus'),
         'uebns_settings_section_cb',
         'uebns'
     );
@@ -49,7 +49,7 @@ function uebns_settings_init()
     //Social Media Style CDN Field
     add_settings_field(
         'uebns_settings_cdn_awesome',
-        __('Use Font Awesome CDN?','ueber-uns'),
+        __('Use Font Awesome CDN?','aus'),
         'uebns_settings_field_cdn_cb',
         'uebns',
         'uebns_settings_section_font_cdn'
@@ -87,7 +87,7 @@ add_action('admin_init', 'uebns_settings_init');
  */
 function uebns_settings_cdn_section_cb()
 {
-    echo __('Want to use the CDN for Font Awesome Icons?','ueber-uns');
+    echo __('Want to use the CDN for Font Awesome Icons?','aus');
 }
 
 /**
@@ -96,7 +96,7 @@ function uebns_settings_cdn_section_cb()
 function uebns_settings_section_cb()
 {
     printf(
-        __('Team Settings Section. Here you can edit the Social Media Icons styles for the front/content. By default the plugin used and needed the font awesome icon libary(%s).','ueber-uns'),
+        __('Team Settings Section. Here you can edit the Social Media Icons styles for the front/content. By default the plugin used and needed the font awesome icon libary(%s).','aus'),
         '<a target="_blank" href="https://fontawesome.com/">more infos</a>'
     );
 }
@@ -112,9 +112,9 @@ function uebns_settings_field_cdn_cb( array $args ){
     ?>
     <fieldset>
         <input type="radio" id="field_cdn_yes" class="uebns-field-setting-cdn" name="uebns_settings_cdn_awesome" value="yes" <?php echo ($old_setting_value === 'yes' ? 'checked' : '' ); ?>>
-        <label for="field_cdn_yes"> <?php echo __('yes','ueber-uns'); ?></label> 
+        <label for="field_cdn_yes"> <?php echo __('yes','aus'); ?></label> 
         <input type="radio" id="field_cdn_no" class="uebns-field-setting-cdn" name="uebns_settings_cdn_awesome" value="no" <?php echo ($old_setting_value === 'no' ? 'checked' : '' ); ?>>
-        <label for="field_cdn_no"> <?php echo __('no','ueber-uns'); ?></label> 
+        <label for="field_cdn_no"> <?php echo __('no','aus'); ?></label> 
     </fielset>
     
     <?php
@@ -143,7 +143,7 @@ function uebns_options_page() {
     // add top level menu page
     add_menu_page(
     'Team Settings',
-    __('Team options','ueber-uns'),
+    __('Team options','aus'),
     'manage_options',
     'uebns',
     'uebns_options_page_html'
