@@ -47,9 +47,11 @@ Nothing yet.
 = 0.0.2 =
 * Bugfix - IconArrayList
 * Bugfix - JobTitel isnt a required field
+* Change - Team Settings now under the optionmenu
  
 == Upgrade Notice ==
 
+Nothing.
 
 == Donations ==
 
