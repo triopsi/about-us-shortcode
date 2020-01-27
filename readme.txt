@@ -1,7 +1,7 @@
 === About Us Team ===
 Contributors: triopsi
 Donate link: https://www.paypal.me/triopsi
-Tags: about, abaoutus, team, member, site, post, teams. shortcode
+Tags: about, abaoutus, team, member, site, post, teams. shortcode, site, post
 Requires at least: 5.3
 Tested up to: 5.3.2
 Requires PHP: 5.6
@@ -16,13 +16,21 @@ A very simple "About Us" Site Plugin. Create Teams and copy-paste the shortcode 
 The "about us" Plugin is a very simple way, to show your team member in a showroom on your site or blog post. It's have a responsive Design
 and is very easys to use it. Add Photos, Bios or the jobtitel in the Teambox and manage the team.
 
-Create Functions:
+= Create features =
  
 *   Create and manage teams
 *   Create teammember and fill it with information 
 *   Add Shortcodes in your post or sites 
 *   responsives designs (choose one of 3 default layouts)
- 
+
+= Bugs, technical hints or contribute =
+
+Please give me feedback, contribute and file technical bugs on [GitHub Repository](https://github.com/triopsi/about-us-shortcode). Thanks :)
+
+= Credits =
+
+Developed by [Triopsi](https://wiki.profoxi.de)
+
 == Installation ==
  
 1. Upload `aus-team` to the `/wp-content/plugins/` directory
@@ -44,7 +52,7 @@ Nothing yet.
 = 0.0.1 =
 * First release.
 
-= 0.0.2 =
+= 0.0.2 (27/01/2020) =
 * Bugfix - IconArrayList
 * Bugfix - JobTitel isnt a required field
 * Change - Team Settings now under the optionmenu
