@@ -124,7 +124,16 @@
         /* Add the link url in field */
         function pasteurltofield($fieldobj){
             var sc_kanal_val = $fieldobj.val();
-            $($fieldobj).closest('.social-boxes').find('.uebns-field-link-url').val('https://www.' + sc_kanal_val + '/name');
+            if( sc_kanal_val == '- Another link -' ){
+                $($fieldobj).closest('.social-boxes').find('.uebns-field-link-url').val('https://www.');
+            } else if( sc_kanal_val == 'mailto:' ){
+                $($fieldobj).closest('.social-boxes').find('.uebns-field-link-url').val('mailto:');
+            } else if( sc_kanal_val == 'skype:' ){
+                $($fieldobj).closest('.social-boxes').find('.uebns-field-link-url').val('skype:');
+            } else {
+                $($fieldobj).closest('.social-boxes').find('.uebns-field-link-url').val('https://www.' + sc_kanal_val + '/name');
+            }
+            $($fieldobj).closest('.social-boxes').find('.uebns-field-link-titel').focus();
         }
 
         /* Firstname/Lastname handles. */

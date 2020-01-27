@@ -48,6 +48,9 @@ Nothing yet.
 * Bugfix - IconArrayList
 * Bugfix - JobTitel isnt a required field
 * Change - Team Settings now under the optionmenu
+* Change - JQuery social media kanal autocomplete
+* Add - Add Debug Box under Team Settings
+* Add - Add 'another link' type in the social media dropdownlist (Add member)
  
 == Upgrade Notice ==
 

@@ -102,7 +102,7 @@ function uebns_settings_section_cb()
 }
  
 /**
- * SOcial Media CDN
+ * Social Media CDN
  *
  * @param array $args
  * @return void
@@ -191,6 +191,14 @@ function uebns_options_page_html() {
                 submit_button( 'Save Settings' );
             ?>
         </form>
+        <?php if(WP_DEBUG){ ?>
+            <div class="debug-info">
+                <h3>Debug information</h3>
+                <p>You are seeing this because your WP_DEBUG variable is set to true.</p>
+                <pre><?php print_r(get_option( 'uebns_settings_social' )) ?></pre>
+                <pre><?php print_r(get_option( 'uebns_settings_cdn_awesome' )) ?></pre>
+            </div><!-- /.debug-info -->
+        <?php } ?>
     </div>
     <?php
 }
