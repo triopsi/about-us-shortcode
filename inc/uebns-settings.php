@@ -135,25 +135,24 @@ function uebns_settings_field_cb( array $args ){
     <?php
 }
 
-
 /**
  * top level menu
  */
-function uebns_options_page() {
-    // add top level menu page
-    add_menu_page(
-    'Team Settings',
-    __('Team options','aus'),
-    'manage_options',
-    'uebns',
-    'uebns_options_page_html'
+function uebns_option_menue(){
+
+    add_options_page( 
+        __('Team options','aus'), 
+        __('Team options','aus'),
+        'manage_options',
+        'uebns',
+        'uebns_options_page_html'
     );
-   }
-    
+}
+
 /**
 * register our uebns_options_page to the admin_menu action hook
 */
-add_action( 'admin_menu', 'uebns_options_page' );
+add_action( 'admin_menu', 'uebns_option_menue' );
 
 /**
  * top level menu:
