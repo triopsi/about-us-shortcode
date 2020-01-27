@@ -5,7 +5,7 @@ Tags: about, abaoutus, team, member, site, post, teams. shortcode
 Requires at least: 5.3
 Tested up to: 5.3.2
 Requires PHP: 5.6
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0
  
@@ -43,6 +43,10 @@ Nothing yet.
  
 = 0.0.1 =
 * First release.
+
+= 0.0.2 =
+* Bugfix - IconArrayList
+* Bugfix - JobTitel isnt a required field
  
 == Upgrade Notice ==
 
