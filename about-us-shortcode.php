@@ -27,7 +27,7 @@
 
 //Definie plugin version
 if (!defined('UEBNS_VERSION'))
-    define('UEBNS_VERSION', '0.0.1');
+    define('UEBNS_VERSION', '0.0.2');
 
 
 /* General */
