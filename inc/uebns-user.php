@@ -218,7 +218,7 @@ function getSocialMedia($member,$settings_color_shema,$settings_photo_setting){
         $team_view.='<li class="uebns-link">
         <a style="background-color:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';" class="' . ($settings_photo_setting === 'round' ? 'uebns-round-link' : '' ) . '" title="'.(!empty($member_social_link_titel)?$member_social_link_titel:'').'" href="'.(!empty($uebns_field_link_url)?$uebns_field_link_url:'').'">
         <span class="screen-reader-text">'.(!empty($member_social_link_titel)?$member_social_link_titel:'').'</span>
-        <i class="'.uebns_get_icon_social(getIconArrayList(),$uebns_field_link_url).'"></i>
+        <i class="'.uebns_get_icon_social(getIconStyle(),$uebns_field_link_url).'"></i>
         </a>
         </li>';
     }  
