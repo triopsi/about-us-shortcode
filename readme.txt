@@ -5,7 +5,7 @@ Tags: about, abaoutus, team, member, site, post, teams. shortcode, site, post
 Requires at least: 5.3
 Tested up to: 5.3.2
 Requires PHP: 5.6
-Stable tag: 0.0.2
+Stable tag: 0.0.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0
  
@@ -59,6 +59,11 @@ Nothing yet.
 * Change - JQuery social media kanal autocomplete
 * Add - Add Debug Box under Team Settings
 * Add - Add 'another link' type in the social media dropdownlist (Add member)
+
+= 0.0.3 (28/01/2020) =
+* Bugfix - Default Icon - URL
+* Bugfix - Safe Message Option page
+* Add - Debug Info
  
 == Upgrade Notice ==
 

@@ -57,9 +57,8 @@ function uebns_team_display(){
 			'_uebns_member_en'
 	);
 
-	/* Retrieves select options. */
+	/* GetIcon Array */
 	$social_links_options = getIconArrayList();
-	$social_links_options['- Another link -'] = 'fas fa-link';
 
 	//Hidden field.
 	wp_nonce_field( 'uebns_meta_box_nonce', 'uebns_meta_box_nonce' ); 

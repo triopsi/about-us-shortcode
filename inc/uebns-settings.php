@@ -131,7 +131,7 @@ function uebns_settings_field_cb( array $args ){
     $type     = $args['type'];
     $old_setting_value = get_option( 'uebns_settings_social' );
     ?>
-    <input type="text" class="ubens-field-setting-style" name="uebns_settings_social[<?php echo $label_for; ?>]" value="<?php echo isset( $old_setting_value ) && !empty($old_setting_value) && is_array($old_setting_value) ? esc_attr( $old_setting_value[$label_for] ) : $type; ?>">
+    <input type="text" class="ubens-field-setting-style" name="uebns_settings_social[<?php echo $label_for; ?>]" value="<?php echo isset( $old_setting_value ) && !empty( $old_setting_value ) && is_array( $old_setting_value ) ? esc_attr( $old_setting_value[$label_for] ) : $type; ?>">
     <?php
 }
 
@@ -163,19 +163,7 @@ function uebns_options_page_html() {
     if ( ! current_user_can( 'manage_options' ) ) {
     return;
     }
-    
-    // check if the user have submitted the settings
-    // wordpress will add the "settings-updated" $_GET parameter to the url
-    if ( isset( $_GET['settings-updated'] ) ) {
-        // add settings saved message with the class of "updated"
-        add_settings_error( 'uebns_messages', 'uebns_message', __( 'Settings Saved', 'uebns' ), 'updated' );
-    }
-    
-    // show error/update messages
-    settings_errors( 'uebns_messages' );
-
     ?>
-
     <div class="wrap">
         <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
             <form action="options.php" method="post">
@@ -188,15 +176,29 @@ function uebns_options_page_html() {
                 do_settings_sections( 'uebns' );
 
                 // output save settings button
-                submit_button( 'Save Settings' );
+                submit_button( __( 'Save Settings', 'aus' ) );
             ?>
+            <div class="uebns-wrap-option-page">
+            <a href="https://paypal.me/triopsi" target="_blank" class="button-secondary">❤️ <?php _e('Donate', 'aus'); ?></a> 
+            <a href="https://wiki.profoxi.de/about-us-shortcode-plugin-fuer-wordpress/" target="_blank" class="button-secondary"><?php _e('Help', 'aus'); ?></a> 
+            </div>
         </form>
         <?php if(WP_DEBUG){ ?>
             <div class="debug-info">
-                <h3>Debug information</h3>
-                <p>You are seeing this because your WP_DEBUG variable is set to true.</p>
-                <pre><?php print_r(get_option( 'uebns_settings_social' )) ?></pre>
-                <pre><?php print_r(get_option( 'uebns_settings_cdn_awesome' )) ?></pre>
+                <h3><?php _e('Debug information','aus'); ?></h3>
+                <p><?php _e('You are seeing this because your WP_DEBUG variable is set to true.','aus'); ?></p>
+                <pre>uebns_plugin_version: <?php print_r(get_option( 'uebns_plugin_version' )) ?></pre>
+                <pre>uebns_settings_social: <?php print_r(get_option( 'uebns_settings_social' )) ?></pre>
+                <pre>uebns_settings_cdn_awesome: <?php print_r(get_option( 'uebns_settings_cdn_awesome' )) ?></pre>
+                <pre>Member:
+                <?php
+                    $post_type_arg = array('post_type' => 'uebns', 'posts_per_page' => -1);
+                    $getpostsentries = get_posts($post_type_arg);
+                    foreach ($getpostsentries as $post) {
+                        print_r(get_post_meta( $post->ID, '_uebns_members', true ));
+                    }
+                ?>
+                </pre>
             </div><!-- /.debug-info -->
         <?php } ?>
     </div>

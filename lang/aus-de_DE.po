@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Uber-Uns-Team\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-23 18:24+0100\n"
-"PO-Revision-Date: 2020-01-24 12:31+0100\n"
+"PO-Revision-Date: 2020-01-28 09:19+0100\n"
 "Language-Team: info@triopsi.com\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,66 +25,6 @@ msgstr "Ein einfacher Über Uns Plugin. Erstelle Teams und füge den Shortcode i
 #: inc/uebns-save-metaboxes.php:70
 msgid "Untitled"
 msgstr "Unbekannt"
-
-#: inc/uebns-admin.php:86
-msgid "-"
-msgstr ""
-
-#: inc/uebns-admin.php:87
-msgid "Github"
-msgstr ""
-
-#: inc/uebns-admin.php:88
-msgid "Twitter"
-msgstr ""
-
-#: inc/uebns-admin.php:89
-msgid "LinkedIn"
-msgstr ""
-
-#: inc/uebns-admin.php:90
-msgid "YouTube"
-msgstr ""
-
-#: inc/uebns-admin.php:91
-msgid "Google+"
-msgstr ""
-
-#: inc/uebns-admin.php:92
-msgid "Facebook"
-msgstr ""
-
-#: inc/uebns-admin.php:93
-msgid "Pinterest"
-msgstr ""
-
-#: inc/uebns-admin.php:94
-msgid "Instagram"
-msgstr ""
-
-#: inc/uebns-admin.php:95
-msgid "Tumblr"
-msgstr ""
-
-#: inc/uebns-admin.php:96
-msgid "Research Gate"
-msgstr ""
-
-#: inc/uebns-admin.php:97
-msgid "Email"
-msgstr ""
-
-#: inc/uebns-admin.php:98
-msgid "Website"
-msgstr "Webseite"
-
-#: inc/uebns-admin.php:99
-msgid "Phone"
-msgstr "Telefonnummer"
-
-#: inc/uebns-admin.php:100
-msgid "Other links"
-msgstr "Anderer Link"
 
 #: inc/uebns-metaboxes-settings-teams.php:34
 #: inc/uebns-metaboxes-settings-teams.php:36
@@ -398,3 +338,18 @@ msgstr "Font Awesome Bibliothek verwenden?"
 #, php-format
 msgid "Team options"
 msgstr "Team einstellungen"
+
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
+
+msgid "Donate"
+msgstr "Spenden"
+
+msgid "Help"
+msgstr "Hilfe"
+
+msgid "Debug information"
+msgstr "Debug Information"
+
+msgid "You are seeing this because your WP_DEBUG variable is set to true."
+msgstr "Du siehst diese Informationen, da du im DEBUG Modus (WP_DEBUG) befindest."

@@ -82,6 +82,7 @@ function getIconArrayList(){
             'wordpress.com'   => 'fab fa-wordpress',
             'yelp.com'        => 'fab fa-yelp',
             'youtube.com'     => 'fab fa-youtube',
+            '- Another link -'=> 'fas fa-link',
         );
     return $social_links_icons;
 }
@@ -166,8 +167,11 @@ function getImageFilterStyle($setting_image_filter){
  * @return void
  */
 function uebns_get_icon_social( $social_icons, $url ){
+
     //default
-    $icon_class = "fas fa-link";
+    $icon_array = getIconArrayList();
+    $icon_class = $icon_array['- Another link -'];
+
     foreach ( $social_icons as $attr => $value ) {
       if ( false !== strpos( $url, $attr ) ) {
         $icon_class = $value;

@@ -66,6 +66,10 @@ function add_admin_uebns_style_js() {
       'untitled' => __( 'Untitled', 'aus' ),
     ));
     
+  }else{
+    
+     /* CSS for metaboxes. */
+     wp_enqueue_style( 'uebns_admin_styles', plugins_url('../assets/css/editor-admin.css', __FILE__));   
   }
 
 }
@@ -76,6 +80,14 @@ function add_admin_uebns_style_js() {
  * @return void
  */
 function uebns_activation(){
+
+  $old_setting_value = get_option( 'uebns_settings_social' );
+
+  // <= 0.0.2 to 0.0.3
+  if( is_array( $old_setting_value ) && !empty( $old_setting_value ) && !isset( $old_setting_value['- Another link -'] )){
+    $old_setting_value['- Another link -'] = 'fas fa-link';
+  }
+  update_option('uebns_settings_social', $old_setting_value);
   update_option('uebns_plugin_version', UEBNS_VERSION);
 }
 
