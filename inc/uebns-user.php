@@ -169,7 +169,7 @@ function getImageFilterStyle($setting_image_filter){
 function uebns_get_icon_social( $social_icons, $url ){
 
     //default
-    $icon_array = getIconArrayList();
+    $icon_array = getIconStyle();
     $icon_class = $icon_array['- Another link -'];
 
     foreach ( $social_icons as $attr => $value ) {

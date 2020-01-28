@@ -62,7 +62,7 @@ Nothing yet.
 
 = 0.0.3 (28/01/2020) =
 * Bugfix - Default Icon - URL
-* Bugfix - Safe Message Option page
+* Bugfix - Save message option page
 * Add - Debug Info
  
 == Upgrade Notice ==
