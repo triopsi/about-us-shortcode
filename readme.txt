@@ -33,7 +33,7 @@ Developed by [Triopsi](https://wiki.profoxi.de)
 
 == Installation ==
  
-1. Upload `aus-team` to the `/wp-content/plugins/` directory
+1. Upload `about-us-shortcode` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
  
 == Frequently Asked Questions ==
