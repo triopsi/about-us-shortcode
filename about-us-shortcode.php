@@ -3,7 +3,7 @@
 * Plugin Name: About us Shortcode
 * Plugin URI: https://www.wiki.profoxi.de
 * Description: A very simple "About Us" site Plugin. Create Teams and copy-paste the shortcode everywhere in your post or site.
-* Version: 0.0.1
+* Version: 0.0.2
 * Author: triopsi
 * Author URI: http://wiki.profoxi.de
 * Text Domain: aus
