@@ -69,7 +69,7 @@ function getIconArrayList(){
             'skype:'          => 'fab fa-skype',
             'slideshare.net'  => 'fab fa-slideshare',
             'snapchat.com'    => 'fab fa-snapchat-ghost',
-            'soundcloud.com'  => 'fab fa-c',
+            'soundcloud.com'  => 'fab fa-soundcloud',
             'spotify.com'     => 'fab fa-spotify',
             'stumbleupon.com' => 'fab fa-stumbleupon',
             'tumblr.com'      => 'fab fa-tumblr',
