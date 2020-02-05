@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Uber-Uns-Team\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-23 18:24+0100\n"
-"PO-Revision-Date: 2020-01-28 09:19+0100\n"
+"PO-Revision-Date: 2020-02-05 14:03+0100\n"
 "Language-Team: info@triopsi.com\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -353,3 +353,12 @@ msgstr "Debug Information"
 
 msgid "You are seeing this because your WP_DEBUG variable is set to true."
 msgstr "Du siehst diese Informationen, da du im DEBUG Modus (WP_DEBUG) befindest."
+
+msgid "This color will use for the social menu buttons and hrs."
+msgstr "Diese Farbe wird als Grundfarbe für alle Team einblendungen benutzt."
+
+msgid "Choose a main color:"
+msgstr "Wählen sie eine Farbe aus:"
+
+msgid "Choose a main hover color:"
+msgstr "Wählen Sie eine Farbe für das darüberfahren der Maus aus:"

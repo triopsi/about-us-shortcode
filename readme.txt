@@ -5,7 +5,7 @@ Tags: about, abaoutus, team, member, site, post, teams. shortcode, site, post
 Requires at least: 5.3
 Tested up to: 5.3.2
 Requires PHP: 5.6
-Stable tag: 0.0.3
+Stable tag: 0.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0
  
@@ -64,6 +64,9 @@ Nothing yet.
 * Bugfix - Default Icon - URL
 * Bugfix - Save message option page
 * Add - Debug Info
+
+= 0.1.0 (05/02/2020) =
+* Change Color Settings to Admin Settings
  
 == Upgrade Notice ==
 

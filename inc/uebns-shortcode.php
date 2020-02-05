@@ -53,13 +53,30 @@ function uebns_sh($atts) {
       //Load Settings
       $settings_layout = get_post_meta( get_the_id(), '_uebns_layout', true );
       $settings_photo_setting = get_post_meta( get_the_id(), '_uebns_photo_setting', true );
-      $settings_color_shema = get_post_meta( get_the_id(), '_uebns_color_shema', true );
+
+      //Style
+      $main_color = get_option( 'uebns_setting_main_color' , '#eb5466');
+      $hover_color = get_option( 'uebns_setting_main_color_hover' , '#212952');
+
       $settings_line_member = get_post_meta( get_the_id(), '_uebns_line_member', true );
       $setting_image_filter = get_post_meta( get_the_id(), '_uebns_filter_image', true );
       $setting_images_clickable = get_post_meta( get_the_id(), '_uebns_images_clickable', true );
       $style_class_line_members = getRowStyleCount($settings_line_member);
       $style_image_filter = getImageFilterStyle($setting_image_filter);
-
+      ?>
+      <style>
+          .uebns-link a:link,
+          .uebns-link a{
+              background-color:<?php echo $main_color; ?>;
+          }
+          .uebns-link a:hover {
+              background-color:<?php echo $hover_color; ?>;
+          }
+          .uebns-hr{
+            background: <?php echo $main_color; ?>;
+          }
+    </style>
+    <?php
       if ( is_array($members) || is_object($members) || !empty($settings_layout) ) {
         $i=0;
         $memberscount=count($members);
@@ -82,9 +99,9 @@ function uebns_sh($atts) {
                     <div class="uebns-des-text">
                       <div class="uebns-header"><h2 class="">'.$member['_uebns_firstname'].' '.$member['_uebns_lastname'].'</h2></div><!-- /.uebns-header -->
                       ' . ( !empty( $member['_uebns_job'] ) ? '<div class="uebns-sub-header">' . $member['_uebns_job'].  '</div><!-- /.uebns-sub-header -->' : '' ) . '
-                      <hr class="uebns-hr" style="background:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';">
+                      <hr class="uebns-hr">
                       <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->';
-                          $team_view.=getSocialMedia($member,$settings_color_shema,$settings_photo_setting);
+                          $team_view.=getSocialMedia($member,$settings_photo_setting);
                           $team_view.='
                     </div><!-- /.uebns-des-text -->
                   </div><!-- /.uebns-col -->
@@ -112,9 +129,9 @@ function uebns_sh($atts) {
                     <div class="uebns-des-text">
                       <div class="uebns-header"><h2 class="">'.$member['_uebns_firstname'].' '.$member['_uebns_lastname'].'</h2></div><!-- /.uebns-header -->
                       ' . ( !empty( $member['_uebns_job'] ) ? '<div class="uebns-sub-header">' . $member['_uebns_job'].  '</div><!-- /.uebns-sub-header -->' : '' ) . '
-                      <hr class="uebns-hr uebns-hr-full" style="background:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';">
+                      <hr class="uebns-hr uebns-hr-full">
                       <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->';
-                          $team_view.=getSocialMedia($member,$settings_color_shema,$settings_photo_setting);
+                          $team_view.=getSocialMedia($member,$settings_photo_setting);
                           $team_view.='
                     </div><!-- /.uebns-des-text -->
                   </div><!-- /.uebns-txt -->
@@ -138,9 +155,9 @@ function uebns_sh($atts) {
                     <div class="uebns-des-text">
                       <div class="uebns-header"><h2 class="">'.$member['_uebns_firstname'].' '.$member['_uebns_lastname'].'</h2></div><!-- /.uebns-header -->
                       ' . ( !empty( $member['_uebns_job'] ) ? '<div class="uebns-sub-header">' . $member['_uebns_job'].  '</div><!-- /.uebns-sub-header -->' : '' ) . '
-                      <hr class="uebns-hr" style="background:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';">
+                      <hr class="uebns-hr">
                       <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->';
-                          $team_view.=getSocialMedia($member,$settings_color_shema,$settings_photo_setting);
+                          $team_view.=getSocialMedia($member,$settings_photo_setting);
                           $team_view.='
                     </div><!-- /.uebns-des-text -->
                   </div><!-- /.uebns-col -->

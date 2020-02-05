@@ -29,7 +29,35 @@ function uebns_settings_init()
     // register new settings
     register_setting( 'uebns', 'uebns_settings_social' );
     register_setting( 'uebns', 'uebns_settings_cdn_awesome' );
+    register_setting( 'uebns', 'uebns_setting_main_color' );
+    register_setting( 'uebns', 'uebns_setting_main_color_hover' );
  
+    // Font Colors
+    add_settings_section(
+        'uebns_settings_section_font_color',
+        __('Color shema','aus'),
+        'uebns_settings_section_color',
+        'uebns'
+    );
+
+    //Main Color Field
+    add_settings_field(
+        'uebns_settings_main_color',
+        __('Choose a main color:','aus'),
+        'uebns_settings_field_main_color_cb',
+        'uebns',
+        'uebns_settings_section_font_color'
+    );
+
+     //Main Hover Color Field
+     add_settings_field(
+        'uebns_settings_hover_color',
+        __('Choose a main hover color:','aus'),
+        'uebns_settings_field_hover_color_cb',
+        'uebns',
+        'uebns_settings_section_font_color'
+    );
+
     // Social Media CND
     add_settings_section(
         'uebns_settings_section_font_cdn',
@@ -83,6 +111,15 @@ function uebns_settings_init()
 add_action('admin_init', 'uebns_settings_init');
 
 /**
+ * section Color Description
+ */
+function uebns_settings_section_color()
+{
+    echo __('This color will use for the social menu buttons and hrs.','aus');
+}
+
+
+/**
  * section CDN Description
  */
 function uebns_settings_cdn_section_cb()
@@ -101,6 +138,35 @@ function uebns_settings_section_cb()
     );
 }
  
+
+/**
+ * Main Color CP
+ *
+ * @param array $args
+ * @return void
+ */
+function uebns_settings_field_main_color_cb( array $args ){
+    $old_setting_value = ( !empty( get_option( 'uebns_setting_main_color' ) ) ? get_option( 'uebns_setting_main_color' ) : '#eb5466');
+    ?>
+    <input type="text" id="uebns-main-color-field" class="uebns-main-color-field" name="uebns_setting_main_color" value="<?php echo $old_setting_value; ?>">
+
+    <?php
+}
+
+/**
+ * Hover Color CP
+ *
+ * @param array $args
+ * @return void
+ */
+function uebns_settings_field_hover_color_cb( array $args ){
+    $old_setting_value = ( !empty( get_option( 'uebns_setting_main_color_hover' ) ) ? get_option( 'uebns_setting_main_color_hover' ) : '#212952');
+    ?>
+    <input type="text" id="uebns-hover-color-field" class="uebns-hover-color-field" name="uebns_setting_main_color_hover" value="<?php echo $old_setting_value; ?>">
+    <?php
+}
+
+
 /**
  * Social Media CDN
  *
@@ -190,6 +256,8 @@ function uebns_options_page_html() {
                 <pre>uebns_plugin_version: <?php print_r(get_option( 'uebns_plugin_version' )) ?></pre>
                 <pre>uebns_settings_social: <?php print_r(get_option( 'uebns_settings_social' )) ?></pre>
                 <pre>uebns_settings_cdn_awesome: <?php print_r(get_option( 'uebns_settings_cdn_awesome' )) ?></pre>
+                <pre>uebns_setting_main_color: <?php print_r(get_option( 'uebns_setting_main_color' )) ?></pre>
+                <pre>uebns_setting_main_color_hover: <?php print_r(get_option( 'uebns_setting_main_color_hover' )) ?></pre>
                 <pre>Member:
                 <?php
                     $post_type_arg = array('post_type' => 'uebns', 'posts_per_page' => -1);

@@ -38,6 +38,12 @@ delete_site_option($option_settings);
 delete_option($option_settings_cdn);
 delete_site_option($option_settings_cdn);
 
+delete_option("uebns_setting_main_color");
+delete_site_option("uebns_setting_main_color");
+
+delete_option("uebns_setting_main_color_hover");
+delete_site_option("uebns_setting_main_color_hover");
+
 // Delete metadata and posts
 $post_type_arg = array('post_type' => 'uebns', 'posts_per_page' => -1);
 $getpostsentries = get_posts($post_type_arg);

@@ -59,7 +59,6 @@ function add_admin_uebns_style_js() {
     /* JS for metaboxes */
     wp_enqueue_script( 'logic-form', plugins_url('../assets/js/logic-form.js', __FILE__));
     wp_enqueue_script( 'images-picker', plugins_url('../assets/js/images-picker.js', __FILE__));
-    wp_enqueue_script( 'color-picker', plugins_url('../assets/js/color-picker.js', __FILE__), array( 'jquery', 'wp-color-picker' ) );
 
     /* Localizes string for JS file. */
     wp_localize_script( 'uebns', 'uebnsobjjs', array(
@@ -68,8 +67,11 @@ function add_admin_uebns_style_js() {
     
   }else{
     
-     /* CSS for metaboxes. */
-     wp_enqueue_style( 'uebns_admin_styles', plugins_url('../assets/css/editor-admin.css', __FILE__));   
+    /* CSS for metaboxes. */
+    wp_enqueue_style( 'uebns_admin_styles', plugins_url('../assets/css/editor-admin.css', __FILE__));   
+
+    /* Color JS */
+    wp_enqueue_script( 'uebns-admin-script-color', plugins_url('../assets/js/uebns-admin-script-color.js', __FILE__), array( 'jquery', 'wp-color-picker'  ) );
   }
 
 }
@@ -83,10 +85,22 @@ function uebns_activation(){
 
   $old_setting_value = get_option( 'uebns_settings_social' );
 
+  $old_setting_value_color = get_option( 'uebns_setting_main_color' );
+  $old_setting_value_color_hover = get_option( 'uebns_setting_main_color_hover' );
+
   // <= 0.0.2 to 0.0.3
   if( is_array( $old_setting_value ) && !empty( $old_setting_value ) && !isset( $old_setting_value['- Another link -'] )){
     $old_setting_value['- Another link -'] = 'fas fa-link';
+    update_option('uebns_settings_social', $old_setting_value);
   }
-  update_option('uebns_settings_social', $old_setting_value);
+
+  // <= 0.0.3 to 0.1.0
+  if( empty( $old_setting_value_color ) || empty( $old_setting_value_color_hover ) ){
+    $old_setting_value_color = "#eb5466";
+    $old_setting_value_color_hover = "#212952";
+    update_option('uebns_setting_main_color', $old_setting_value_color);
+    update_option('uebns_setting_main_color_hover', $old_setting_value_color_hover);
+  }
+
   update_option('uebns_plugin_version', UEBNS_VERSION);
 }

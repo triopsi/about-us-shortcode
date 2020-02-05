@@ -118,15 +118,6 @@ function uebns_settings_display() {
 				</fielset>
 			</div>
 		</div><!-- /.layout_settings -->
-		<!-- Color Chema Setting -->
-		<div class="layout_settings">
-			<div class="member_field_title">
-					<?php _e('Color Shema', 'aus' ) ?>
-			</div>
-			<div class="layout_out">
-				<input type="text" name="uebns-color-shema" class="uebns-color-picker" value="<?php echo ( ( isset($settings['_uebns_color_shema']) ) ? $settings['_uebns_color_shema'] : ' ' ); ?>" />
-			</div>
-		</div><!-- /.layout_settings -->
 		<!-- Layout Settings -->
 		<div class="layout_settings">
 			<div class="member_field_title">

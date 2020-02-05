@@ -202,11 +202,10 @@ function uebns_get_image_html( $member, $setting_images_clickable, $style_image_
  * Show the Icon bar
  *
  * @param [type] $member
- * @param [type] $settings_color_shema
  * @param [type] $settings_photo_setting
  * @return void
  */
-function getSocialMedia($member,$settings_color_shema,$settings_photo_setting){
+function getSocialMedia($member,$settings_photo_setting){
     if(empty($member['_uebns_sc'])){return '';}
     $member_sc_data = explode('||', $member['_uebns_sc']);
     $i=0;
@@ -220,7 +219,7 @@ function getSocialMedia($member,$settings_color_shema,$settings_photo_setting){
         $uebns_field_link_url = $member_sc_line_data[2];
         // var_dump($uebns_field_link_url);
         $team_view.='<li class="uebns-link">
-        <a style="background-color:' . (!empty($settings_color_shema)? $settings_color_shema : '' ) . ';" class="' . ($settings_photo_setting === 'round' ? 'uebns-round-link' : '' ) . '" title="'.(!empty($member_social_link_titel)?$member_social_link_titel:'').'" href="'.(!empty($uebns_field_link_url)?$uebns_field_link_url:'').'">
+        <a class="' . ($settings_photo_setting === 'round' ? 'uebns-round-link' : '' ) . '" title="'.(!empty($member_social_link_titel)?$member_social_link_titel:'').'" href="'.(!empty($uebns_field_link_url)?$uebns_field_link_url:'').'">
         <span class="screen-reader-text">'.(!empty($member_social_link_titel)?$member_social_link_titel:'').'</span>
         <i class="'.uebns_get_icon_social(getIconStyle(),$uebns_field_link_url).'"></i>
         </a>
