@@ -63,6 +63,7 @@ function uebns_sh($atts) {
       $setting_images_clickable = get_post_meta( get_the_id(), '_uebns_images_clickable', true );
       $style_class_line_members = getRowStyleCount($settings_line_member);
       $style_image_filter = getImageFilterStyle($setting_image_filter);
+      ob_start();
       ?>
       <style>
           .uebns-link a:link,
@@ -77,6 +78,7 @@ function uebns_sh($atts) {
           }
     </style>
     <?php
+      $o = ob_get_clean();
       if ( is_array($members) || is_object($members) || !empty($settings_layout) ) {
         $i=0;
         $memberscount=count($members);
@@ -173,6 +175,6 @@ function uebns_sh($atts) {
       }
   endforeach; wp_reset_postdata();
 
-  return $team_view;
+  return $o.$team_view;
 
 }
