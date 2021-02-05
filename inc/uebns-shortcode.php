@@ -44,7 +44,7 @@ function uebns_sh($atts) {
   $team_view = '';
 
   //SocialIcons
-  $social_links_icons = getIconStyle();
+  $social_links_icons = uebns_getIconStyle();
 
   foreach($custom_posts as $post) : setup_postdata($post);
       //Load Members
@@ -61,8 +61,8 @@ function uebns_sh($atts) {
       $settings_line_member = get_post_meta( get_the_id(), '_uebns_line_member', true );
       $setting_image_filter = get_post_meta( get_the_id(), '_uebns_filter_image', true );
       $setting_images_clickable = get_post_meta( get_the_id(), '_uebns_images_clickable', true );
-      $style_class_line_members = getRowStyleCount($settings_line_member);
-      $style_image_filter = getImageFilterStyle($setting_image_filter);
+      $style_class_line_members = uebns_getRowStyleCount($settings_line_member);
+      $style_image_filter = uebns_getImageFilterStyle($setting_image_filter);
       ob_start();
       ?>
       <style>
@@ -103,7 +103,7 @@ function uebns_sh($atts) {
                       ' . ( !empty( $member['_uebns_job'] ) ? '<div class="uebns-sub-header">' . $member['_uebns_job'].  '</div><!-- /.uebns-sub-header -->' : '' ) . '
                       <hr class="uebns-hr">
                       <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->';
-                          $team_view.=getSocialMedia($member,$settings_photo_setting);
+                          $team_view.=uebns_getSocialMedia($member,$settings_photo_setting);
                           $team_view.='
                     </div><!-- /.uebns-des-text -->
                   </div><!-- /.uebns-col -->
@@ -133,7 +133,7 @@ function uebns_sh($atts) {
                       ' . ( !empty( $member['_uebns_job'] ) ? '<div class="uebns-sub-header">' . $member['_uebns_job'].  '</div><!-- /.uebns-sub-header -->' : '' ) . '
                       <hr class="uebns-hr uebns-hr-full">
                       <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->';
-                          $team_view.=getSocialMedia($member,$settings_photo_setting);
+                          $team_view.=uebns_getSocialMedia($member,$settings_photo_setting);
                           $team_view.='
                     </div><!-- /.uebns-des-text -->
                   </div><!-- /.uebns-txt -->
@@ -159,7 +159,7 @@ function uebns_sh($atts) {
                       ' . ( !empty( $member['_uebns_job'] ) ? '<div class="uebns-sub-header">' . $member['_uebns_job'].  '</div><!-- /.uebns-sub-header -->' : '' ) . '
                       <hr class="uebns-hr">
                       <div class="uebns-description-bio">' . (!empty($member['_uebns_desc']) ? $member['_uebns_desc'] : '' ) . '</div><!-- /.uebns-description-bio -->';
-                          $team_view.=getSocialMedia($member,$settings_photo_setting);
+                          $team_view.=uebns_getSocialMedia($member,$settings_photo_setting);
                           $team_view.='
                     </div><!-- /.uebns-des-text -->
                   </div><!-- /.uebns-col -->

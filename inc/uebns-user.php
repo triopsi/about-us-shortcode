@@ -28,14 +28,14 @@ function add_uebns_front_css() {
 /* Get option - Style Font Awesome */
 $option_cdn = ( empty( get_option( 'uebns_settings_cdn_awesome') ) ? 'yes' : get_option('uebns_settings_cdn_awesome') );
 if( 'yes' === $option_cdn ){
-    add_action( 'wp_enqueue_scripts', 'add_cdn_font_awesome', 99 );
+    add_action( 'wp_enqueue_scripts', 'uebns_add_cdn_font_awesome', 99 );
 }
 
 /**
  * CDN Function FOnt Awesome include
  */
-function add_cdn_font_awesome() {
-    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css', __FILE__);
+function uebns_add_cdn_font_awesome() {
+    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css', __FILE__);
 }
 
 /**
@@ -43,7 +43,7 @@ function add_cdn_font_awesome() {
  *
  * @return void
  */
-function getIconArrayList(){
+function uebns_getIconArrayList(){
         $social_links_icons = array(
             'behance.net'     => 'fab fa-behance',
             'codepen.io'      => 'fab fa-codepen',
@@ -92,13 +92,13 @@ function getIconArrayList(){
  *
  * @return void
  */
-function getIconStyle(){
+function uebns_getIconStyle(){
     //Load settings
     $uebns_settings_social = get_option('uebns_settings_social');
     if( isset( $uebns_settings_social ) && !empty( $uebns_settings_social ) && is_array( $uebns_settings_social ) ){
         $socialmediaiconstyle=$uebns_settings_social;
     }else{
-        $socialmediaiconstyle=getIconArrayList();
+        $socialmediaiconstyle=uebns_getIconArrayList();
     }
     return $socialmediaiconstyle;
 }
@@ -109,7 +109,7 @@ function getIconStyle(){
  * @param [type] $style_class_line_members
  * @return void
  */
-function getRowStyleCount($settings_line_member){
+function uebns_getRowStyleCount($settings_line_member){
     $retunrData = array();
     switch ($settings_line_member) {
         case 1:
@@ -145,7 +145,7 @@ function getRowStyleCount($settings_line_member){
  * @param [type] $setting_image_filter
  * @return void
  */
-function getImageFilterStyle($setting_image_filter){
+function uebns_getImageFilterStyle($setting_image_filter){
     switch ($setting_image_filter) {
         case 'grayscale':
             $style_image_filter='-webkit-filter: grayscale(1);filter: grayscale(1);';
@@ -169,7 +169,7 @@ function getImageFilterStyle($setting_image_filter){
 function uebns_get_icon_social( $social_icons, $url ){
 
     //default
-    $icon_array = getIconStyle();
+    $icon_array = uebns_getIconStyle();
     $icon_class = $icon_array['- Another link -'];
 
     foreach ( $social_icons as $attr => $value ) {
@@ -205,7 +205,7 @@ function uebns_get_image_html( $member, $setting_images_clickable, $style_image_
  * @param [type] $settings_photo_setting
  * @return void
  */
-function getSocialMedia($member,$settings_photo_setting){
+function uebns_getSocialMedia($member,$settings_photo_setting){
     if(empty($member['_uebns_sc'])){return '';}
     $member_sc_data = explode('||', $member['_uebns_sc']);
     $i=0;
@@ -221,7 +221,7 @@ function getSocialMedia($member,$settings_photo_setting){
         $team_view.='<li class="uebns-link">
         <a class="' . ($settings_photo_setting === 'round' ? 'uebns-round-link' : '' ) . '" title="'.(!empty($member_social_link_titel)?$member_social_link_titel:'').'" href="'.(!empty($uebns_field_link_url)?$uebns_field_link_url:'').'">
         <span class="screen-reader-text">'.(!empty($member_social_link_titel)?$member_social_link_titel:'').'</span>
-        <i class="'.uebns_get_icon_social(getIconStyle(),$uebns_field_link_url).'"></i>
+        <i class="'.uebns_get_icon_social(uebns_getIconStyle(),$uebns_field_link_url).'"></i>
         </a>
         </li>';
     }  

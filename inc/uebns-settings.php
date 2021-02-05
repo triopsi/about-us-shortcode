@@ -84,7 +84,7 @@ function uebns_settings_init()
     );
  
     //Social Media Icons Fields
-    $getIconArrayList = getIconArrayList();
+    $getIconArrayList = uebns_getIconArrayList();
     foreach ( $getIconArrayList as $link_url => $value ) {
         $callback = 'uebns_settings_field_cb';
         $name_field = 'uebns_settings_social_'.$link_url;

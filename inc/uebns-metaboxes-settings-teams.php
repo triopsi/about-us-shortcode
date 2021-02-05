@@ -20,14 +20,14 @@
 **/
 
 /* Registers the teams post type. */
-add_action( 'init', 'register_uebns_type' );
+add_action( 'init', 'uebns_register_type' );
 
 /**
  * Function about the ini of the Plugin
  *
  * @return void
  */
-function register_uebns_type() {
+function uebns_register_type() {
 	
   	/* Defines labels */
   	$labels = array(

@@ -33,14 +33,14 @@ function uebns_check_version() {
 add_action('plugins_loaded', 'uebns_check_version');
 
 /* Add Admin panel */
-add_action( 'admin_enqueue_scripts', 'add_admin_uebns_style_js' );
+add_action( 'admin_enqueue_scripts', 'uebns_add_admin_uebns_style_js' );
 
 /**
  * Undocumented function
  *
  * @return void
  */
-function add_admin_uebns_style_js() {
+function uebns_add_admin_uebns_style_js() {
 
   /* Gets the post type. */
   global $post_type;

@@ -3,7 +3,7 @@
 * Plugin Name: About us Shortcode
 * Plugin URI: https://www.wiki.profoxi.de
 * Description: A very simple "About Us" site Plugin. Create Teams and copy-paste the shortcode everywhere in your post or site.
-* Version: 0.1.1
+* Version: 0.1.2
 * Author: triopsi
 * Author URI: http://wiki.profoxi.de
 * Text Domain: aus
@@ -27,7 +27,7 @@
 
 //Definie plugin version
 if (!defined('UEBNS_VERSION'))
-    define('UEBNS_VERSION', '0.1.1');
+    define('UEBNS_VERSION', '0.1.2');
 
 
 /* General */
@@ -63,5 +63,5 @@ require_once('inc/uebns-save-metaboxes.php');
  * @return void
  */
 function uebns_load_plugin_textdomain() {
-  load_plugin_textdomain( 'aus', FALSE, 'about-us-shortcode/lang/' );
+  load_plugin_textdomain( 'aus', '', 'about-us-shortcode/lang/' );
 }

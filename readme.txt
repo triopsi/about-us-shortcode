@@ -3,9 +3,9 @@ Contributors: triopsi
 Donate link: https://www.paypal.me/triopsi
 Tags: about, abaoutus, team, member, site, post, teams. shortcode, site, post
 Requires at least: 5.3
-Tested up to: 5.3.2
+Tested up to: 5.6.1
 Requires PHP: 5.6
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0
  
@@ -49,8 +49,21 @@ Nothing yet.
  
 == Changelog ==
  
-= 0.0.1 =
-* First release.
+= 0.1.2 (05/02/2021) =
+* functions deprecated fix
+* rename functions
+* update cdn font-awesome upgrade to v5.15.2
+
+= 0.1.1 (13/02/2020) =
+* Fix: Save without json Error
+
+= 0.1.0 (05/02/2020) =
+* Change Color Settings to Admin Settings
+
+= 0.0.3 (28/01/2020) =
+* Bugfix - Default Icon - URL
+* Bugfix - Save message option page
+* Add - Debug Info
 
 = 0.0.2 (27/01/2020) =
 * Bugfix - IconArrayList
@@ -60,16 +73,8 @@ Nothing yet.
 * Add - Add Debug Box under Team Settings
 * Add - Add 'another link' type in the social media dropdownlist (Add member)
 
-= 0.0.3 (28/01/2020) =
-* Bugfix - Default Icon - URL
-* Bugfix - Save message option page
-* Add - Debug Info
-
-= 0.1.0 (05/02/2020) =
-* Change Color Settings to Admin Settings
-
-= 0.1.1 (13/02/2020) =
-* Fix: Save without json Error
+= 0.0.1 =
+* First release.
 
 == Upgrade Notice ==
 
