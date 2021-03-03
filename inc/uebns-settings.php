@@ -1,26 +1,26 @@
 <?php
 /**
-* Author: triopsi
-* Author URI: http://wiki.profoxi.de
-* License: GPL3
-* License URI: https://www.gnu.org/licenses/gpl-3.0
-*
-* uebns is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 2 of the License, or
-* any later version.
-*  
-* uebns is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*  
-* You should have received a copy of the GNU General Public License
-* along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
+ * Author: triopsi
+ * Author URI: http://wiki.profoxi.de
+ * License: GPL3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0
+ *
+ * uebns is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * any later version.
+ *  
+ * uebns is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *  
+ * You should have received a copy of the GNU General Public License
+ * along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
 **/
 
 /**
- * Init setting setup
+ * Settings Init
  *
  * @return void
  */
@@ -106,12 +106,12 @@ function uebns_settings_init()
 }
 
 /**
- * register uebns_settings_init to the admin_init action hook
+  * register uebns_settings_init to the admin_init action hook
  */
 add_action('admin_init', 'uebns_settings_init');
 
 /**
- * section Color Description
+  * section Color Description
  */
 function uebns_settings_section_color()
 {
@@ -120,7 +120,7 @@ function uebns_settings_section_color()
 
 
 /**
- * section CDN Description
+  * section CDN Description
  */
 function uebns_settings_cdn_section_cb()
 {
@@ -128,7 +128,7 @@ function uebns_settings_cdn_section_cb()
 }
 
 /**
- * section Style Description
+  * section Style Description
  */
 function uebns_settings_section_cb()
 {
@@ -140,10 +140,10 @@ function uebns_settings_section_cb()
  
 
 /**
- * Main Color CP
+  * Main Color CP
  *
- * @param array $args
- * @return void
+  * @param array $args
+  * @return void
  */
 function uebns_settings_field_main_color_cb( array $args ){
     $old_setting_value = ( !empty( get_option( 'uebns_setting_main_color' ) ) ? get_option( 'uebns_setting_main_color' ) : '#eb5466');
@@ -154,10 +154,10 @@ function uebns_settings_field_main_color_cb( array $args ){
 }
 
 /**
- * Hover Color CP
+  * Hover Color CP
  *
- * @param array $args
- * @return void
+  * @param array $args
+  * @return void
  */
 function uebns_settings_field_hover_color_cb( array $args ){
     $old_setting_value = ( !empty( get_option( 'uebns_setting_main_color_hover' ) ) ? get_option( 'uebns_setting_main_color_hover' ) : '#212952');
@@ -168,10 +168,10 @@ function uebns_settings_field_hover_color_cb( array $args ){
 
 
 /**
- * Social Media CDN
+  * Social Media CDN
  *
- * @param array $args
- * @return void
+  * @param array $args
+  * @return void
  */
 function uebns_settings_field_cdn_cb( array $args ){
     $old_setting_value = ( !empty( get_option( 'uebns_settings_cdn_awesome' ) ) ? get_option( 'uebns_settings_cdn_awesome' ) : 'yes');
@@ -187,10 +187,10 @@ function uebns_settings_field_cdn_cb( array $args ){
 }
 
 /**
- * Social Media
+  * Social Media
  *
- * @param array $args
- * @return void
+  * @param array $args
+  * @return void
  */
 function uebns_settings_field_cb( array $args ){
     $label_for   = $args['label_for'];
@@ -202,7 +202,7 @@ function uebns_settings_field_cb( array $args ){
 }
 
 /**
- * top level menu
+  * top level menu
  */
 function uebns_option_menue(){
 
@@ -216,13 +216,13 @@ function uebns_option_menue(){
 }
 
 /**
-* register our uebns_options_page to the admin_menu action hook
+ * register our uebns_options_page to the admin_menu action hook
 */
 add_action( 'admin_menu', 'uebns_option_menue' );
 
 /**
- * top level menu:
- * callback functions
+  * top level menu:
+  * callback functions
  */
 function uebns_options_page_html() {
     // check user capabilities

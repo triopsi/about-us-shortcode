@@ -1,25 +1,25 @@
 <?php
 /**
-* Author: triopsi
-* Author URI: http://wiki.profoxi.de
-* License: GPL3
-* License URI: https://www.gnu.org/licenses/gpl-3.0
+ * Author: triopsi
+ * Author URI: http://wiki.profoxi.de
+ * License: GPL3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0
 *
-* uebns is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 2 of the License, or
-* any later version.
-*  
-* uebns is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*  
-* You should have received a copy of the GNU General Public License
-* along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
+ * uebns is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * any later version.
+ *  
+ * uebns is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *  
+ * You should have received a copy of the GNU General Public License
+ * along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
 **/
 
-/* Hooks the metabox. */
+/** Hooks the metabox. */
 add_action('admin_init', 'uebns_add_team', 1);
 function uebns_add_team() {
 	add_meta_box( 
@@ -33,9 +33,9 @@ function uebns_add_team() {
 }
 
 /**
- * Show the add/edit postpage in admin
+  * Show the add/edit postpage in admin
  *
- * @return void
+  * @return void
  */
 function uebns_team_display(){
 
@@ -57,8 +57,8 @@ function uebns_team_display(){
 			'_uebns_member_en'
 	);
 
-	/* GetIcon Array */
-	$social_links_options = getIconArrayList();
+	/** GetIcon Array */
+	$social_links_options = uebns_getIconArrayList();
 
 	//Hidden field.
 	wp_nonce_field( 'uebns_meta_box_nonce', 'uebns_meta_box_nonce' ); 
@@ -92,7 +92,13 @@ function uebns_team_display(){
 					<div class="member_toolbar">
 						<a class="move_row_up button tool" href="#" title="Move up"><span class="dashicons dashicons-arrow-up-alt2"></span></a>
 						<a class="move_row_down button tool" href="#" title="Move down"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
-						<div class="member_add_image_thumbnail"><img class="thumbnail-titelbar" src="<?php echo $member['_uebns_photo']; ?>"></div>
+						<div class="member_add_image_thumbnail">
+						<?php
+						if( ! empty( $member['_uebns_photo'] ) ) {
+							echo '<img class="thumbnail-titelbar" src="' . esc_attr( $member['_uebns_photo'] ) . '">';
+						}
+						?>
+						</div>
 						<div class="member_add_title"></div>
 						<a class="button trash remove_row" href="#" title="Remove"><span class="dashicons dashicons-trash"></span></a>
 						<div class="uebns_clearfix"></div>
@@ -105,19 +111,19 @@ function uebns_team_display(){
 							<div class="member_field_title">
 								<?php echo __('First name','aus'); ?>
 							</div>
-							<input class="ubns-field regular-text member-firstname-field" type="text" value="<?php echo $member['_uebns_firstname']; ?>" placeholder="<?php echo __('e.g. Max','aus'); ?>">
+							<input class="ubns-field regular-text member-firstname-field" type="text" value="<?php echo esc_attr( $member['_uebns_firstname'] ); ?>" placeholder="<?php esc_attr_e( 'e.g. Max', 'aus' ); ?>">
 						</div><!-- ./member_field_firstname -->
 						<div class="member_field_lastname member-grid member-grid-33">
 							<div class="member_field_title">
 							<?php echo __('Lastname','aus'); ?>
 							</div>
-							<input class="ubns-field regular-text member-lastname-field" type="text" value="<?php echo $member['_uebns_lastname']; ?>" placeholder="<?php echo __('e.g. Mustermann','aus'); ?>">
+							<input class="ubns-field regular-text member-lastname-field" type="text" value="<?php echo esc_attr( $member['_uebns_lastname'] ); ?>" placeholder="<?php esc_attr_e( 'e.g. Mustermann', 'aus' ); ?>">
 						</div><!-- ./member_field_lastname -->
 						<div class="member_field_jobrole member-grid member-grid-33">
 							<div class="member_field_title">
 							<?php echo __('Job titel','aus'); ?>
 							</div>
-							<input class="ubns-field regular-text member-jobrole-field" type="text" value="<?php echo $member['_uebns_job']; ?>" placeholder="<?php echo __('e.g. Lead','aus'); ?>">
+							<input class="ubns-field regular-text member-jobrole-field" type="text" value="<?php echo esc_attr( $member['_uebns_job'] ); ?>" placeholder="<?php esc_attr_e( 'e.g. Lead', 'aus' ); ?>">
 						</div><!-- ./member_field_jobrole -->
 						<div class="member_field_jobrole member-grid member-grid-100">
 							<div class="member_field_title">
@@ -125,7 +131,7 @@ function uebns_team_display(){
 							</div>
 							<div class="ubns-field uebns_description_of_member">
 							</div>
-							<textarea id="uebns-description-member" class="textarea-member-bio"><?php echo $member['_uebns_desc']; ?></textarea>
+							<textarea id="uebns-description-member" class="textarea-member-bio"><?php echo esc_html( $member['_uebns_desc'] ); ?></textarea>
 						</div><!-- ./member_field_jobrole -->
 						<div class="uebns_clearfix"></div><!-- Clearfix -->
 						<div class="member_head_title">
@@ -146,32 +152,34 @@ function uebns_team_display(){
 								<div class="social-boxes">
 									<div class="member_field_social_link member-grid member-grid-33"> <!-- Social Media Line -->
 										<div class="member_field_title">
-											<?php echo __('Social media kanal','aus'); ?>
+											<?php echo __('Social media kanal', 'aus'); ?>
 										</div>
 									</div><!-- ./member_field_social_link -->
 									<div class="member_field_social_link_name member-grid member-grid-33">
 										<div class="member_field_title">
-											<?php echo __('Link titel','aus'); ?>
+											<?php echo __('Link titel', 'aus'); ?>
 										</div>
 									</div><!-- ./member_field_social_link_name -->
 									<div class="member_field_social_link_url member-grid member-grid-33">
 										<div class="member_field_title">
-											<?php echo __('Link URL','aus'); ?>
+											<?php echo __('Link URL', 'aus'); ?>
 										</div>
 									</div><!-- ./member_field_social_link_url -->
 									<div class="uebns_clearfix"></div><!-- Clearfix -->
 										<div class="member_field_social_link row-second member-grid member-grid-33"> <!-- Social Media Line -->
 											<select class="ubns-select member_social_media_kanal<?php echo $i; ?>">
 												<?php foreach ( $social_links_options as $label => $css_class ) { ?>
-												<option value="<?php echo $label; ?>" <?php selected( $member_social_media_kanal, $label ); ?>><?php echo $label; ?></option>
+												<option value="<?php echo esc_attr( $label ); ?>"<?php selected( $member_social_media_kanal, $label ); ?>>
+												<?php echo esc_html( $label ); ?>
+												</option>
 												<?php } ?>
 											</select>
 										</div><!-- ./member_field_social_link -->
 										<div class="member_field_social_link_name row-second member-grid member-grid-33">
-											<input class="ubns-field uebns-field-link-titel regular-text member-social-link-titel<?php echo $i; ?>-field" type="text" value="<?php echo $member_social_link_titel; ?>" placeholder="<?php echo __('e.g. Mail','aus'); ?>">
+											<input class="ubns-field uebns-field-link-titel regular-text member-social-link-titel<?php echo $i; ?>-field" type="text" value="<?php echo esc_attr( $member_social_link_titel ); ?>" placeholder="<?php esc_attr_e( 'e.g. Mail', 'aus' ); ?>">
 										</div><!-- ./member_field_social_link_name -->
 										<div class="member_field_social_link_url row-second member-grid member-grid-33">
-											<input class="ubns-field uebns-field-link-url regular-text member-social-link-url<?php echo $i; ?>-field" type="text" value="<?php echo $uebns_field_link_url; ?>" placeholder="<?php echo __('e.g. mailto:info@example.com','aus'); ?>">
+											<input class="ubns-field uebns-field-link-url regular-text member-social-link-url<?php echo $i; ?>-field" type="text" value="<?php echo esc_attr( $uebns_field_link_url ); ?>" placeholder="<?php esc_attr_e( 'e.g. mailto:info@example.com', 'aus' ); ?>">
 											<a class="button button-trash-social-line-btn button-large" href="#"><span class="dashicons dashicons-trash"></span></a>		
 										</div><!-- ./member_field_social_link_url -->
 										<div class="uebns_clearfix"></div><!-- Clearfix -->

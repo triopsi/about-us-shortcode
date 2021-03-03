@@ -1,47 +1,47 @@
 <?php
 /**
-* Author: triopsi
-* Author URI: http://wiki.profoxi.de
-* License: GPL3
-* License URI: https://www.gnu.org/licenses/gpl-3.0
+ * Author: triopsi
+ * Author URI: http://wiki.profoxi.de
+ * License: GPL3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0
 *
-* uebns is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 2 of the License, or
-* any later version.
-*  
-* uebns is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*  
-* You should have received a copy of the GNU General Public License
-* along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
+ * uebns is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * any later version.
+ *  
+ * uebns is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *  
+ * You should have received a copy of the GNU General Public License
+ * along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
 **/
 
-/* Add CSS Class to the front */
+/** Add CSS Class to the front */
 add_action( 'wp_enqueue_scripts', 'add_uebns_front_css', 99 );
 function add_uebns_front_css() {
   wp_enqueue_style( 'uebns', plugins_url('../assets/css/front-style.css', __FILE__));
 }
 
-/* Get option - Style Font Awesome */
+/** Get option - Style Font Awesome */
 $option_cdn = ( empty( get_option( 'uebns_settings_cdn_awesome') ) ? 'yes' : get_option('uebns_settings_cdn_awesome') );
 if( 'yes' === $option_cdn ){
     add_action( 'wp_enqueue_scripts', 'uebns_add_cdn_font_awesome', 99 );
 }
 
 /**
- * CDN Function FOnt Awesome include
+  * CDN Function FOnt Awesome include
  */
 function uebns_add_cdn_font_awesome() {
     wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css', __FILE__);
 }
 
 /**
- * default IconArray
+ * Return List of icons
  *
- * @return void
+ * @return array Return List of icons
  */
 function uebns_getIconArrayList(){
         $social_links_icons = array(
@@ -88,9 +88,9 @@ function uebns_getIconArrayList(){
 }
 
 /**
- * Front Style Icons
+ * Undocumented function
  *
- * @return void
+ * @return array List of Icons.
  */
 function uebns_getIconStyle(){
     //Load settings
@@ -160,12 +160,12 @@ function uebns_getImageFilterStyle($setting_image_filter){
 }
 
 /**
- * GetIcons from the url function
- *
- * @param [type] $social_icons
- * @param [type] $url
- * @return void
- */
+  * GetIcons from the url function
+  *
+  * @param [type] $social_icons
+  * @param [type] $url
+  * @return void
+  */
 function uebns_get_icon_social( $social_icons, $url ){
 
     //default
@@ -181,14 +181,14 @@ function uebns_get_icon_social( $social_icons, $url ){
   }
   
 /**
-* HTML image function
-*
-* @param [type] $member
-* @param [type] $setting_images_clickable
-* @param [type] $style_image_filter
-* @param [type] $settings_photo_setting
-* @return void
-*/
+ * HTML image function
+ *
+ * @param [type] $member
+ * @param [type] $setting_images_clickable
+ * @param [type] $style_image_filter
+ * @param [type] $settings_photo_setting
+ * @return void
+ */
 function uebns_get_image_html( $member, $setting_images_clickable, $style_image_filter, $settings_photo_setting ){
     if( !isset($member['_uebns_photo']) || empty($member['_uebns_photo']) ){
         $htmlout='';
@@ -199,12 +199,12 @@ function uebns_get_image_html( $member, $setting_images_clickable, $style_image_
 }
   
 /**
- * Show the Icon bar
- *
- * @param [type] $member
- * @param [type] $settings_photo_setting
- * @return void
- */
+  * Show the Icon bar
+  *
+  * @param [type] $member
+  * @param [type] $settings_photo_setting
+  * @return void
+  */
 function uebns_getSocialMedia($member,$settings_photo_setting){
     if(empty($member['_uebns_sc'])){return '';}
     $member_sc_data = explode('||', $member['_uebns_sc']);

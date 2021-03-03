@@ -1,5 +1,5 @@
 /**
-* Front Editor CSS
+ * Front Editor CSS
 **/
 
 .uebns-team{
@@ -44,7 +44,7 @@
     width:100%;
     position: relative;
 }
-/* Default Layout */
+/** Default Layout */
 .uebns-col{
     float: left;
     
@@ -76,7 +76,7 @@ img.uebns-photo-member:hover{
     border-radius: 50%;
 }
 
-/* Clearfixes */
+/** Clearfixes */
 .uebns-team::after,
 .uebns-row::after,
 .uebns-content:after{
@@ -113,7 +113,7 @@ img.uebns-photo-member:hover{
     background: #eb5466;
     margin:5px 0 5px;
 }
-/* Social Menu */
+/** Social Menu */
 .uebns-social-link{
     text-align: left;
     margin-top:10px;
@@ -157,7 +157,7 @@ img.uebns-photo-member:hover{
 .uebns-link a:hover {
     background-color: #212952;
     box-shadow: none;
-    /* color:#eb5466; */
+    /** color:#eb5466; */
 }
 .uebns-link i {
     height: 16px;
@@ -169,7 +169,7 @@ img.uebns-photo-member:hover{
     position: relative;
 }
 
-/* Layout 1 */
+/** Layout 1 */
 .uebns-center{
     text-align: center;
     margin: 0 auto;
@@ -180,7 +180,7 @@ img.uebns-photo-member:hover{
 .regular-text{
     width: 20em;
 }
-/* Unter Tabletsgröße */
+/** Unter Tabletsgröße */
 @media (max-width: 991.98px) {
     .uebns-row50,
     .uebns-row25,

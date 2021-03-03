@@ -34,7 +34,7 @@
     top: 4px;
 }
 
-/* Meta_Area */
+/** Meta_Area */
 .team_area_content {
     background: whitesmoke;
     border: 1px solid#ddd;
@@ -48,12 +48,12 @@
     font-weight: 400;
 }
 
-/* Add Member Button */
+/** Add Member Button */
 .team_area_footer{
     margin-top:15px;
 }
 
-/* Member Toolbar */
+/** Member Toolbar */
 .member_toolbar{
     text-align: left;
     padding:0.5em;
@@ -109,7 +109,7 @@ select.ubns-select{
     margin-top:10px;
 }
 
-/* Grid System */
+/** Grid System */
 .member-grid{
     float: left;
     padding-left: 6px;
@@ -167,7 +167,7 @@ select.ubns-select{
 .uebns-social-add{
     margin-top:15px;
 }
-/* Metabox */
+/** Metabox */
 
 .uebns-setting-checkbox{
     text-align: center;

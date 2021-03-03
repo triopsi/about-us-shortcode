@@ -3,9 +3,9 @@ Contributors: triopsi
 Donate link: https://www.paypal.me/triopsi
 Tags: about, abaoutus, team, member, site, post, teams. shortcode, site, post
 Requires at least: 5.3
-Tested up to: 5.6.1
+Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 0.1.2
+Stable tag: 1.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0
  
@@ -18,10 +18,10 @@ and is very easys to use it. Add Photos, Bios or the jobtitel in the Teambox and
 
 = Create features =
  
-*   Create and manage teams
-*   Create teammember and fill it with information 
-*   Add Shortcodes in your post or sites 
-*   responsives designs (choose one of 3 default layouts)
+ *   Create and manage teams
+ *   Create teammember and fill it with information 
+ *   Add Shortcodes in your post or sites 
+ *   responsives designs (choose one of 3 default layouts)
 
 = Bugs, technical hints or contribute =
 
@@ -48,33 +48,37 @@ Nothing yet.
 4. Team Settings
  
 == Changelog ==
- 
+
+= 1.0.0 =
+ * getIconArrayList Bug fix
+ * Tested up fo WP 5.7
+
 = 0.1.2 (05/02/2021) =
-* functions deprecated fix
-* rename functions
-* update cdn font-awesome upgrade to v5.15.2
+ * functions deprecated fix
+ * rename functions
+ * update cdn font-awesome upgrade to v5.15.2
 
 = 0.1.1 (13/02/2020) =
-* Fix: Save without json Error
+ * Fix: Save without json Error
 
 = 0.1.0 (05/02/2020) =
-* Change Color Settings to Admin Settings
+ * Change Color Settings to Admin Settings
 
 = 0.0.3 (28/01/2020) =
-* Bugfix - Default Icon - URL
-* Bugfix - Save message option page
-* Add - Debug Info
+ * Bugfix - Default Icon - URL
+ * Bugfix - Save message option page
+ * Add - Debug Info
 
 = 0.0.2 (27/01/2020) =
-* Bugfix - IconArrayList
-* Bugfix - JobTitel isnt a required field
-* Change - Team Settings now under the optionmenu
-* Change - JQuery social media kanal autocomplete
-* Add - Add Debug Box under Team Settings
-* Add - Add 'another link' type in the social media dropdownlist (Add member)
+ * Bugfix - IconArrayList
+ * Bugfix - JobTitel isnt a required field
+ * Change - Team Settings now under the optionmenu
+ * Change - JQuery social media kanal autocomplete
+ * Add - Add Debug Box under Team Settings
+ * Add - Add 'another link' type in the social media dropdownlist (Add member)
 
 = 0.0.1 =
-* First release.
+ * First release.
 
 == Upgrade Notice ==
 

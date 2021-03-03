@@ -1,35 +1,35 @@
 <?php
 /**
-* Author: triopsi
-* Author URI: http://wiki.profoxi.de
-* License: GPL3
-* License URI: https://www.gnu.org/licenses/gpl-3.0
+ * Author: triopsi
+ * Author URI: http://wiki.profoxi.de
+ * License: GPL3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0
 *
-* uebns is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 2 of the License, or
-* any later version.
-*  
-* uebns is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*  
-* You should have received a copy of the GNU General Public License
-* along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
+ * uebns is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * any later version.
+ *  
+ * uebns is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *  
+ * You should have received a copy of the GNU General Public License
+ * along with uebns. If not, see https://www.gnu.org/licenses/gpl-3.0.
 **/
 
-/* Registers the teams post type. */
+/** Registers the teams post type. */
 add_action( 'init', 'uebns_register_type' );
 
 /**
- * Function about the ini of the Plugin
+  * Function about the ini of the Plugin
  *
- * @return void
+  * @return void
  */
 function uebns_register_type() {
 	
-  	/* Defines labels */
+  	/** Defines labels */
   	$labels = array(
 		'name'               => __( 'Teams', 'aus' ),
 		'singular_name'      => __( 'Team', 'aus' ),
@@ -46,7 +46,7 @@ function uebns_register_type() {
 		'not_found_in_trash' => __( 'No Teams found in Trash.', 'aus' )
 	);
 
-  	/* Defines permissions. */
+  	/** Defines permissions. */
 	$args = array(
 		'labels'             => $labels,
 		'public'             => false,
@@ -60,20 +60,20 @@ function uebns_register_type() {
 		'menu_icon'          => 'dashicons-buddicons-buddypress-logo',
 	);
 
-  	/* Registers post type. */
+  	/** Registers post type. */
 	register_post_type( 'uebns', $args );  
 
 }
 
 
-/* Add update messages */
+/** Add update messages */
 add_filter( 'post_updated_messages', 'uebns_updated_messages' );
 
 /**
- * Update post message functions
+  * Update post message functions
  *
- * @param [type] $messages
- * @return void
+  * @param [type] $messages
+  * @return void
  */
 function uebns_updated_messages( $messages ) {
 	$post             = get_post();
