@@ -5,7 +5,7 @@ Tags: about, abaoutus, team, member, site, post, teams. shortcode, site, post
 Requires at least: 5.3
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0
  
@@ -48,6 +48,10 @@ Nothing yet.
 4. Team Settings
  
 == Changelog ==
+
+= 1.0.1 =
+* litle php fixe
+* php code formatted
 
 = 1.0.0 =
 * getIconArrayList Bug fix
